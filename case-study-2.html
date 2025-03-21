@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title -->
+    <title>Linel Project Thumbnail</title>
+
+    <!-- External scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+
+    <!-- Styles -->
+    <style>
+        /* Base styles */
+        body {
+            font-family: "Neue Montreal", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            text-align: left; /* Left align all text */
+        }
+        button {
+  --hov: 0;
+  display: grid;
+  grid-gap: 0.3em;
+  grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
+  align-items: center;
+  place-self: start;
+  border: none;
+  padding: 0.5em 0.75em;
+  border-radius: 1.5em;
+  background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
+  color: #ffffff;
+  font: 700 1.2em/1.2 ubuntu, sans-serif;
+  transition: 0.3s ease-out;
+  transition-delay: calc((1 - var(--hov)) * 0.5 * 0.3s), 0s;
+  transition-property: grid-template-columns, background-color;
+  cursor: pointer;
+}
+
+button::before {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #333333;
+  color: hsla(0, 0%, 100%, var(--hov));
+  font-weight: 100;
+  text-indent: calc((var(--hov) - 1) * 0.75em);
+  clip-path: circle(closest-side);
+  transition: inherit;
+  transition-delay: calc(var(--hov) * 0.5 * 0.3s);
+  transition-property: color, text-indent;
+  content: attr(data-ico);
+  display: grid;
+  place-items: center;
+  font-size: 0.8em;
+}
+
+button:is(:hover, :focus) {
+  --hov: 1;
+}
+
+/* Dark Mode Button Styles */
+body.dark-mode button {
+  background: color-mix(in hsl, #ffffff calc(var(--hov) * 100%), #ffffff);
+  color: #000;
+}
+
+body.dark-mode button::before {
+  background: #ffffff;
+  color: hsla(0, 0%, 0%, var(--hov));
+}
+
+        /* Layout components */
+        .container {
+            max-width: 1149px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left; /* Left align all text */
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            word-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            position: relative;
+        }
+
+        nav a {
+            color: black;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-right: 15px;
+            position: relative;
+            font-weight: bold;
+            overflow: hidden;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+/* 9. Footer Styles */
+
+.footer-16371 {
+  padding: 5rem 0;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.footer-16371 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  width: 100%; /* Full width */
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10rem;
+  border-bottom: 1px solid #ddd;
+  width: 100%;  /* Full width */
+}
+/* Fix for the footer paragraph */
+.footer-brand p {
+  font-size: 1.8rem !important;  /* Increase font size */
+  font-weight: 600 !important;  /* Make text bolder */
+  text-align: center !important; /* Ensure it stays centered */
+  display: block !important; /* Force it to act as a block element */
+  max-width: 100% !important; /* Prevent unnecessary wrapping */
+  white-space: nowrap !important; /* Force it to stay in a single line */
+}
+
+.footer-brand a {
+  font-weight: 900;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 10rem;
+}
+
+.footer-nav {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #005fcc;
+}
+
+
+.footer-social {
+    display: none;
+}
+
+.footer-social-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus {
+  color: #005fcc;
+}
+
+.footer-bottom {
+  text-align: center;
+}
+
+.copyright {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+
+/* Dark Mode Footer Styles */
+body.dark-mode .footer-16371 {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode .footer-top {
+  border-bottom-color: #000000;
+}
+
+body.dark-mode .footer-brand a {
+  color: #000000;
+}
+
+body.dark-mode .footer-link {
+  color: #000000;
+}
+
+body.dark-mode .footer-link:hover,
+body.dark-mode .footer-link:focus {
+  color: #000000;
+}
+
+body.dark-mode .footer-social-link {
+  color: #000000;
+}
+
+body.dark-mode .footer-social-link:hover,
+body.dark-mode .footer-social-link:focus {
+  color: #000000;
+}
+
+body.dark-mode .copyright {
+  color: #000000;
+}
+
+body.dark-mode footer {  /* General footer dark mode */
+    background-color: #ffffff;
+    color: #000000;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header navigation -->
+    <header>
+        <!-- Back button -->
+        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 370px;">Back</button>
+    </header>
+    <!-- Main content -->
+    <main class="container" style="text-align: left;">
+        <!-- Project title -->
+        <h1>Designing a better checkout experience a UX/UI case
+            study</h1>
+        
+        <!-- Project thumbnail -->
+         <div style="text-align: left;">
+            <img src="images\Case Study Sliders  Image Containers\case 2.png" alt="Linel Project Thumbnail" style="width: 100%; max-width: 800px; height: auto;">
+        </div>
+         <!-- Case study content -->
+         <p>The app allows users to order food from a variety of delicious cuisine directly to their office, as
+            well as provide a way to track their order(s) and suggest meal combinations. The business is
+            specific about its audience, who are the working class citizens
+            Most users complain about (assuming these were the challenges faced) how hard it is to
+            navigate through the app(not memorable), bad user interface (inconsistent design), a complex
+            checkout system and most especially not being able to track their orders.
+            
+            These are the UX/UI challenges that I have decided to improve on, along with an order tracking
+            system, in this case study.
+            
+            For the sake of this study, Plated Cuisine would be used to describe the app which the chef is
+            using to offer her services.</p>
+            <div>
+                <div style="text-align: left;">
+                    <img src="images\Case_Studies\Case 2\1.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+                </div>
+                <p><b>Goals and Objectives:</b></p>
+                <ul style="text-align: left;">
+                    <li>To improve and design a better food tracking experience</li>
+                    <li>Mobile design approach</li>
+                    <li>Minimal UI (modern and fresh)</li>
+                    <li>Easy navigation throughout the app, fewer user action approach</li>
+                </ul>
+                <p><b>Understanding the problem</b></p>
+
+                <p>The solution is to design an app for an emerging chef who wants to offer her food services to a
+                    targeted audience (working-class people). My first step was to familiarise myself with Plated
+                    Cuisine and the business process. From having an in-person interview with her at the office, I
+                    learnt the following 9 to 5 Her business perspective, goals & objective
+                    The core purpose of this app which is “Comfort at your office”</p>
+
+                <p>After absorbing all the information, I was able to breakdown the project into modules — which
+                    would enable me to pay close attention to even the minute details. The essence of this is to
+                    equip me with the necessary information to use and provide a solution for the users</p>
+            <p><b>Research and Analysis</b></p>
+
+            <p>Now that I have a better understanding of the Plated Cuisine, I began my competitive analysis
+                to see which companies/apps are currently dominating the market in the food delivery space,
+                to understand their patterns and draw relevant findings such as:</p>
+            <ul style="text-align: left;">
+                <li>Why are users currently using this app? Is it the brand image? Food quality?</li>
+                <li>Current issues users are facing using these applications</li>
+                <li>Specific issues relating to the food tracking system.</li>
+            </ul>
+
+            <p>After making my findings, I began to research on a global scale to see what’s new, keep in
+                touch with the design styles and trends. With my focus being the improvement of the food
+                delivery tracking system it has been seen through research why users abandon or cancel their
+                orders based on some reoccurring issues like:</p>
+            <ul style="text-align: left;">
+                <li>Price discrepancies, which makes the users unhappy</li>
+                <li>Users confused about when and how long their food would get to them</li>
+                <li>Dispatch riders not conversant with proper navigation systems like google, which leads to
+                    unoptimised routes = unhappy customer</li>
+                <li>Quality of food delivered (since most apps in question offer food services from different
+                    vendors</li>
+                <li>Complicated menus</li>
+            </ul>
+
+            <p>To get more insight I carried out a mini-survey which targeted the working class people (ages
+                23–30), I needed more data on their day to day activities and how ordering food during their
+                busy schedule affects their routines, this enabled me to arrive at relevant conclusions, below
+                are my findings:</p>
+                <div style="text-align: left;">
+                    <img src="images\Case_Studies\Case 2\2.png" alt="Survey Findings" style="width: 100%; max-width: 800px; height: auto;">
+                    <p><b>Here are some of the relevant questions I asked and some feedbacks:</b></p>
+                    <ul style="text-align: left;">
+                        <li>What does your typical day look like?</li>
+                        <li>Why do you use food delivery services? How many of them do you use?</li>
+                        <li>What issues are you having with the current apps?</li>
+                        <li>What could be a reason you would use our solution?</li>
+                        <li>What’s your take on food quality?</li>
+                        <li>How efficiently do the current food delivery services you use help you track your order?</li>
+                    </ul>
+                    <p><b>User Persona</b></p>
+
+                    <p>Using the report from the survey and interview, I
+                        created a user persona that embodies the traits of
+                        the target audience. The user persona created helps
+                        me get a better understanding of the problem I’m
+                        trying to solve</p>
+                        <div style="text-align: left;">
+                            <img src="images\Case_Studies\Case 2\3.png" alt="User Persona" style="width: 100%; max-width: 800px; height: auto;">
+                        </div>
+                        <p><b>User Flows</b></p>
+
+                        <p>This process is all about defining the flow for plated
+                            cuisine, bringing more insight to the layouts and
+                            structure of the app. This helps to define the
+                            navigation flow for the app, aimed at making the flow
+                            and steps very easy, memorable for a user which
+                            would increase interactiveness. A user (in this case
+                            Zik) just has to register or log in once when using the
+                            app for the first time.</p>
+
+                        <p>The app has been structured in a way to reduce the
+                            user actions to complete an order, 4 clicks are all it
+                            takes to order a meal, which is very simple and
+                            minimal.</p>
+                            <div style="text-align: left;">
+                                <img src="images\Case_Studies\Case 2\4.png" alt="User Flows" style="width: 100%; max-width: 800px; height: auto;">
+                            <p><b>User Storyboard and Sketches</b></p>
+
+                            <p>Creating a storyboard and sketches for this case
+                                study helped me emphasise with the user through
+                                (Zik) his journey giving me a more defined contextual
+                                idea and spot out challenges that may occur or user
+                                needs not put into consideration.</p>
+
+                            <p>After several iterations in the sketching process, I
+                                was able to come up with a solution for a better food
+                                tracking experience.</p>
+                                <div style="text-align: left;">
+                                    <img src="images\Case_Studies\Case 2\7.png" alt="Sketch 1" style="width: 100%; max-width: 800px; height: auto;">
+                                </div>
+                                <div style="text-align: left;">
+                                    <img src="images\Case_Studies\Case 2\5.png" alt="Sketch 2" style="width: 100%; max-width: 800px; height: auto;">
+                                </div>
+                                <div style="text-align: left;">
+                                    <img src="images\Case_Studies\Case 2\6.png" alt="Sketch 3" style="width: 100%; max-width: 800px; height: auto;">
+                                <p><b>Wire framing</b></p>
+                                <p>With the sketches above the goal was to provide a
+                                    solution for the pain points uncovered in the initial
+                                    research. This is a form of low-fidelity wire-framing
+                                    which gave me a clearer picture of how the interface
+                                    would look like, also covering the basic content
+                                    structure.</p>
+
+                                <p>During this process, I crafted out how each of the
+                                    screens connects together to give a seamless and
+                                    smoother experience.</p>
+                                    <div style="text-align: left;">
+                                        <img src="images\Case_Studies\Case 2\8.png" alt="Wireframe" style="width: 100%; max-width: 800px; height: auto;">
+                                    <p><b>High fidelity & Prototyping</b></p>
+                                    <p>Using all the information gotten from the above sketches, user flow and wireframes I was able
+                                        to convert them into a high-fidelity visual representation of the app. By using cool and neutral
+                                        colours I was able to come up with a fresh & minimal design.</p>
+
+                                    <p><b>Ordering food</b></p>
+
+                                    <p>When a first-time user launches the app, a splash screen would be displayed which then
+                                        redirects the user to the signup page. After the registration process, the user is directed to the
+                                        home page where orders from a variety of delicacies can be made.</p>
+
+                                    <p>From the home screen, users can choose a dish of their choice, also a user can add sides or
+                                        drinks to complement their meal from a single screen. Users can also choose between dark and
+                                        light mode depending on their mood. Also, at the point of checkout users can decide to
+                                        add more dishes to their order(s).</p>
+                                    <p>Depending on the time of the day the app suggests different meal options to the user to make
+                                        the selection better.
+                                        
+                                        Users can set up specific meals they want to be ordering frequently. When a first time user
+                                        launches the app he/she can click on custom which would display a full menu encouraging
+                                        them to select the combos they want. This would make the ordering process faster and
+                                        simpler.
+                                        
+                                        If a user wants to have more details on the food he/she wants to order, by sliding right on the
+                                        food selection page (3rd screen from the left) a user can view the ingredients used to make the
+                                        meal</p>
+                                        <div style="text-align: left;">
+                                            <img src="images\Case_Studies\Case 2\9.png" alt="Ordering Food" style="width: 100%; max-width: 800px; height: auto;">
+                                        <p><b>Order tracking</b></p>
+
+                                        <p>After research and feedback gotten from users, I was able to come up with a much simpler and
+                                            user-friendly tracking solution (So Zik can have his meetings in peace). After placing an order a
+                                            confirmation screen shows giving the option for a user to track an order. When a user clicks
+                                            “Track my order” button a screen that shows the order progress displays, giving the user an
+                                            idea as of when the order would be completed.
+                                            
+                                            When an order is dispatched, the user would be notified and has the option to track the rider’s
+                                            movements, also a user can update their current location. When tracking the rider’s
+                                            movements the user has an option to call.
+                                       
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                </div>
+            </div>
+
+    </main>
+    <!-- Footer -->
+    <footer class="footer-16371">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" title="GRAYS-SCALE: Bringing ideas to life" class="footer-logo-link">GRAYS-SCALE</a>
+                    <p>Bringing ideas to life, one pixel at a time.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                
+                
+                </nav>
+                <!-- Social links (currently hidden, but structure is here) -->
+                <div class="footer-social">
+                    <!-- <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> GRAYS-SCALE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

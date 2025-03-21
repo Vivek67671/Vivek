@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title -->
+    <title>Centim Project Thumbnail</title>
+
+    <!-- External scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+
+    <!-- Styles -->
+    <style>
+        /* Base styles */
+        body {
+            font-family: "Neue Montreal", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            text-align: left; /* Left align all text */
+        }
+        button {
+  --hov: 0;
+  display: grid;
+  grid-gap: 0.3em;
+  grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
+  align-items: center;
+  place-self: start;
+  border: none;
+  padding: 0.5em 0.75em;
+  border-radius: 1.5em;
+  background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
+  color: #ffffff;
+  font: 700 1.2em/1.2 ubuntu, sans-serif;
+  transition: 0.3s ease-out;
+  transition-delay: calc((1 - var(--hov)) * 0.5 * 0.3s), 0s;
+  transition-property: grid-template-columns, background-color;
+  cursor: pointer;
+}
+
+button::before {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #333333;
+  color: hsla(0, 0%, 100%, var(--hov));
+  font-weight: 100;
+  text-indent: calc((var(--hov) - 1) * 0.75em);
+  clip-path: circle(closest-side);
+  transition: inherit;
+  transition-delay: calc(var(--hov) * 0.5 * 0.3s);
+  transition-property: color, text-indent;
+  content: attr(data-ico);
+  display: grid;
+  place-items: center;
+  font-size: 0.8em;
+}
+
+button:is(:hover, :focus) {
+  --hov: 1;
+}
+
+/* Dark Mode Button Styles */
+body.dark-mode button {
+  background: color-mix(in hsl, #ffffff calc(var(--hov) * 100%), #ffffff);
+  color: #000;
+}
+
+body.dark-mode button::before {
+  background: #ffffff;
+  color: hsla(0, 0%, 0%, var(--hov));
+}
+
+        /* Container layout */
+        .container {
+            max-width: 1149px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left; /* Left align all text */
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            word-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            position: relative;
+        }
+
+        nav a {
+            color: black;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-right: 15px;
+            position: relative;
+            font-weight: bold;
+            overflow: hidden;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+/* 9. Footer Styles */
+
+.footer-16371 {
+  padding: 5rem 0;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.footer-16371 .container {
+  display: flex;
+  flex-direction: column;
+  gap: 10rem;
+  width: 100%; /* Full width */
+}
+
+.footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10rem;
+  border-bottom: 1px solid #ddd;
+  width: 100%;  /* Full width */
+}
+/* Fix for the footer paragraph */
+.footer-brand p {
+  font-size: 1.8rem !important;  /* Increase font size */
+  font-weight: 600 !important;  /* Make text bolder */
+  text-align: center !important; /* Ensure it stays centered */
+  display: block !important; /* Force it to act as a block element */
+  max-width: 100% !important; /* Prevent unnecessary wrapping */
+  white-space: nowrap !important; /* Force it to stay in a single line */
+}
+
+.footer-brand a {
+  font-weight: 900;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 10rem;
+}
+
+.footer-nav {
+  flex: 1 1 auto;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.footer-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #005fcc;
+}
+
+
+.footer-social {
+    display: none;
+}
+
+.footer-social-link {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus {
+  color: #005fcc;
+}
+
+.footer-bottom {
+  text-align: center;
+}
+
+.copyright {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+
+/* Dark Mode Footer Styles */
+body.dark-mode .footer-16371 {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body.dark-mode .footer-top {
+  border-bottom-color: #000000;
+}
+
+body.dark-mode .footer-brand a {
+  color: #000000;
+}
+
+body.dark-mode .footer-link {
+  color: #000000;
+}
+
+body.dark-mode .footer-link:hover,
+body.dark-mode .footer-link:focus {
+  color: #000000;
+}
+
+body.dark-mode .footer-social-link {
+  color: #000000;
+}
+
+body.dark-mode .footer-social-link:hover,
+body.dark-mode .footer-social-link:focus {
+  color: #000000;
+}
+
+body.dark-mode .copyright {
+  color: #000000;
+}
+
+body.dark-mode footer {  /* General footer dark mode */
+    background-color: #ffffff;
+    color: #000000;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header navigation -->
+    <header>
+        <!-- Back button -->
+        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 350px;">Back</button>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+        <!-- Project title -->
+        <h1>SaaS Website Redesign</h1>
+        
+        <!-- Project subtitle -->
+        <time class="subtitle">SaaS Website Redesign</time>
+
+        <!-- Project thumbnail -->
+        <img src="images\Case_Studies\Case 3\image 34.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+
+        <!-- Case study content -->
+        <p>The Beginning
+            A strong digital presence is key in our highly competitive environment and this story is about a
+           2-month journey we took as designers to reimagine a 3-year-old website for a fresh, new,
+           updated one. This project was driven by the need to align our online presence, with the
+           changing B2B SaaS market and the limitations found in our current website.
+           </p>
+           <div style="text-align: left;">
+           <img src="images\Case_Studies\Case 3\image 35.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+        <p>Why Redesign Was Required?</p>
+        <ul>
+            <li>Ineffective Communication:
+                <ul>
+                    <li>The messaging on the old site failed to effectively communicate our value proposition, often leaving visitors unsure about specific benefits offered by OpsLyft.</li>
+                    <li>Additionally, setting the context and repeating OpsLyft’s offerings on each customer contact took a lot of the CEO, Sales, and Marketing teams’ time.</li>
+                </ul>
+            </li>
+            <li>User Feedback and Pain Points:
+                <ul>
+                    <li>HotJar’s heat maps and user feedback identified a number of pain points, including poor navigation, unclear information architecture, and inaccurate content.</li>
+                </ul>
+            </li>
+            <li>Outdated Aesthetics & Functionality:
+                <ul>
+                    <li>The old website had an outdated design that failed to reflect the true scope of our offerings.</li>
+                    <li>Functionally, it struggled to deliver an intuitive and efficient user experience.</li>
+                </ul>
+            </li>
+            <li>Competitive Landscape:
+                <ul>
+                    <li>In a market with fierce competition, it was important that our website stood out as a testament to our innovative thinking and reliability, which can boost brand credibility.</li>
+                </ul>
+            </li>
+        </ul>
+        <div style="text-align: left;">
+            <img src="images\Case_Studies\Case 3\image 36.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+            <p><b>Design Process</b></p>
+
+                <p>When you have diversity in your business
+                requirements & constraints, a systematic
+                approach is ideal. As a result, we decided to
+                implement the Double Diamond process, which
+                symbolizes divergent and convergent thinking,
+                in order to meet our business needs
+                effectively.
+                
+                Starting with the Kick-off phase, which
+                included understanding the Founder's vision,
+                and future roadmaps from the PM along with
+                visual inspiration discussions with the
+                marketing team. This was followed by the
+                discovery and delivery phases.</p>
+                <p><b>Problem Discovery Phase</p></b>
+                <p>I strongly believe that before starting any design, the most powerful asset for any project is good research. We began our project by carefully examining internal (company) and external (competitors) drivers before laying out a schedule and plan of action for the design process. As a result, the stakeholders & marketing team supported the process and project length.
+                    “Design adds value faster than it adds costs.” — Joel Spolsky
+                    This was our guiding principle throughout the entire process to make sure that every component of the website added value to the business & its mission.</p>
+                    <div style="text-align: left;">
+                        <img src="images\Case_Studies\Case 3\image 37.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+                        <p><b>Step 1 Discover</b></p>
+                        <ul></ul>
+                            <li>User persona development helped us narrow down the primary audience: Leadership, DevOps Engineers, Investors, and potential candidates branched across different pages creating detailed user personas.</li>
+                            <li>Thorough research and competitive analysis helped us understand the organization’s mission, vision, and user personas clearly.</li>
+                        </ul>
+                        </main>
+
+    <!-- Footer -->
+    <footer class="footer-16371">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" title="GRAYS-SCALE: Bringing ideas to life" class="footer-logo-link">GRAYS-SCALE</a>
+                    <p>Bringing ideas to life, one pixel at a time.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                
+                
+                </nav>
+                <!-- Social links (currently hidden, but structure is here) -->
+                <div class="footer-social">
+                    <!-- <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> GRAYS-SCALE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

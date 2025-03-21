@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Page title -->
+    <title>Designing for variants a UX case study</title>
+
+    <!-- External scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: "Neue Montreal", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            text-align: left; /* Left align all text */
+            font-size: 16px; /* Standardize base font size */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Button styles */
+        button {
+            --hov: 0;
+            display: grid;
+            grid-gap: 0.3em;
+            grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
+            align-items: center;
+            place-self: start;
+            border: none;
+            padding: 0.5em 0.75em;
+            border-radius: 1.5em;
+            background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
+            color: #ffffff;
+            font: 700 1.2em/1.2 ubuntu, sans-serif;
+            transition: 0.3s ease-out;
+            transition-delay: calc((1 - var(--hov)) * 0.5 * 0.3s), 0s;
+            transition-property: grid-template-columns, background-color;
+            cursor: pointer;
+        }
+
+        button::before {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 50%;
+            background: #333333;
+            color: hsla(0, 0%, 100%, var(--hov));
+            font-weight: 100;
+            text-indent: calc((var(--hov) - 1) * 0.75em);
+            clip-path: circle(closest-side);
+            transition: inherit;
+            transition-delay: calc(var(--hov) * 0.5 * 0.3s);
+            transition-property: color, text-indent;
+            content: attr(data-ico);
+            display: grid;
+            place-items: center;
+            font-size: 0.8em;
+        }
+
+        button:is(:hover, :focus) {
+            --hov: 1;
+        }
+
+        /* Dark Mode Button Styles */
+        body.dark-mode button {
+            background: color-mix(in hsl, #ffffff calc(var(--hov) * 100%), #ffffff);
+            color: #000;
+        }
+
+        body.dark-mode button::before {
+            background: #ffffff;
+            color: hsla(0, 0%, 0%, var(--hov));
+        }
+
+        /* Container layout */
+        .container {
+            max-width: 1149px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: left; /* Left align all text */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 3.5rem; /* Standardize h1 font size */
+            font-weight: 900;
+            word-spacing: 0px;
+            text-transform: uppercase;
+        }
+
+        p {
+            font-size: 1.1rem; /* Standardize paragraph font size */
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            color: black;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: left;
+            position: relative;
+        }
+
+        nav a {
+            color: black;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-right: 15px;
+            position: relative;
+            font-weight: bold;
+            overflow: hidden;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: flex-start;
+            margin: 40px 0;
+        }
+        ul {
+            font-size: 1.1rem; /* Standardize list font size */
+        }
+        li {
+            font-size: 1.1rem; /* Standardize list item font size */
+        }
+
+        /* Footer Styles */
+        .footer-16371 {
+            padding: 5rem 0;
+            background-color: #000000;
+            color: #ffffff;
+        }
+
+        .footer-16371 .container {
+            display: flex;
+            flex-direction: column;
+            gap: 10rem;
+            width: 100%; /* Full width */
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 10rem;
+            border-bottom: 1px solid #ddd;
+            width: 100%;  /* Full width */
+        }
+
+        /* Fix for the footer paragraph */
+        .footer-brand p {
+            font-size: 1.8rem !important;  /* Increase font size */
+            font-weight: 600 !important;  /* Make text bolder */
+            text-align: center !important; /* Ensure it stays centered */
+            display: block !important; /* Force it to act as a block element */
+            max-width: 100% !important; /* Prevent unnecessary wrapping */
+            white-space: nowrap !important; /* Force it to stay in a single line */
+        }
+
+        .footer-brand a {
+            font-weight: 900;
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 10rem;
+        }
+
+        .footer-nav {
+            flex: 1 1 auto;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+
+        .footer-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus {
+            color: #005fcc;
+        }
+
+        .footer-social {
+            display: none;
+        }
+
+        .footer-social-link {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-social-link:hover,
+        .footer-social-link:focus {
+            color: #005fcc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+        }
+
+        .copyright {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        /* Dark Mode Footer Styles */
+        body.dark-mode .footer-16371 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-mode .footer-top {
+            border-bottom-color: #000000;
+        }
+
+        body.dark-mode .footer-brand a {
+            color: #000000;
+        }
+
+        body.dark-mode .footer-link {
+            color: #000000;
+        }
+
+        body.dark-mode .footer-link:hover,
+        body.dark-mode .footer-link:focus {
+            color: #000000;
+        }
+
+        body.dark-mode .footer-social-link {
+            color: #000000;
+        }
+
+        body.dark-mode .footer-social-link:hover,
+        body.dark-mode .footer-social-link:focus {
+            color: #000000;
+        }
+
+        body.dark-mode .copyright {
+            color: #000000;
+        }
+
+        body.dark-mode footer {  /* General footer dark mode */
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* Media queries */
+        @media (max-width: 480px) {
+            /* Mobile responsive adjustments */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with navigation -->
+    <header>
+        <!-- Back button -->
+        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 350px;">Back</button>
+    </header>
+
+    <!-- Main content -->
+    <main class="container">
+        <!-- Case study title -->
+        <h1><b>Designing for variants a UX <span style="text-decoration: underline;">case study</span></b></h1>
+
+        <!-- Project metadata -->
+        <time datetime="2023" class="subtitle"><b>Home Services App</b></time>
+        <br>
+        <br>
+        <!-- Project images -->
+        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+            <img src="images/Case_Studies/image 10.png" alt="Handee Project Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+            <img src="images/Case_Studies/image 8.png" alt="Handee Project Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+            <img src="images/Case_Studies/image 9.png" alt="Handee Project Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <p>The problem involved designing the flow for the user to buy multiple variants of a product
+            which has staggered pricing and at the same time ensuring that she is making a good deal (i.e.
+            <b>Value for money).Duration: 2 weeks
+
+            Tools: Sketch, Zeplin, Marvel</b>I followed the Double Diamond approach for the
+            project. We started by gathering data from PMs and
+            business teams and did a competitive study to
+            better understand the problem. Then we narrowed
+            down the data to some of the key problems/
+            constraints we need to address while designing.
+            After that, we explored multiple solutions for
+            solving these problems, and finally, we narrowed
+            down to a final solution.</p>
+
+            <p><b>Gathering Data</b></p>
+            <p>Variants and Staggered Pricing</p>
+
+            <p>Before starting with the design
+            process, it was necessary to
+            understand the variants and
+            their pricing model.</p>
+            <p>If service price(Sp) is dependent
+            on time(t) and material used(m),
+            then for different value of t and
+            m, S would have different values.</p>
+            
+            <p>This is called a staggered pricing
+            model and each value of the
+            price(S) is called a variant.</p>
+            
+            <p>In our case, We wanted to solve
+            for the Massage category and
+            Massage was available for two
+            durations: 60 and 90 min.</p>
+            <p>For these two time values, the service price was not a linear function of time. The price(y) for
+            90 min massage was lesser than what it would be for a linear pricing model (y<1.5x; x=price for
+            60 min massage). Thus, A higher variant type was available for a discounted price which makes
+            it a value for money deal for the user. Through our design, we wanted to entice her into buying
+            <b>this high price variant.</b></p>
+
+            <p><b>Understanding Variant Flow and Business Requirements</b></p> <p>For understanding the variant flow, I first looked at how UrbanClap app was dealing with the
+                problem of variants earlier. I found out that there were separate SKUs (Stock Keeping Unit) for
+                each variant type which was increasing the scroll length of the page. Thus, we wanted to
+                eliminate the need of having separate SKUs</p>
+            <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                <img src="images/Case_Studies/image 11.png" alt="Variant Flow" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <p>Also, the goal of this project was to scale the variant flow to other categories too. For this, I
+                talked with different category heads to understand the various requirements. e.g. for some of
+                the variant types, the only short heading wouldn t suffice and we needed some description of
+                the variant along with the heading while for some other cases, we needed pictures also.</p>
+
+            <p>There was also a limit to the number of items a user could buy for a variant type. For some
+                cases, we needed to give the ability to the user to buy multiple quantities of a variant type
+                while for some cases, she could buy only one.</p>
+
+            <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                <img src="images/Case_Studies/image 12.png" alt="Variant Flow" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                <img src="images/Case_Studies/image 13.png" alt="Variant Flow" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                <img src="images/Case_Studies/image 14.png" alt="Variant Flow" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            
+            <p><b>Defining the Problem</b></p>
+            <p>After gathering data and understanding the requirements, we formulated a set of problems we needed to consider while designing. We did this using the “How might we method in which each problem is converted to a “How might we question</p>
+            
+            <ul>
+                <li>How might we up-sell the higher variant to the user and at the same time ensure that she is making a good deal?</li>
+                <li>How might we give an ability to the user to view all variants associated with the product/SKU and add them to the cart without going into the details page?</li>
+                <li>How might we make it scalable so that the same design can be extended to other categories?</li>
+                <li>How might we give the user the ability to buy multiple quantities of A type and B type of same variants in one go?</li>
+                <li>How might we inform the user that she has already selected multiple variants of an SKU without going further into the flow?</li>
+            </ul>
+            
+            <p><b>Ideating and Brainstorming</b></p>
+            <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                <img src="images/Case_Studies/image 16.png" alt="Ideating and Brainstorming" style="width: 100%; height: 100%; object-fit: cover;">
+            </div><p>We started sketching the various solution possible for variant flow and
+                tried to figure out how the SKU card could inform the user that multiple
+                variants were available for the product.
+                
+                For the SKU card, we had to make decisions for
+                
+            <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                <img src="images/Case_Studies/image 17.png" alt="Variant Flow" style="width: 100%; height: 100%; object-fit: cover;">
+                <br>
+                <p><b>1. How to up sell higher price variant over other?</b></p>
+                <p>Since the pricing was not linear, We thought of showing a table for price comparison of all the
+                    variants on the card itself and showing the benefits of buying higher value variant by showing
+                    the savings on that variant. This solution was good for a service where only 2 variants were
+                    available but increasing the variants would increase the length of the card and thus have
+                    increased the scrolling length. To avoid this, we thought of making the list items horizontally
+                    scrollable on the card. But this would hide the best price available for the service and it would
+                    become difficult to show description along with each variant.
+                    
+                    We also thought of adding an offer tag in the card to inform the user that they could make a
+                    good deal out of the standard price by spending some extra bucks and placed it close to
+                    variant selection button so that it is easier for the user to take action (of changing variant).</p>
+                    <br>
+                    <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                        <img src="images/Case_Studies/image 18.png" alt="Variant Selection" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                <p><b>2. What information(price, details, quantity, variant selected) to show upfront?  </b></p>
+                <p><b>Details</b> -  Since we were selling a service, only title and image wouldn t suffice the information
+                    needed to sell the service. Therefore we added some pointers(e.g. benefits, pressure points,
+                    oils used for massage, etc.) to help the user to make the decision easier without going into the
+                    Details page.
+                    <br>
+                    <b>Price</b> -  Deciding what price to be shown upfront was the most difficult challenge. e.g. We
+                    thought of showing price range as Amazon does it for variants. But the price range was not a
+                    clear indicator of the price for an item as for some category (like Bathroom cleaning) where
+                    bulk purchase model (the more you buy, the more discount you get) is followed, the price of a
+                    single item may be less than what is shown by the minimum of the range.
+                    <br>                    
+                    <b>Quantity, Variants, and Variant Selected</b> -   The card should inform user that multiple variants
+                    are available for the product and also provide a way to switch between variants and add them
+                    to cart. It should also be made clear from the card itself that how many items were already
+                    selected and what was the selected variant
+                    .</p>
+                    <br>
+
+                                        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                                            <img src="images/Case_Studies/image 19.png" alt="Solution" style="width: 100%; height: auto;">
+                                        </div>
+                                        <p>From the above solutions, we narrowed down to a solution where</p>
+                                        <ul>
+                                            <li>We showed the standard price and gave the ability to change the variant through a bottom popup sheet which would appear as soon as the user clicks on the add button or variant selection button.</li>
+                                            <li>We highlighted the offer bar to show that the given product could be purchased for a better deal and placed it closer to the variant selection button.</li>
+                                            <li>Using the bottom sheet also allowed us to use the same design for other categories. The vertical variant list helped us to add the description whenever needed to the particular variant type.</li>
+                                            <li>We also added a local Add button to each variant so as to facilitate multiple additions of a variant(if possible for other categories).</li>
+                                            <li>Where multiple variant addition was possible, We used a Multiple tag and showed their price range to inform that multiple variants have been selected by the user.</li>
+                                        </ul>
+                                        <div style="display: flex; justify-content: space-around;">
+                                                            <img src="images/Case_Studies/image 20.png" alt="Solution 1" style="width: 45%; height: auto;">
+                                                            <img src="images/Case_Studies/image 21.png" alt="Solution 2" style="width: 45%; height: auto;">
+                                                        </div>
+            <h2>Lessons learned</h2>
+            <ul>
+                <b><li>Design to meet both business and user needs.</li></b>
+                    <p>While designing, business goals should be considered as important as the user goals. A
+                        business goal needs to be considered as another constraint while solving the design problem.
+                        e.g. I thought of showing only the standard price on the card and then writing the different
+                        variants available in the plain text. Then my VP told me that we needed to highlight the offer
+                        associated with variant informing that the user could make a better deal by spending some
+                        extra bucks on a higher variant. The highlighted offer would catch user attention and she might
+                        think of buying it. Thus our business goal of up-selling would be met.</p>
+                        <b><li>Break the objective into a set of small constraints and keep them in mind while designing.</li></b>
+                    <p>To solve a problem easily, we can simplify/break it down further into a set of smaller problems
+                        or constraints. The best solution should take care of all the constraints. Noting down all the
+                        constraints at one place will also prevent us from overlooking any edge cases in the design.</p>
+                <li><b>Treat edge cases as edge cases only.</li></b>
+                    <p>Your design should be such that it is optimized for all edge cases. While solving for edge cases,
+                        it should be kept in mind that the users will encounter them rarely. They should not be
+                        optimized more than the cases which are encountered quite often. e.g. in the process of
+                        solving for edge case of buying multiple quantities of multiple combinations of variant type, I
+                        proposed a solution wherein the flow for edge case had better UX than the case of buying 2
+                        different variants of a single type which was encountered most often.</p>
+            </ul>
+
+                
+            </div>
+
+
+    </main>
+    <!-- Footer -->
+    <footer class="footer-16371">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#" title="GRAYS-SCALE: Bringing ideas to life" class="footer-logo-link">GRAYS-SCALE</a>
+                    <p>Bringing ideas to life, one pixel at a time.</p>
+                </div>
+                <nav class="footer-nav" aria-label="Footer Navigation">
+                
+                
+                </nav>
+                <!-- Social links (currently hidden, but structure is here) -->
+                <div class="footer-social">
+                    <!-- <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year"></span> GRAYS-SCALE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
