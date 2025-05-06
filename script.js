@@ -105,3 +105,29 @@ document.addEventListener("DOMContentLoaded", function() {
 $(".hover").mouseleave(function () {
     $(this).removeClass("hover");
 });
+
+// Responsive nav toggle
+document.addEventListener("DOMContentLoaded", function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('main-nav');
+    if (navToggle && nav) {
+        navToggle.addEventListener('click', function(e) {
+            const isOpen = nav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            e.stopPropagation(); // Prevent click from bubbling to document
+        });
+
+        // Close nav when clicking outside the nav or hamburger
+        document.addEventListener('click', function(e) {
+            const isMenuOpen = nav.classList.contains('open');
+            if (
+                isMenuOpen &&
+                !nav.contains(e.target) &&
+                !navToggle.contains(e.target)
+            ) {
+                nav.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+});
