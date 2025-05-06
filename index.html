@@ -32,32 +32,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/v4-shims.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 </head>
 
 <body>
     <header>
-        <nav aria-label="Main Navigation" style="display: flex; align-items: center;">
-            <a href="#hero" title="Home" style="display: flex; align-items: center;" aria-label="Navigate to Home section">
-                <img src="images/logo.png" alt="GRAYS-SCALE Logo" aria-label="GRAYS-SCALE Homepage" class="logo"
-                    style="width: 50px; height: 50px; margin-right: 10px;" id="logo">
-            </a>
+        <button class="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+            <span class="hamburger">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </span>
+        </button>
+        <nav id="main-nav" aria-label="Main Navigation">
             <a href="#hero" title="Homepage" aria-label="Navigate to Homepage">Home</a>
             <a href="#about-us" title="About" aria-label="Learn more about us">About</a>
             <a href="#services" title="Services" aria-label="View our services">Services</a>
             <a href="#latest-projects" title="Case Studies" aria-label="See our case studies">Case Studies</a>
             <a href="#contact-us" title="Contact" aria-label="Get in touch">Contact</a>
-
+            <div class="dark-mode-container">
+                <label class="switch" for="darkModeToggle" aria-labelledby="darkModeText">
+                    <input type="checkbox" id="darkModeToggle" aria-labelledby="darkModeText" role="switch">
+                    <span class="slider"></span>
+                </label>
+                <span class="dark-mode-text" id="darkModeText">Toggle for Dark Mode</span>
+            </div>
         </nav>
-        <div class="dark-mode-container">
-            <label class="switch" for="darkModeToggle" aria-labelledby="darkModeText">
-                <input type="checkbox" id="darkModeToggle" aria-labelledby="darkModeText" role="switch">
-                <span class="slider"></span>
-            </label>
-            <span class="dark-mode-text" id="darkModeText">Toggle for Dark Mode</span>
-        </div>
-        </header>
+    </header>
     
 
     <main>
@@ -84,16 +87,13 @@
                 <div class="text-container fade-in-up">
                     <p class="large-text">Hey, I’m Vivek Kumar, a UI/UX designer dedicated to crafting intuitive and visually
                         compelling digital experiences.</p>
-                    <p class="small-text">I design with people in mind, creating experiences that feel natural, seamless, and
-                        accessible to all. Every detail is crafted with care, following WCAG accessibility standards and
-                        best practices from Apple, Microsoft, and Google. My goal is simple—build intuitive, inclusive, and
-                        meaningful digital experiences that everyone can trust.</p>
+                    <p class="small-text">I design with people at the center, creating intuitive, seamless, and accessible experiences. Every detail follows WCAG standards and best practices from Apple, Microsoft, and Google. My goal is to build inclusive, trustworthy digital products for everyone..</p>
                     <div class="collaboration-container">
                         <h3 class="accessible" id="Button-Subheading">Let’s collaborate and bring your ideas to life!</h3>
                     </div>
                     <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" target="_blank"
     rel="noopener noreferrer" aria-labelledby="Button-Subheading">
-    <button data-ico="⬤">Lets Connect on Linkedin</button>
+    <button data-ico="⬤">Let's Connect</button>
   </a>
 
                 </div>
@@ -104,11 +104,7 @@
             <div class="container">
                 <h2 id="trusted-brands-heading">Our Clients</h2>
                 <div class="text-container">
-                    <p>We take pride in collaborating with visionary brands and businesses across various industries. Our
-                        clients range from startups to established enterprises, each seeking innovative design solutions that
-                        elevate their digital presence. At <b></b>, we believe in building long-term partnerships by
-                        delivering exceptional UI/UX designs that drive engagement and success. Explore the brands that trust
-                        us to bring their ideas to life!</b></p>
+                    <p>At Grays-Scale, we partner with bold brands—from startups to industry leaders—to craft impactful UI/UX designs. We focus on results, lasting relationships, and digital experiences people remember.</b></p>
                 </div>
                 <div class="marquee-container">
                     <div class="marquee">
@@ -120,7 +116,7 @@
                         <img src="images/client6.jpg" alt="Client 6">
                         <img src="images/client7.jpg" alt="Client 7">
                         <img src="images/client8.jpg" alt="Client 8">
-                        <!-- Duplicate the images to ensure continuous scrolling -->
+                        <!-- Duplicate the images for seamless looping -->
                         <img src="images/client1.jpeg" alt="Client 1">
                         <img src="images/client2.jpg" alt="Client 2">
                         <img src="images/client3.jpg" alt="Client 3">
@@ -218,7 +214,7 @@
                     <a href="case-study-1.html" class="card" role="article"
                         aria-describedby="case-study-1-description">
                         <div class="inner">
-                            <h3 class="title">Designing for variants a UX case study</h3>
+                            <h3 class="title">Designing for ariants a UX case study</h3>
                             <time datetime="2023" class="subtitle">Online Services App</time>
                             <p id="case-study-1-description">The problem involved designing the flow for the user to buy
                                 multiple variants of a product
@@ -255,7 +251,7 @@
                         aria-describedby="case-study-3-description">
                         <div class="inner">
                             <h3 class="title">UI/UX Case Study SaaS Website Redesign</h3>
-                            <time class="subtitle">Mobile AR experience</time>
+                            <time class="subtitle">Revamping of a Cloud Platform</time>
                             <p id="case-study-3-description">A strong digital presence is key in our highly competitive
                                 environment and this story is about a
                                 2-month journey we took as designers to reimagine a 3-year-old website for a fresh, new,
@@ -283,32 +279,32 @@
                             <blockquote>Working with Vivek was an absolute game-changer for our project...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\images.jpg" alt="Ananya Sharma"
+                            <img src="images\Testimonials\images.jpg" alt="Yamini Sharma"
                                 style="object-fit: cover;" />
                             <!-- Image FIRST -->
 
                             <div class="author">
-                                <h5>Ananya Sharma <span>- Product Manager at PixelCraft</span></h5>
+                                <h5>Yamini Sharma <span>- Product Manager at PixelCraft</span></h5>
                             </div>
                         </figure>
 
                         <figure class="snip1157">
-                            <blockquote>GRAYS-SCALE isn’t just another design studio—it’s a place where creativity...
+                            <blockquote>GRAYS-SCALE isn’t just another design studio—it’s a place where...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download (3).jpg" alt="Rahul Mehta"
+                            <img src="images\Testimonials\download (3).jpg" alt="Rahul Goyal"
                                 style="object-fit: cover;" />
                             <!-- Image FIRST -->
                             <div class="author">
-                                <h5>Rahul Mehta <span>- Founder of BrandSphere</span></h5>
+                                <h5>Rahul Goyal <span>- Founder of BrandSphere</span></h5>
                             </div>
                         </figure>
 
                         <figure class="snip1157">
-                            <blockquote>The collaboration with GRAYS-SCALE was a breath of fresh air...
+                            <blockquote>The collaboration with Vivek was a breath of fresh air...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download (2).jpg" alt="Priya Kapoor"
+                            <img src="images\Testimonials\download (2).jpg" alt="Nizam Majumder"
                                 style="object-fit: cover;" />
                             <!-- Image FIRST -->
 
@@ -318,24 +314,24 @@
                         </figure>
 
                         <figure class="snip1157">
-                            <blockquote>GRAYS-SCALE brought our vision to life with their exceptional design skills...
+                            <blockquote>Vivek brought our vision to life with his exceptional design skills...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download (1).jpg" alt="Rohan Verma" />
+                            <img src="images\Testimonials\download (1).jpg" alt="Rohan Verma" style="object-fit: cover;" />
 
                             <div class="author">
-                                <h5>Rohan Verma <span>- Marketing Director at InnovateX</span></h5>
+                                <h5>Ratan Dhamani <span>- Marketing Director at InnovateX</span></h5>
                             </div>
                         </figure>
 
                         <figure class="snip1157">
-                            <blockquote>Choosing GRAYS-SCALE for our project was one of the best decisions we made...
+                            <blockquote>Hiring Vivek for our project was one of the best decisions we made...
                                 <div class="arrow"></div>
                             </blockquote>
                             <img src="images\Testimonials\download.jpg" alt="Neha Gupta" style="object-fit: cover;" />
 
                             <div class="author">
-                                <h5>Neha Gupta <span>- COO of Digital Horizons</span></h5>
+                                <h5>Saito Yerscer <span>- CEO of Digital Horizons UK</span></h5>
                             </div>
                         </figure>
 
@@ -344,7 +340,7 @@
                     <section id="contact-us" class="contact-us-section" aria-labelledby="contact-us-heading" style="margin-top: 100px; margin-bottom: 200px;">
                         <div class="container">
                             <h2 id="contact-us-heading">CONTACT</h2>
-                            <p style="font-size: 0.9em;">Have a project in mind or just want to connect? Feel free to reach out! Whether it's collaboration, inquiries, or just a creative discussion, I'm always open to new opportunities. Click on the icons below to contact me via email, LinkedIn, or Behance. Let's create something amazing together!</p>
+                            <p style="font-size: 1.5em;">Have a project in mind or just want to connect? Feel free to reach out! Whether it's collaboration, inquiries, or just a creative discussion, I'm always open to new opportunities. Click on the icons below to contact me via email, LinkedIn, or Behance. Let's create something amazing together!</p>
 
                             <p>
                                 <a href="https://outlook.live.com/owa/?path=/mail/action/compose&to=Vivekkumar2601@hotmail.com&subject=Regarding Work Discuss Vivek&body=Hi Vivek," target="_blank" aria-label="Contact me via email">
@@ -372,7 +368,7 @@
                             <p>
                                 <a href="https://drive.google.com/file/d/14XmsLJTXbkz28tRW2ZUUBbuwHHf9l8qY/view?usp=sharing"
                                     target="_blank" aria-label="Download CV">
-                                    <i class="fa-solid fa-download" style="margin-right: 0.3em;"></i>Download CV
+                                    <i class="fa-solid fa-download" style="margin-right: 0.3em;"></i>Download Resume
                                 </a>
                             </p>
 
@@ -381,7 +377,7 @@
                                 <p>
                                     <a href="https://drive.google.com/file/d/1mS6GQndkQUDomwb8MCJ33u9i8OBgZxje/view?usp=drive_link"
                                         target="_blank" aria-label="Portfolio Download">
-                                        <i class="fa-solid fa-user" style="margin-right: 0.3em;"></i>Portfolio Download
+                                        <i class="fa-solid fa-user" style="margin-right: 0.3em;"></i>Download Portfolio
                                     </a>
                             </p>
                         </div>
@@ -394,25 +390,7 @@
 
     <footer class="footer-16371">
         <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" title="GRAYS-SCALE: Bringing ideas to life" class="footer-logo-link">GRAYS-SCALE</a>
-                    <p>Bringing ideas to life, one pixel at a time.</p>
-                </div>
-                <nav class="footer-nav" aria-label="Footer Navigation">
-
-
-                </nav>
-                <!-- Social links (currently hidden, but structure is here) -->
-                <div class="footer-social">
-                    <!-- <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© <span id="year"></span> GRAYS-SCALE. All rights reserved.</p>
-            </div>
+            <p>GRAYS-SCALE</p>
         </div>
     </footer>
     <!-- Splide JS -->
