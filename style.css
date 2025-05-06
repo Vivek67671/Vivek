@@ -1,5 +1,4 @@
 /* style.css */
-
 /* ==========================================================================
    Table of Contents:
    ==========================================================================
@@ -51,7 +50,7 @@ body {
 p {
   margin: 1rem 0 !important;
   line-height: 1.6 !important;
-  font-size: 1.6rem !important;
+  font-size: 1.6rem;
   font-weight: 200 !important;
   font-style: normal !important;
   word-spacing: -2px !important;
@@ -239,7 +238,10 @@ body.dark-mode nav a::after {
 .dark-mode-container {
   display: flex;
   align-items: center;
-  margin-left: 1rem;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  gap: 0.5rem;
 }
 
 .dark-mode-text {
@@ -322,12 +324,11 @@ body.dark-mode #logo {
 }
 
 .hero-title h1 {
-  font-size: 12rem;
+  font-size: 11rem;
   white-space: nowrap;
   font-family: "Unbounded", sans-serif;
   overflow: hidden;
-  animation: handwriting 5s steps(40, end) 1s forwards normal both;
-  margin-top: 6px;
+  margin-top: 10px;
   font-weight: 900;
 }
 
@@ -341,10 +342,6 @@ body.dark-mode #logo {
 .aether-labs-link {
   text-decoration: none;
   color: black;
-}
-
-.hero-title h1:hover {
-  animation: rainbowFadeIn 40s alternate infinite;
 }
 
 .video-container {
@@ -855,144 +852,6 @@ body.dark-mode .testimonial-card { /* This class doesn't seem to be used in your
   transition: background-color 2s ease, color 2s ease;
 }
 
-/* 9. Footer Styles */
-
-.footer-16371 {
-  padding: 5rem 0;
-  background-color: #000000;
-  color: #ffffff;
-}
-
-.footer-16371 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 10rem;
-  width: 100%; /* Full width */
-}
-
-.footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding-bottom: 10rem;
-  border-bottom: 1px solid #ddd;
-  width: 100%;  /* Full width */
-}
-
-.footer-brand {
-  /* flex: 1 1 auto;  Removed this line */
-  /* margin-right: 2rem;  Removed this line */
-  max-width: 300px;
-  text-align: center; /* Added this line */
-}
-
-/* Fix for the footer paragraph */
-.footer-brand p {
-  font-size: 1.8rem !important;  /* Increase font size */
-  font-weight: 600 !important;  /* Make text bolder */
-  text-align: center !important; /* Ensure it stays centered */
-  display: block !important; /* Force it to act as a block element */
-  max-width: 100% !important; /* Prevent unnecessary wrapping */
-  white-space: nowrap !important; /* Force it to stay in a single line */
-}
-
-.footer-brand a {
-  font-weight: 900;
-  color: #ffffff;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 10rem;
-  font-family: "Unbounded", sans-serif;
-}
-
-.footer-nav {
-  flex: 1 1 auto;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.footer-link {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover,
-.footer-link:focus {
-  color: #005fcc;
-}
-
-
-.footer-social {
-    display: none;
-}
-
-.footer-social-link {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-social-link:hover,
-.footer-social-link:focus {
-  color: #005fcc;
-}
-
-.footer-bottom {
-  text-align: center;
-}
-
-.copyright {
-  margin: 0;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
-
-/* Dark Mode Footer Styles */
-body.dark-mode .footer-16371 {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-body.dark-mode .footer-top {
-  border-bottom-color: #000000;
-}
-
-body.dark-mode .footer-brand a {
-  color: #000000;
-}
-
-body.dark-mode .footer-link {
-  color: #000000;
-}
-
-body.dark-mode .footer-link:hover,
-body.dark-mode .footer-link:focus {
-  color: #000000;
-}
-
-body.dark-mode .footer-social-link {
-  color: #000000;
-}
-
-body.dark-mode .footer-social-link:hover,
-body.dark-mode .footer-social-link:focus {
-  color: #000000;
-}
-
-body.dark-mode .copyright {
-  color: #000000;
-}
-
-body.dark-mode footer {  /* General footer dark mode */
-    background-color: #ffffff;
-    color: #000000;
-}
-
 /* 10. Case Studies  */
 
 #trusted-brands {
@@ -1023,9 +882,10 @@ body.dark-mode footer {  /* General footer dark mode */
 }
 
 .marquee {
-  display: inline-block;
-  animation: marquee-images 40s linear infinite;
-  padding-left: 100%;
+  display: flex;
+  align-items: center;
+  min-width: 200%; /* Ensure two sets fit side by side */
+  animation: marquee-images 70s linear infinite;
 }
 
 .marquee img {
@@ -1035,7 +895,9 @@ body.dark-mode footer {  /* General footer dark mode */
   display: inline-block;
   max-width: 150px;
   filter: grayscale(100%);
-  transition: filter 0.3s ease;
+  transition: filter 0.1s ease;
+  /* Prevent images from shrinking */
+  flex-shrink: 0;
 }
 
 /* Dark Mode Logo Styles */
@@ -1139,28 +1001,23 @@ body.dark-mode .contact-us-section textarea {
 /* Media Queries for Responsiveness */
 @media (max-width: 480px) { /* Targeting iPhone 14 and similar */
   body {
-    font-size: 12px; /* Adjust base font size */
+    font-size: 12px; /* Base font size for body */
   }
 
   .container {
-    padding: 40px 40px; /* Reduce container padding with left and right padding */
+    padding: 40px 40px;
   }
 
   h1 {
-    font-size: 2rem; /* Smaller heading size */
+    font-size: 2rem; /* Heading 1 */
   }
 
   h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Heading 2 */
   }
 
   h3 {
-    font-size: 1rem;
-  }
-
-  /* Header Styles */
-  header {
-    padding: 0.5rem;
+    font-size: 1rem; /* Heading 3 */
   }
 
   nav a {
@@ -1169,20 +1026,8 @@ body.dark-mode .contact-us-section textarea {
     margin-right: 5px;
   }
 
-  /* Hero Section */
   .hero-title h1 {
     font-size: 4rem;
-  }
-
-  .video-container {
-    width: 100%;
-    height: 50vh;
-    margin-top: 0;
-  }
-
-  /* About Us Section */
-  #about-us-heading {
-    font-size: 2.5rem;
   }
 
   #about-us .text-container .large-text {
@@ -1193,38 +1038,12 @@ body.dark-mode .contact-us-section textarea {
     font-size: 1.2rem !important;
   }
 
-  /* Trusted Brands Section */
-  .marquee img {
-    height: 40px;
-    margin-right: 5px;
-  }
-
-  /* Services Section */
-  .service-item {
-    padding: 10px;
-    height: auto;
-  }
-
   .service-item h3 {
     font-size: 1.2rem;
   }
 
   .service-item p {
     font-size: 0.9rem !important;
-  }
-
-  /* Latest Projects Section */
-  #latest-projects .card {
-    grid-template-columns: 1fr;
-    height: auto;
-  }
-
-  #latest-projects .card .image-container {
-    order: 1;
-  }
-
-  #latest-projects .card .inner {
-    padding: 1rem;
   }
 
   #latest-projects .card .title {
@@ -1235,15 +1054,6 @@ body.dark-mode .contact-us-section textarea {
     font-size: 0.9rem !important;
   }
 
-  /* Testimonials Section */
-  .testimonials-wrapper {
-    gap: 1rem;
-  }
-
-  figure.snip1157 {
-    max-width: 100%;
-  }
-
   figure.snip1157 .author h5 {
     font-size: 1rem;
   }
@@ -1252,22 +1062,20 @@ body.dark-mode .contact-us-section textarea {
     font-size: 0.7rem;
   }
 
-  /* Contact Section */
   #contact-us  {
     font-size: 2rem;
     font-weight: 900;
   }
 
   #contact-us p {
-    font-size: 1rem;
+    font-size: 2rem;
   }
 
   #contact-us input,
   #contact-us textarea {
-    font-size: 0.9rem;
+    font-size: 2rem;
   }
 
-  /* Footer Styles */
   .footer-brand a {
     font-size: 7rem;
     font-weight: 900;
@@ -1277,14 +1085,67 @@ body.dark-mode .contact-us-section textarea {
     font-size: 1rem;
   }
 
-  /* Social Links */
-  .social-links {
-    left: 10px;
-    gap: 5px;
-  }
-
   .social-links a {
     font-size: 1.2rem;
+  }
+}
+
+/* Example: Add/adjust for adaptive mobile layout */
+@media (max-width: 600px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 100%;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0.5rem;
+  }
+  nav#main-nav {
+    width: 100vw;
+    left: 0;
+    top: 60px;
+    font-size: 1rem;
+  }
+  .hero-title h1 {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
+  .video-container {
+    height: 30vh;
+  }
+  #about-us .text-container .large-text,
+  #about-us .large-text {
+    font-size: 1.2rem !important;
+  }
+  #about-us .text-container .small-text {
+    font-size: 1rem !important;
+  }
+  .service-item {
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+  .splide__slide img {
+    height: 120px;
+  }
+  #latest-projects .card {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-wrapper {
+    gap: 0.5rem;
+  }
+  figure.snip1157 {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  #contact-us {
+    padding: 20px 5px;
+    font-size: 1rem;
+  }
+  .footer-16371 .container p {
+    font-size: 1.2rem !important;
   }
 }
 
@@ -1353,5 +1214,205 @@ body.dark-mode a:focus-visible,
 body.dark-mode button:focus-visible {
   outline: 2px solid white; /* Or any color with good contrast */
   outline-offset: 2px; /* Optional: Adds a small space between the element and the outline */
+}
+
+/* Footer Styles */
+.footer-16371 {
+    background-color: #000;
+    color: #fff;
+    padding: 12rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.footer-16371 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Remove position: absolute, left/top/transform */
+}
+
+.footer-16371 .container p {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 7rem !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    text-align: center !important;
+    font-family: "Unbounded", sans-serif;
+    line-height: 1 !important;
+    /* Remove width: 100%; */
+}
+
+/* Dark Mode Footer Styles */
+body.dark-mode .footer-16371 {
+    background-color: #ffffff;
+    color: #fff;
+}
+
+body.dark-mode .footer-16371 .container p {
+    color: #000000 !important;
+    font-size: 7rem !important;
+    font-weight: 900 !important;
+}
+
+/* Responsive Navigation */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  position: fixed; /* Use fixed so it stays at the top */
+  left: 1rem;
+  top: 1.2rem; /* Move it a bit higher */
+  z-index: 2001; /* Above header and nav */
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  padding: 0;
+  /* Remove any background or border, no circle */
+}
+
+.hamburger {
+  position: relative;
+  width: 30px;
+  height: 0px;
+  display: block;
+  background: none; /* Ensure no background */
+  border: none;
+  margin: 25px auto; /* Center it horizontally */
+  padding: 0;
+}
+
+/* The three lines */
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 4px;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger-bar:nth-child(1) { top: 0; }
+.hamburger-bar:nth-child(2) { top: 9px; }
+.hamburger-bar:nth-child(3) { top: 18px; }
+
+/* Hide any unwanted ::before pseudo-element on the hamburger button */
+.nav-toggle::before {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: none !important;
+  visibility: hidden !important;
+}
+
+/* Hamburger menu: fix white circle in dark mode */
+body.dark-mode .nav-toggle,
+body.dark-mode .nav-toggle::before,
+body.dark-mode .hamburger {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .hamburger-bar {
+  background: #fff !important;
+}
+
+/* Ensure nav menu text is visible in dark mode on mobile screens */
+@media (max-width: 900px) {
+  body.dark-mode nav#main-nav {
+    background: #000000 !important;
+  }
+}
+
+body.dark-mode nav#main-nav a {
+  color: #fff !important;
+}
+
+body.dark-mode nav#main-nav a:hover,
+body.dark-mode nav#main-nav a:focus {
+  color: #ffd700 !important;
+}
+
+body.dark-mode nav#main-nav .dark-mode-container,
+body.dark-mode .dark-mode-container {
+  color: #fff !important;
+}
+
+body.dark-mode .dark-mode-text {
+  color: #fff !important;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav#main-nav {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  nav#main-nav.open {
+    display: flex;
+  }
+  nav#main-nav a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  header {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  .dark-mode-container {
+    margin: 1rem 0 0 0;
+    justify-content: flex-start;
+  }
+  nav#main-nav .dark-mode-container {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+@media (min-width: 901px) {
+  nav#main-nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    background: none;
+    box-shadow: none;
+    width: auto;
+  }
+  .dark-mode-container {
+    margin-left: 2rem;
+  }
+}
+
+/* Responsive font sizes for headings and footer */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  .footer-16371 .container p { font-size: 3rem !important; }
+}
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  .footer-16371 .container p { font-size: 1.5rem !important; }
 }
 
