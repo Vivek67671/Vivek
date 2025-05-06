@@ -710,6 +710,37 @@ body.dark-mode .splide__arrow{
     background-color: white;
 }
 
+/* Adjust Splide arrow position so it doesn't overlap text */
+.splide__arrow {
+  /* Move arrows outside the slider content area */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  /* Adjust horizontal position as needed */
+  left: -40px; /* For previous arrow */
+  right: -40px; /* For next arrow */
+}
+
+/* Target left and right arrows separately for better control */
+.splide__arrow--prev {
+  left: -40px;
+  right: auto;
+}
+.splide__arrow--next {
+  right: -40px;
+  left: auto;
+}
+
+/* On small screens, bring arrows closer if needed */
+@media (max-width: 600px) {
+  .splide__arrow--prev {
+    left: -10px;
+  }
+  .splide__arrow--next {
+    right: -10px;
+  }
+}
+
 /* 8. Testimonials Section Styles */
 
 .testimonials-wrapper {
@@ -1149,6 +1180,37 @@ body.dark-mode .contact-us-section textarea {
   }
 }
 
+/* iPhone 12/13/14 and similar (390px x 844px, 414px x 896px, etc.) */
+@media (max-width: 480px) {
+  p {
+    font-size: 1rem !important;
+  }
+}
+
+/*
+The website is made responsive for the following screen sizes (devices):
+
+1. max-width: 900px
+   - Typical for tablets in portrait mode, large phones in landscape, and small laptops.
+   - Example devices: iPad (portrait), Samsung Galaxy Tab, Surface Go, large phones landscape.
+
+2. max-width: 768px
+   - Typical for tablets and large phones.
+   - Example devices: iPad Mini, iPad (portrait), Samsung Galaxy Tab A, Kindle Fire, large phones.
+
+3. max-width: 600px
+   - Typical for most modern smartphones.
+   - Example devices: iPhone 12/13/14/15 (portrait), Google Pixel, Samsung Galaxy S series, OnePlus, Xiaomi, etc.
+
+4. max-width: 480px
+   - Typical for small smartphones and older devices.
+   - Example devices: iPhone SE, iPhone 5/6/7/8, older Android phones, small-screen devices.
+
+Summary:
+- The CSS covers a wide range of devices from large desktops down to small smartphones.
+- Most modern phones, tablets, and small laptops are covered by these breakpoints.
+*/
+
 /* 13. Keyframes Animations */
 
 @keyframes rainbowFadeIn {
@@ -1195,15 +1257,12 @@ body.dark-mode .contact-us-section textarea {
 ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Darker on hover */
 }
-/* filepath: c:\Users\vishu\OneDrive\Desktop\New folder\style.css */
 .footer-brand {
   width: 100%; /* Or a specific width that suits your design */
 }
-/* filepath: c:\Users\vishu\OneDrive\Desktop\New folder\style.css */
 .footer-logo-link {
   white-space: nowrap; /* Prevents the text from wrapping to the next line */
 }
-/* filepath: c:\Users\vishu\OneDrive\Desktop\New folder\style.css */
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid blue; /* Or any color with good contrast */
@@ -1278,11 +1337,11 @@ body.dark-mode .footer-16371 .container p {
 .hamburger {
   position: relative;
   width: 30px;
-  height: 0px;
+  height: 10px;
   display: block;
   background: none; /* Ensure no background */
   border: none;
-  margin: 25px auto; /* Center it horizontally */
+  margin: 0px auto; /* Center it horizontally */
   padding: 0;
 }
 
@@ -1414,5 +1473,29 @@ body.dark-mode .dark-mode-text {
   h1 { font-size: 1.5rem; }
   h2 { font-size: 1.2rem; }
   .footer-16371 .container p { font-size: 1.5rem !important; }
+}
+
+/* Fix: Make mobile nav menu always appear above content when open */
+@media (max-width: 900px) {
+  nav#main-nav {
+    position: fixed; /* Change from absolute to fixed */
+    top: 0;          /* Stick to top of viewport */
+    left: 0;
+    width: 100vw;
+    height: 100vh;   /* Cover full viewport height */
+    background: #fff;
+    z-index: 2002;   /* Ensure above all content */
+    overflow-y: auto; /* Allow scrolling if menu is long */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  body.dark-mode nav#main-nav {
+    background: #000 !important;
+  }
+  .nav-toggle {
+    position: fixed;
+    top: 1.2rem;
+    left: 1rem;
+    z-index: 2003; /* Above nav menu */
+  }
 }
 

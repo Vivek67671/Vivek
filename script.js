@@ -18,16 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- Fix: Active Nav Link Logic (Moved Outside) ---
     const navLinks = document.querySelectorAll("nav a");
 
-    navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            // Remove active class from all links
-            navLinks.forEach(item => item.classList.remove("active"));
-
-            // Add active class to the clicked link
-            this.classList.add("active");
-        });
-    });
-
     // Initialize Splide Slider
     var splide = new Splide('.splide', {
         type   : 'loop',
@@ -128,6 +118,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 nav.classList.remove('open');
                 navToggle.setAttribute('aria-expanded', 'false');
             }
+        });
+
+        // Close nav when a nav link is clicked (for mobile/tablet)
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 900) {
+                    nav.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
         });
     }
 });
