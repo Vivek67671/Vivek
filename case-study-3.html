@@ -124,131 +124,45 @@ body.dark-mode button::before {
 /* 9. Footer Styles */
 
 .footer-16371 {
-  padding: 5rem 0;
-  background-color: #000000;
-  color: #ffffff;
+    background-color: #000;
+    color: #fff;
+    padding: 12rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
 }
 
 .footer-16371 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 10rem;
-  width: 100%; /* Full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* Remove position: absolute, left/top/transform */
 }
 
-.footer-top {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10rem;
-  border-bottom: 1px solid #ddd;
-  width: 100%;  /* Full width */
+.footer-16371 .container p {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 7rem !important;
+    font-weight: 900 !important;
+    color: #fff !important;
+    text-align: center !important;
+    font-family: "Unbounded", sans-serif;
+    line-height: 1 !important;
+    /* Remove width: 100%; */
 }
-/* Fix for the footer paragraph */
-.footer-brand p {
-  font-size: 1.8rem !important;  /* Increase font size */
-  font-weight: 600 !important;  /* Make text bolder */
-  text-align: center !important; /* Ensure it stays centered */
-  display: block !important; /* Force it to act as a block element */
-  max-width: 100% !important; /* Prevent unnecessary wrapping */
-  white-space: nowrap !important; /* Force it to stay in a single line */
-}
-
-.footer-brand a {
-  font-weight: 900;
-  color: #ffffff;
-  text-decoration: none;
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 10rem;
-}
-
-.footer-nav {
-  flex: 1 1 auto;
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-}
-
-.footer-link {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-link:hover,
-.footer-link:focus {
-  color: #005fcc;
-}
-
-
-.footer-social {
-    display: none;
-}
-
-.footer-social-link {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.2s ease;
-}
-
-.footer-social-link:hover,
-.footer-social-link:focus {
-  color: #005fcc;
-}
-
-.footer-bottom {
-  text-align: center;
-}
-
-.copyright {
-  margin: 0;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
 
 /* Dark Mode Footer Styles */
 body.dark-mode .footer-16371 {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-body.dark-mode .footer-top {
-  border-bottom-color: #000000;
-}
-
-body.dark-mode .footer-brand a {
-  color: #000000;
-}
-
-body.dark-mode .footer-link {
-  color: #000000;
-}
-
-body.dark-mode .footer-link:hover,
-body.dark-mode .footer-link:focus {
-  color: #000000;
-}
-
-body.dark-mode .footer-social-link {
-  color: #000000;
-}
-
-body.dark-mode .footer-social-link:hover,
-body.dark-mode .footer-social-link:focus {
-  color: #000000;
-}
-
-body.dark-mode .copyright {
-  color: #000000;
-}
-
-body.dark-mode footer {  /* General footer dark mode */
     background-color: #ffffff;
-    color: #000000;
+    color: #fff;
+}
+
+body.dark-mode .footer-16371 .container p {
+    color: #000000 !important;
+    font-size: 7rem !important;
+    font-weight: 900 !important;
 }
 
     </style>
@@ -257,7 +171,7 @@ body.dark-mode footer {  /* General footer dark mode */
     <!-- Header navigation -->
     <header>
         <!-- Back button -->
-        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 350px;">Back</button>
+        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 20px;">Back</button>
     </header>
 
     <!-- Main content -->
@@ -335,29 +249,10 @@ body.dark-mode footer {  /* General footer dark mode */
                             <li>Thorough research and competitive analysis helped us understand the organization’s mission, vision, and user personas clearly.</li>
                         </ul>
                         </main>
-
     <!-- Footer -->
     <footer class="footer-16371">
         <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="#" title="GRAYS-SCALE: Bringing ideas to life" class="footer-logo-link">GRAYS-SCALE</a>
-                    <p>Bringing ideas to life, one pixel at a time.</p>
-                </div>
-                <nav class="footer-nav" aria-label="Footer Navigation">
-                
-                
-                </nav>
-                <!-- Social links (currently hidden, but structure is here) -->
-                <div class="footer-social">
-                    <!-- <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" class="footer-social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="footer-social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="footer-social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© <span id="year"></span> GRAYS-SCALE. All rights reserved.</p>
-            </div>
+            <p>GRAYS-SCALE</p>
         </div>
     </footer>
 </body>

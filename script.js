@@ -18,16 +18,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // --- Fix: Active Nav Link Logic (Moved Outside) ---
     const navLinks = document.querySelectorAll("nav a");
 
-    navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            // Remove active class from all links
-            navLinks.forEach(item => item.classList.remove("active"));
-
-            // Add active class to the clicked link
-            this.classList.add("active");
-        });
-    });
-
     // Initialize Splide Slider
     var splide = new Splide('.splide', {
         type   : 'loop',

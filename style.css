@@ -198,19 +198,6 @@ nav a {
   display: inline-block; /* Ensures width matches the text */
 }
 
-/* Ensure nav links and dark mode toggle are in a row */
-nav#main-nav {
-  display: flex;
-  align-items: center;
-  /* ...existing code... */
-}
-
-/* Push dark mode toggle to the right side of the nav */
-nav#main-nav .dark-mode-container {
-  margin-left: auto;
-  /* ...existing code... */
-}
-
 nav a::after {
   content: "";
   position: absolute;
@@ -337,7 +324,7 @@ body.dark-mode #logo {
 }
 
 .hero-title h1 {
-  font-size: clamp(2rem, 10vw, 10.7rem);
+  font-size: 11rem;
   white-space: nowrap;
   font-family: "Unbounded", sans-serif;
   overflow: hidden;
@@ -348,7 +335,8 @@ body.dark-mode #logo {
 .hero-title a {
   text-decoration: none;
   color: rgb(158, 158, 158);
-  font-weight: bold; /* This is overriding the h1 font-size */
+  font-size: 12rem;
+  font-weight: bold;
 }
 
 .aether-labs-link {
@@ -375,7 +363,6 @@ body.dark-mode #logo {
   object-fit: cover; /* Ensures the video fills the area */
 }
 
-/* Section: #hero, .hero-section, .hero-title, .video-container */
 
 /* 5. About Us Section Styles */
 
@@ -425,26 +412,26 @@ body.dark-mode #logo {
   text-align: left;
 }
 
-/* Section: #about-us, .about-us-section, .text-container, .large-text, .small-text */
-
 /* Button Styles (used in About Us, Contact) */
 button {
   --hov: 0;
   display: grid;
-  grid-gap: 0.3em;
+  grid-gap: 0.0em;
   grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
   align-items: center;
   place-self: start;
   border: none;
-  padding: 0.5em 0.75em;
-  border-radius: 1.5em;
+  padding: 0.9em 0.99em;
+  border-radius: 1.9em;
   background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
   color: #ffffff;
-  font: 700 1.0em/1.0 ubuntu, sans-serif;
-  transition: 0.3s ease-out;
+  font: 700 1em/1 "Inter", sans-serif;
+
+ transition: 0.3s ease-out;
   transition-delay: calc((1 - var(--hov)) * 0.5 * 0.3s), 0s;
   transition-property: grid-template-columns, background-color;
   cursor: pointer;
+  justify-content: center; /* Center the text horizontally */
 }
 
 button::before {
@@ -480,6 +467,7 @@ body.dark-mode button::before {
   color: hsla(0, 0%, 0%, var(--hov));
 }
 
+
 /* 6. Latest Projects Section Styles */
 
 #latest-projects {
@@ -512,14 +500,16 @@ body.dark-mode button::before {
 
 /* Codepen Card Styles */
 #latest-projects .card {
+  --color: hsl(0, 0%, 0%);
+  --h-color: hsl(240, 4%, 95%);
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1.25fr;
-  gap: 0;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
   overflow: hidden;
-  background: #f8f9fa;
+  color: var(--color);
+  text-decoration: none;
   margin-bottom: 2rem;
+  background-color: #f8f9fa;
 }
 
 #latest-projects .card:hover,
@@ -529,11 +519,10 @@ body.dark-mode button::before {
 }
 
 #latest-projects .card .inner {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 2rem 1.5rem;
-  background: #fff;
+  display: grid;
+  gap: 1.5em;
+  padding: 1.5em;
+  background-color: #fff;
   z-index: 1;
   align-content: start;
 }
@@ -541,10 +530,11 @@ body.dark-mode button::before {
 #latest-projects .card .image-container {
   order: 2;
   overflow: hidden;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #eaeaea;
+  height: 100%;
 }
 
 #latest-projects .card:hover .image-container img,
@@ -554,10 +544,32 @@ body.dark-mode button::before {
 
 #latest-projects .card .image-container img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
-  aspect-ratio: 16/9;
-  border-radius: 0;
+  transition: transform 0.3s;
+  aspect-ratio: 1 / 1;
+}
+
+#latest-projects .card .image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+#latest-projects .card:hover .image-container::before {
+  opacity: 1;
 }
 
 #latest-projects .card .title {
@@ -604,85 +616,7 @@ body.dark-mode #latest-projects .card p {
   color: #eee;
 }
 
-/* Section: #latest-projects, .latest-projects-section, .card, .image-container */
-
-@media only screen and (max-width: 900px) {
-  #latest-projects .card {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    border-radius: 10px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-  }
-  #latest-projects .card .image-container {
-    order: 0;
-    width: 100%;
-    min-height: 180px;
-    max-height: 250px;
-    background: #eaeaea;
-    border-radius: 10px 10px 0 0;
-    padding: 0;
-  }
-  #latest-projects .card .image-container img {
-    width: 100%;
-    height: 100%;
-    min-height: 180px;
-    max-height: 250px;
-    object-fit: cover;
-    aspect-ratio: 16/9;
-    border-radius: 10px 10px 0 0;
-  }
-  #latest-projects .card .inner {
-    order: 1;
-    width: 100%;
-    padding: 1.2rem 1rem 1.5rem 1rem;
-    border-radius: 0 0 10px 10px;
-    background: #fff;
-    box-sizing: border-box;
-  }
-  #latest-projects .card .title {
-    font-size: 1.2rem;
-    margin-bottom: 0.4rem;
-  }
-  #latest-projects .card .subtitle {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
-  }
-  #latest-projects .card p {
-    font-size: 0.95rem !important;
-  }
-}
-
-/* Even smaller screens */
-@media only screen and (max-width: 500px) {
-  #latest-projects .card .image-container {
-    min-height: 120px;
-    max-height: 160px;
-  }
-  #latest-projects .card .image-container img {
-    min-height: 120px;
-    max-height: 160px;
-    border-radius: 10px 10px 0 0;
-  }
-  #latest-projects .card .inner {
-    padding: 0.9rem 0.7rem 1.2rem 0.7rem;
-  }
-  #latest-projects .card .title {
-    font-size: 1rem;
-  }
-  #latest-projects .card .subtitle {
-    font-size: 0.9rem;
-  }
-  #latest-projects .card p {
-    font-size: 0.9rem !important;
-  }
-}
-
-/* 7. Services Section (Our Process) */
+/* 7. Services Section Styles (Our Process) */
 
 #services {
   padding: 2rem 0;
@@ -799,7 +733,15 @@ body.dark-mode .splide__arrow{
   left: auto;
 }
 
-/* Section: #services, .services-section, .service-item, .splide__slide, .splide__arrow */
+/* On small screens, bring arrows closer if needed */
+@media (max-width: 600px) {
+  .splide__arrow--prev {
+    left: -10px;
+  }
+  .splide__arrow--next {
+    right: -10px;
+  }
+}
 
 /* 8. Testimonials Section Styles */
 
@@ -943,8 +885,6 @@ body.dark-mode .testimonial-card { /* This class doesn't seem to be used in your
   transition: background-color 2s ease, color 2s ease;
 }
 
-/* Section: #testimonials, .testimonials-section, .testimonials-wrapper, figure.snip1157 */
-
 /* 10. Case Studies  */
 
 #trusted-brands {
@@ -1003,8 +943,6 @@ body.dark-mode .marquee-container {
   color: #000000;
 }
 
-/* Section: #trusted-brands, .trusted-brands-section, .marquee-container, .marquee */
-
 /* 11. Contact Section Styles */
 #contact-us {
     text-align: left;
@@ -1019,47 +957,6 @@ body.dark-mode .marquee-container {
 #contact-us p{
     font-size: 1.2rem;
     margin-bottom: 30px;
-}
-
-/* Contact Links Styles */
-#contact-us .contact-links {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem; /* Consistent vertical spacing between links */
-}
-
-#contact-us .contact-links a {
-  display: flex;
-  align-items: center;
-  font-size: 1.2rem;
-  color: #0066cc; /* Bright blue color */
-  text-decoration: none;
-  transition: color 0.3s ease;
-  margin-bottom: 0.2rem;
-  font-weight: 600; /* Medium weight for better readability */
-}
-
-#contact-us .contact-links a i {
-  margin-right: 1rem;
-  width: 1.5rem;
-  text-align: center;
-  color: #0066cc; /* Match icon color with text */
-  font-weight: 700; /* Make icon bold */
-  font-size: 1.5rem; /* Adjust icon size */
-}
-
-#contact-us .contact-links a:hover {
-  color: #0052a3; /* Darker blue on hover */
-}
-
-/* Dark mode styles for contact links */
-body.dark-mode #contact-us .contact-links a,
-body.dark-mode #contact-us .contact-links a i {
-  color: #4d9eff; /* Lighter blue for dark mode */
-}
-
-body.dark-mode #contact-us .contact-links a:hover {
-  color: #80bdff; /* Even lighter blue on hover in dark mode */
 }
 
 /* Dark Mode Styles for Contact Section */
@@ -1086,7 +983,255 @@ body.dark-mode .contact-us-section textarea {
     color: #fff; /* White text in inputs */
 }
 
-/* Section: #contact-us, .contact-us-section */
+
+
+/* 12. Media Queries */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  nav a {
+    padding: 0.5rem;
+  }
+
+  .hero-title h1 {
+    font-size: 6rem;
+  }
+
+  #trusted-brands-heading {
+    font-size: 2rem;
+  }
+
+  .marquee img {
+    height: 50px;
+    margin-right: 10px;
+  }
+    .splide__slide {
+        padding: 1rem 0;
+    }
+    .service-item h3{
+        font-size: 1.2rem;
+    }
+    figure.snip1157 {
+        width: 100%; /* Full width on smaller screens */
+        max-width: none; /* Remove max-width */
+    }
+    figure.snip1157 .author {
+        padding: 0 10px 0 20px;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 480px) { /* Targeting iPhone 14 and similar */
+  body {
+    font-size: 12px; /* Base font size for body */
+  }
+
+  .container {
+    padding: 40px 40px;
+  }
+
+  h1 {
+    font-size: 2rem; /* Heading 1 */
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Heading 2 */
+  }
+
+  h3 {
+    font-size: 1rem; /* Heading 3 */
+  }
+
+  nav a {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.5rem;
+    margin-right: 5px;
+  }
+
+  .hero-title h1 {
+    font-size: 4rem;
+  }
+
+  #about-us .text-container .large-text {
+    font-size: 2rem !important;
+  }
+
+  #about-us .text-container .small-text {
+    font-size: 1.2rem !important;
+  }
+
+  .service-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-item p {
+    font-size: 0.9rem !important;
+  }
+
+  #latest-projects .card .title {
+    font-size: 1.2rem;
+  }
+
+  #latest-projects .card p {
+    font-size: 0.9rem !important;
+  }
+
+  figure.snip1157 .author h5 {
+    font-size: 1rem;
+  }
+
+  figure.snip1157 .author h5 span {
+    font-size: 0.7rem;
+  }
+
+  #contact-us  {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  #contact-us p {
+    font-size: 2rem;
+  }
+
+  #contact-us input,
+  #contact-us textarea {
+    font-size: 2rem;
+  }
+
+  .footer-brand a {
+    font-size: 7rem;
+    font-weight: 900;
+  }
+
+  .copyright {
+    font-size: 1rem;
+  }
+
+  .social-links a {
+    font-size: 1.2rem;
+  }
+}
+
+/* Example: Add/adjust for adaptive mobile layout */
+@media (max-width: 600px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 100%;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0.5rem;
+  }
+  nav#main-nav {
+    width: 100vw;
+    left: 0;
+    top: 60px;
+    font-size: 1rem;
+  }
+  .hero-title h1 {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
+  .video-container {
+    height: 30vh;
+  }
+  #about-us .text-container .large-text,
+  #about-us .large-text {
+    font-size: 1.2rem !important;
+  }
+  #about-us .text-container .small-text {
+    font-size: 1rem !important;
+  }
+  .service-item {
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+  .splide__slide img {
+    height: 120px;
+  }
+  #latest-projects .card {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-wrapper {
+    gap: 0.5rem;
+  }
+  figure.snip1157 {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  #contact-us {
+    padding: 20px 5px;
+    font-size: 1rem;
+  }
+  .footer-16371 .container p {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* iPhone 12/13/14 and similar (390px x 844px, 414px x 896px, etc.) */
+@media (max-width: 480px) {
+  p {
+    font-size: 1rem !important;
+  }
+}
+
+/*
+The website is made responsive for the following screen sizes (devices):
+
+1. max-width: 900px
+   - Typical for tablets in portrait mode, large phones in landscape, and small laptops.
+   - Example devices: iPad (portrait), Samsung Galaxy Tab, Surface Go, large phones landscape.
+
+2. max-width: 768px
+   - Typical for tablets and large phones.
+   - Example devices: iPad Mini, iPad (portrait), Samsung Galaxy Tab A, Kindle Fire, large phones.
+
+3. max-width: 600px
+   - Typical for most modern smartphones.
+   - Example devices: iPhone 12/13/14/15 (portrait), Google Pixel, Samsung Galaxy S series, OnePlus, Xiaomi, etc.
+
+4. max-width: 480px
+   - Typical for small smartphones and older devices.
+   - Example devices: iPhone SE, iPhone 5/6/7/8, older Android phones, small-screen devices.
+
+Summary:
+- The CSS covers a wide range of devices from large desktops down to small smartphones.
+- Most modern phones, tablets, and small laptops are covered by these breakpoints.
+*/
+
+/* 13. Keyframes Animations */
+
+@keyframes rainbowFadeIn {
+  0% {
+    color: rgba(0, 0, 0, 1);
+  }
+  14% {
+    color: rgb(0, 0, 0);
+  }
+}
+
+@keyframes handwriting {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
 
 @keyframes marquee-images {
   0% {
@@ -1175,179 +1320,6 @@ body.dark-mode .footer-16371 .container p {
     font-weight: 900 !important;
 }
 
-/* Section: .footer-16371 */
-
-/* 12. Media Queries for iPhones and Mobile Devices */
-
-/* Targeting most iPhones (iPhone 6/7/8, X, 11, 12, 13, 14, 15 etc.) */
-@media only screen and (max-width: 767px) {
-
-  /* General adjustments */
-  body {
-    font-size: 14px; /* Adjust base font size */
-  }
-
-  .container {
-    max-width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-  h1 {
-    font-size: 2rem;
-  }
-
-  h2 {
-    font-size: 2rem;
-  }
-
-  h3 {
-    font-size: 2rem;
-  }
-
-  p {
-    font-size: 1.1rem !important;
-  }
-
-  /* Header and Nav */
-  header {
-    padding: 0.5rem;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav#main-nav {
-    flex-direction: column;
-    align-items: stretch;
-    width: 100%;
-  }
-
-  nav a {
-    margin: 0.5rem 0;
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-
-  /* Hero Section */
-  .hero-title h1 {
-    font-size: 3rem;
-  }
-
-  .video-container {
-    height: 50vh;
-  }
-
-  /* About Us Section */
-  #about-us .text-container .large-text {
-    font-size: 2rem !important;
-  }
-
-  #about-us .text-container .small-text {
-    font-size: 1.2rem !important;
-  }
-
-  /* Trusted Brands Section */
-  #trusted-brands-heading {
-    font-size: 2.5rem;
-  }
-
-  .marquee img {
-    height: 60px;
-    margin-right: 10px;
-  }
-
-  /* Services Section */
-  .service-item {
-    padding: 15px;
-  }
-
-  .service-item h3 {
-    font-size: 1.3rem;
-  }
-
-  .service-item p {
-    font-size: 0.9rem !important;
-  }
-
-  /* Testimonials Section */
-  figure.snip1157 {
-    max-width: 100%;
-  }
-
-  figure.snip1157 .author h5 {
-    font-size: 0.8rem;
-  }
-
-  figure.snip1157 .author h5 span {
-    font-size: 0.7rem;
-  }
-
-  /* Contact Section */
-  #contact-us {
-    padding: 30px 10px;
-  }
-
-  #contact-us h2 {
-    font-size: 2rem;
-  }
-
-  #contact-us p {
-    font-size: 1.1rem;
-  }
-
-  /* Footer */
-  .footer-16371 .container p {
-    font-size: 3rem !important;
-  }
-
-  /* Latest Projects Section */
-  #latest-projects .card {
-    flex-direction: column; /* Stack image and text vertically */
-  }
-
-  #latest-projects .card .image-container {
-    order: -1; /* Image appears first */
-    width: 100%; /* Image takes full width */
-  }
-
-  #latest-projects .card .inner {
-    width: 100%; /* Inner content takes full width */
-  }
-}
-
-/* Smaller iPhones (e.g., iPhone SE) */
-@media only screen and (max-width: 375px) {
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 2rem;
-    }
-
-    h3 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 0.9rem !important;
-    }
-    .hero-title h1 {
-        font-size: 2rem;
-    }
-    .footer-16371 .container p {
-        font-size: 2rem !important;
-    }
-}
-
-/* Specific adjustments for iPhone 12/13/14/15 Pro Max */
-@media only screen and (width: 428px) and (height: 926px) {
-    /* Add specific overrides here if needed */
-    .hero-title h1 {
-        font-size: 7rem;
-    }
-}
-
 /* Responsive Navigation */
 .nav-toggle {
   display: none;
@@ -1413,8 +1385,10 @@ body.dark-mode .hamburger-bar {
 }
 
 /* Ensure nav menu text is visible in dark mode on mobile screens */
-body.dark-mode nav#main-nav {
-  background: #000000 !important;
+@media (max-width: 900px) {
+  body.dark-mode nav#main-nav {
+    background: #000000 !important;
+  }
 }
 
 body.dark-mode nav#main-nav a {
@@ -1435,43 +1409,95 @@ body.dark-mode .dark-mode-text {
   color: #fff !important;
 }
 
-@media only screen and (max-width: 767px) {
-    nav#main-nav {
-        display: none;
-        flex-direction: column;
-        background: #fff;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        width: 100vw;
-        z-index: 1001;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    nav#main-nav.open {
-        display: flex;
-    }
-    nav#main-nav a {
-        margin: 1rem 0;
-        font-size: 1.2rem;
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #eee;
-    }
-    header {
-        flex-direction: row;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0.5rem 0;
-        position: relative;
-    }
-    .dark-mode-container {
-        margin: 1rem 0 0 0;
-        justify-content: flex-start;
-    }
-    nav#main-nav .dark-mode-container {
-        padding: 1rem 2rem;
-        border-bottom: 1px solid #eee;
-    }
-    .nav-toggle {
-        display: block;
-    }
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav#main-nav {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  nav#main-nav.open {
+    display: flex;
+  }
+  nav#main-nav a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  header {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  .dark-mode-container {
+    margin: 1rem 0 0 0;
+    justify-content: flex-start;
+  }
+  nav#main-nav .dark-mode-container {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
 }
+
+@media (min-width: 901px) {
+  nav#main-nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    background: none;
+    box-shadow: none;
+    width: auto;
+  }
+  .dark-mode-container {
+    margin-left: 2rem;
+  }
+}
+
+/* Responsive font sizes for headings and footer */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  .footer-16371 .container p { font-size: 3rem !important; }
+}
+@media (max-width: 480px) {
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.2rem; }
+  .footer-16371 .container p { font-size: 1.5rem !important; }
+}
+
+/* Fix: Make mobile nav menu always appear above content when open */
+@media (max-width: 900px) {
+  nav#main-nav {
+    position: fixed; /* Change from absolute to fixed */
+    top: 0;          /* Stick to top of viewport */
+    left: 0;
+    width: 100vw;
+    height: 100vh;   /* Cover full viewport height */
+    background: #fff;
+    z-index: 2002;   /* Ensure above all content */
+    overflow-y: auto; /* Allow scrolling if menu is long */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  body.dark-mode nav#main-nav {
+    background: #000 !important;
+  }
+  .nav-toggle {
+    position: fixed;
+    top: 1.2rem;
+    left: 1rem;
+    z-index: 2003; /* Above nav menu */
+  }
+}
+
