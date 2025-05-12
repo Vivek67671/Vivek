@@ -48,10 +48,9 @@
         }
         /* Updated Back Button Styles - No Arrow */
     .back-to-home-button {
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        z-index: 10;
+        position: relative; /* Changed from absolute */
+        margin-left: 20px;
+        padding: 8px 0;
         border: none;
         background: none;
         color: #333;
@@ -61,8 +60,6 @@
         cursor: pointer;
         display: flex;
         align-items: center;
-        padding: 0;
-        transition: transform 0.3s ease;
     }
 
     .back-to-home-button:hover {
@@ -75,6 +72,54 @@
 
     body.dark-mode .back-to-home-button {
         color: #fff;
+    }
+        /* Header styles */
+    header {
+        background-color: white;
+        color: black;
+        padding: 1rem 1.5rem;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+        min-height: 60px;
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        header {
+            min-height: 50px;
+            padding: 1rem;
+        }
+
+        .back-to-home-button {
+            font-size: 14px;
+            margin-left: 15px;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-top: 1rem;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header {
+            min-height: 45px;
+        }
+
+        .back-to-home-button {
+            font-size: 13px;
+            margin-left: 12px;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-top: 0.5rem;
+        }
     }
         /* Scroll to Top Button Styles */
     .scroll-to-top-container {
