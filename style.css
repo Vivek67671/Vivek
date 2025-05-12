@@ -21,19 +21,10 @@
 
 /* 1. General Styles */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 html, body {
   margin: 0;
   width: 100%;
   height: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
-  position: relative;
 }
 
 body {
@@ -46,17 +37,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
   transition: background-color 2s ease, color 2s ease;
 }
 
 .container {
-  width: 100%;
   max-width: 1149px;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 24px;
+  padding-right: 24px;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 /* General Paragraph Styles */
@@ -339,6 +329,25 @@ body.dark-mode #logo {
 
 /* 4. Hero Section Styles (including Video Container) */
 
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
 .hero-title {
   text-align: center;
   margin-top: 1px;
@@ -370,21 +379,6 @@ body.dark-mode #logo {
   text-decoration: none;
   color: black;
 }
-
-.video-container {
-  width: 100%; /* Change from 100vw to 100% */
-  max-width: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
-
-.video-container video {
-  width: 100%; /* Change from 100vw to 100% */
-  height: 100%;
-  object-fit: cover;
-}
-
 
 /* 5. About Us Section Styles */
 
@@ -967,15 +961,14 @@ body.dark-mode .marquee-container {
     padding: 50px 20px;
 }
 
-#contact-us h1 {
+#contact-us h1{
     font-size: 2.5rem;
     margin-bottom: 20px;
 }
 
-#contact-us p {
-    font-size: 1rem !important; /* Base font size */
-    margin-bottom: 20px;
-    line-height: 1.6;
+#contact-us p{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
 }
 
 /* Dark Mode Styles for Contact Section */
@@ -1166,7 +1159,7 @@ body.dark-mode .contact-us-section textarea {
     grid-template-columns: 1fr;
   }
   .testimonials-wrapper {
-    gap: 0.5rem;
+    gap: 0.9rem;
   }
   figure.snip1157 {
     max-width: 100%;
@@ -1860,5 +1853,37 @@ body.dark-mode .preloader {
 body.dark-mode .logo-animation .path,
 body.dark-mode .logo-animation .logo-text {
     color: #ffffff;
+}
+
+/* Update Testimonial Responsive Styles */
+@media (max-width: 768px) {
+    figure.snip1157 {
+        width: 100%;
+        max-width: none;
+        margin: 20px 0;
+    }
+
+    figure.snip1157 img {
+        margin: 40px auto 0;
+        display: block;
+    }
+
+    figure.snip1157 .author {
+        position: relative;
+        bottom: auto;
+        padding: 20px 0;
+        text-align: center;
+        transform: none;
+        margin-top: 20px;
+    }
+
+    figure.snip1157 blockquote {
+        margin-top: 30px;
+        padding: 25px 25px;
+    }
+
+    figure.snip1157 .arrow {
+        display: none; /* Hide arrow on mobile */
+    }
 }
 
