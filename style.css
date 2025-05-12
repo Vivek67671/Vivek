@@ -21,10 +21,19 @@
 
 /* 1. General Styles */
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 html, body {
   margin: 0;
   width: 100%;
   height: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 body {
@@ -37,7 +46,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden; /* Prevents horizontal scrolling */
   transition: background-color 2s ease, color 2s ease;
 }
 
@@ -365,6 +373,7 @@ body.dark-mode #logo {
 
 .video-container {
   width: 100%; /* Change from 100vw to 100% */
+  max-width: 100%;
   margin: 0;
   padding: 0;
   overflow: hidden;
