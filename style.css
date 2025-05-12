@@ -337,12 +337,16 @@ body.dark-mode #logo {
 }
 
 .hero-title h1 {
-  font-size: 11rem;
+  font-size: clamp(0.5rem, 10vw, 11rem); /* Adjusted for better responsiveness */
   white-space: nowrap;
   font-family: "Unbounded", sans-serif;
-  overflow: hidden;
   margin-top: 10px;
   font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  /* Removed: width: 100vw; */
+  /* Removed: box-sizing: border-box; */
+  /* Removed: overflow: hidden; */
 }
 
 .hero-title a {
@@ -387,8 +391,7 @@ body.dark-mode #logo {
 
 #about-us-heading {
   text-align: left;
-  font-size: 4rem;
-
+  font-size: clamp(2rem, 7vw, 4rem);
   margin-bottom: 70px;
   font-weight: 900;
 }
@@ -635,10 +638,7 @@ body.dark-mode #latest-projects .card p {
   padding: 2rem 0;
 }
 
-#services .container {
-  position: relative;
-  padding-bottom: 3rem; /* For spacing with the underline */
-}
+
 
 #services .container h2::after {
   content: '';
@@ -1017,9 +1017,6 @@ body.dark-mode .contact-us-section textarea {
     padding: 0.5rem;
   }
 
-  .hero-title h1 {
-    font-size: 6rem;
-  }
 
   #trusted-brands-heading {
     font-size: 2rem;
@@ -1054,10 +1051,6 @@ body.dark-mode .contact-us-section textarea {
     padding: 40px 40px;
   }
 
-  h1 {
-    font-size: 2rem; /* Heading 1 */
-  }
-
   h2 {
     font-size: 1.5rem; /* Heading 2 */
   }
@@ -1070,10 +1063,6 @@ body.dark-mode .contact-us-section textarea {
     font-size: 0.6rem;
     padding: 0.3rem 0.5rem;
     margin-right: 5px;
-  }
-
-  .hero-title h1 {
-    font-size: 4rem;
   }
 
   #about-us .text-container .large-text {
@@ -1121,12 +1110,6 @@ body.dark-mode .contact-us-section textarea {
   #contact-us textarea {
     font-size: 2rem;
   }
-
-  .footer-brand a {
-    font-size: 7rem;
-    font-weight: 900;
-  }
-
   .copyright {
     font-size: 1rem;
   }
@@ -1154,10 +1137,7 @@ body.dark-mode .contact-us-section textarea {
     top: 60px;
     font-size: 1rem;
   }
-  .hero-title h1 {
-    font-size: 2.5rem;
-    white-space: normal;
-  }
+
   .video-container {
     height: 30vh;
   }
@@ -1190,16 +1170,7 @@ body.dark-mode .contact-us-section textarea {
     padding: 20px 5px;
     font-size: 1rem;
   }
-  .footer-16371 .container p {
-    font-size: 1.2rem !important;
-  }
-}
 
-/* iPhone 12/13/14 and similar (390px x 844px, 414px x 896px, etc.) */
-@media (max-width: 480px) {
-  p {
-    font-size: 1rem !important;
-  }
 }
 
 /*
@@ -1272,12 +1243,7 @@ Summary:
 ::-webkit-scrollbar-thumb:hover {
     background: #555; /* Darker on hover */
 }
-.footer-brand {
-  width: 100%; /* Or a specific width that suits your design */
-}
-.footer-logo-link {
-  white-space: nowrap; /* Prevents the text from wrapping to the next line */
-}
+
 a:focus-visible,
 button:focus-visible {
   outline: 2px solid blue; /* Or any color with good contrast */
@@ -1310,15 +1276,18 @@ body.dark-mode button:focus-visible {
 }
 
 .footer-16371 .container p {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 7rem !important;
-    font-weight: 900 !important;
-    color: #fff !important;
-    text-align: center !important;
-    font-family: "Unbounded", sans-serif;
-    line-height: 1 !important;
-    /* Remove width: 100%; */
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: clamp(1.5rem, 10vw, 11rem); /* Match hero-title h1 responsiveness */
+  white-space: nowrap;
+  font-family: "Unbounded", sans-serif;
+  /* Remove: width: 100vw; */
+  /* Remove: box-sizing: border-box; */
+  /* Remove: overflow: hidden; */
+  font-weight: 900 !important;
+  color: #fff !important;
+  text-align: center !important;
+  line-height: 1 !important;
 }
 
 /* Dark Mode Footer Styles */
@@ -1478,18 +1447,6 @@ body.dark-mode .dark-mode-text {
   }
 }
 
-/* Responsive font sizes for headings and footer */
-@media (max-width: 768px) {
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  .footer-16371 .container p { font-size: 3rem !important; }
-}
-@media (max-width: 480px) {
-  h1 { font-size: 1.5rem; }
-  h2 { font-size: 1.2rem; }
-  .footer-16371 .container p { font-size: 1.5rem !important; }
-}
-
 /* Fix: Make mobile nav menu always appear above content when open */
 @media (max-width: 900px) {
   nav#main-nav {
@@ -1565,15 +1522,8 @@ p { font-size: 1.6rem; }
     top: 60px;
     font-size: 1rem;
   }
-  .hero-title h1 {
-    font-size: 2.5rem;
-    white-space: normal;
-  }
   .video-container {
     height: 30vh;
-  }
-  .footer-16371 .container p {
-    font-size: 2rem !important;
   }
 }
 
@@ -1586,12 +1536,7 @@ p { font-size: 1.6rem; }
   h2 { font-size: 1.1rem; }
   h3 { font-size: 1rem; }
   p { font-size: 1rem; }
-  .footer-16371 .container p {
-    font-size: 1.1rem !important;
-  }
-  .hero-title h1 {
-    font-size: 1.5rem;
-  }
+
   .video-container {
     height: 20vh;
   }
@@ -1675,17 +1620,6 @@ p { font-size: 1.6rem; }
   }
 }
 
-/* Responsive footer */
-@media (max-width: 900px) {
-  .footer-16371 {
-    padding: 4rem 0;
-    min-height: 100px;
-  }
-  .footer-16371 .container p {
-    font-size: 2rem !important;
-  }
-}
-
 /* Responsive About Us section */
 @media (max-width: 900px) {
   #about-us .text-container .large-text,
@@ -1725,15 +1659,15 @@ p { font-size: 1.6rem; }
 .error-404-btn,
 .connect-now-btn {
   display: inline-block;
-  padding: 0.8em 2.2em;
+  padding: clamp(0.5em, 2vw, 0.8em) clamp(1.5em, 5vw, 2.2em);
   border-radius: 2em;
   background: #000;
   color: #fff;
   font-family: "Inter", sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
   transition: background 0.2s, color 0.2s, transform 0.2s;
   border: none;
   cursor: pointer;
