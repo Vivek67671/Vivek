@@ -78,101 +78,139 @@ body.dark-mode button::before {
   color: hsla(0, 0%, 0%, var(--hov));
 }
 
-        /* Container layout */
+/* Updated Back Button Styles - No Arrow */
+.back-to-home-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+        border: none;
+        background: none;
+        color: #333;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .back-to-home-button:hover {
+        transform: scale(1.05);
+    }
+
+    .back-to-home-button:active {
+        transform: scale(0.95);
+    }
+
+    body.dark-mode .back-to-home-button {
+        color: #fff;
+    }
+
+        /* Updated Layout Styles */
         .container {
             max-width: 1149px;
             margin: 0 auto;
             padding: 20px;
-            text-align: left; /* Left align all text */
+            box-sizing: border-box;
         }
 
         h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            word-spacing: 1px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
 
-        p {
+        h2, h3, h4 {
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p, li {
             font-size: 1.2rem;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        header {
-            background-color: white;
-            color: black;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: left;
-            position: relative;
+        ul, ol {
+            margin-bottom: 1.5rem;
         }
 
-        nav a {
-            color: black;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-right: 15px;
-            position: relative;
-            font-weight: bold;
-            overflow: hidden;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-        }
+        /* Update image styles to center */
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 2rem auto;
+        display: block;
+        object-fit: contain;
+    }
 
-/* 9. Footer Styles */
+    /* Style for image containers */
+    .image-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+    }
 
-.footer-16371 {
-    background-color: #000;
-    color: #fff;
-    padding: 12rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-}
+    /* Style for side-by-side images */
+    .dual-image-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
 
-.footer-16371 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    /* Remove position: absolute, left/top/transform */
-}
+    .dual-image-container img {
+        margin: 0;
+        width: 45%;
+    }
 
-.footer-16371 .container p {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 7rem !important;
-    font-weight: 900 !important;
-    color: #fff !important;
-    text-align: center !important;
-    font-family: "Unbounded", sans-serif;
-    line-height: 1 !important;
-    /* Remove width: 100%; */
-}
+    /* Scroll to Top Button Styles */
+    .scroll-to-top-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
 
-/* Dark Mode Footer Styles */
-body.dark-mode .footer-16371 {
-    background-color: #ffffff;
-    color: #fff;
-}
+    .scroll-to-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-body.dark-mode .footer-16371 .container p {
-    color: #000000 !important;
-    font-size: 7rem !important;
-    font-weight: 900 !important;
-}
+    .scroll-to-top:hover {
+        transform: translateY(-3px);
+        background: #444;
+    }
 
-    </style>
+    body.dark-mode .scroll-to-top {
+        background: #fff;
+        color: #333;
+    }
+
+    body.dark-mode .scroll-to-top:hover {
+        background: #eee;
+    }
+</style>
 </head>
 <body>
     <!-- Header navigation -->
     <header>
-        <!-- Back button -->
-        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 20px;">Back</button>
+    <button class="back-to-home-button" onclick="location.href='index.html';">< Back</button>
     </header>
 
     <!-- Main content -->
@@ -183,7 +221,9 @@ body.dark-mode .footer-16371 .container p {
 
 
         <!-- Project thumbnail -->
-        <img src="images\Case_Studies\Case 3\image 34.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+        <div class="image-container">
+            <img src="images\Case_Studies\Case 3\image 34.png" alt="Scaly Axcccrodinfly">
+        </div>
 
         <!-- Case study content -->
         <p>The Beginning
@@ -193,7 +233,7 @@ body.dark-mode .footer-16371 .container p {
            changing B2B SaaS market and the limitations found in our current website.
            </p>
            <div style="text-align: left;">
-           <img src="images\Case_Studies\Case 3\image 35.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+           <img src="images\Case_Studies\Case 3\image 35.png" alt="Scaly Axcccrodinfly">
         <p>Why Redesign Was Required?</p>
         <ul>
             <li>Ineffective Communication:
@@ -220,7 +260,7 @@ body.dark-mode .footer-16371 .container p {
             </li>
         </ul>
         <div style="text-align: left;">
-            <img src="images\Case_Studies\Case 3\image 36.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+            <img src="images\Case_Studies\Case 3\image 36.png" alt="Scaly Axcccrodinfly">
             <p><b>Design Process</b></p>
 
                 <p>When you have diversity in your business
@@ -242,7 +282,7 @@ body.dark-mode .footer-16371 .container p {
                     “Design adds value faster than it adds costs.” — Joel Spolsky
                     This was our guiding principle throughout the entire process to make sure that every component of the website added value to the business & its mission.</p>
                     <div style="text-align: left;">
-                        <img src="images\Case_Studies\Case 3\image 37.png" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
+                        <img src="images\Case_Studies\Case 3\image 37.png" alt="Scaly Axcccrodinfly">
                         <p><b>Step 1 - Discover</b></p>
                         <ul>
                             <li>User persona development helped us narrow down the primary audience: Leadership, DevOps Engineers, Investors, and potential candidates branched across different pages creating detailed user personas.</li>
@@ -257,12 +297,17 @@ body.dark-mode .footer-16371 .container p {
                                     </ul>
 <img src="images\Case_Studies\Case 3\1_-pa3rBDtDrDIkSAUG9zmLg.webp" alt="Scaly Axcccrodinfly" style="width: 100%; max-width: 800px; height: auto;">
 
-                        </main>
-    <!-- Footer -->
-    <footer class="footer-16371">
-        <div class="container">
-            <p>GRAYS-SCALE</p>
-        </div>
-    </footer>
+    </main>
+        <!-- Splide JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script src="script.js"></script>
+        <script>
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    document.body.classList.add('loaded');
+                }, 1200); // 1.2s minimum
+            });
+        </script>
+    </div>
 </body>
 </html>

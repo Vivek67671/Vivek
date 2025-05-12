@@ -85,22 +85,61 @@
             max-width: 1149px;
             margin: 0 auto;
             padding: 20px;
-            text-align: left; /* Left align all text */
             box-sizing: border-box;
         }
 
         h1 {
-            font-size: 3.5rem; /* Standardize h1 font size */
-            font-weight: 900;
-            word-spacing: 0px;
-            text-transform: uppercase;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
         }
 
-        p {
-            font-size: 1.1rem; /* Standardize paragraph font size */
-            line-height: 1.6;
+        h2, h3, h4 {
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
         }
 
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+
+        ul, ol {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Update image styles to center */
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Style for image containers */
+        .image-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        /* Style for side-by-side images */
+        .dual-image-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .dual-image-container img {
+            margin: 0;
+            width: 45%;
+        }
+
+        /* Header styles */
         header {
             background-color: white;
             color: black;
@@ -126,59 +165,73 @@
             letter-spacing: 2px;
         }
 
-        footer {
+        /* Updated Back Button Styles - No Arrow */
+        .back-to-home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            border: none;
+            background: none;
+            color: #333;
+            font-family: "Inter", sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
             display: flex;
-            justify-content: flex-start;
+            align-items: center;
+            padding: 0;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-home-button:hover {
+            transform: scale(1.05);
+        }
+
+        .back-to-home-button:active {
+            transform: scale(0.95);
+        }
+
+        body.dark-mode .back-to-home-button {
+            color: #fff;
+        }
+
+        /* Scroll to Top Button Styles */
+        .scroll-to-top-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
             margin: 40px 0;
         }
-        ul {
-            font-size: 1.1rem; /* Standardize list font size */
-        }
-        li {
-            font-size: 1.1rem; /* Standardize list item font size */
-        }
 
-        /* Footer Styles */
-        .footer-16371 {
-            background-color: #000;
-            color: #fff;
-            padding: 12rem 0;
-            display: flex;
-            justify-content: center;
+        .scroll-to-top {
+            display: inline-flex;
             align-items: center;
-            min-height: 200px;
+            gap: 8px;
+            padding: 12px 24px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .footer-16371 .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            /* Remove position: absolute, left/top/transform */
+        .scroll-to-top:hover {
+            transform: translateY(-3px);
+            background: #444;
         }
 
-        .footer-16371 .container p {
-            margin: 0 !important;
-            padding: 0 !important;
-            font-size: 7rem !important;
-            font-weight: 900 !important;
-            color: #fff !important;
-            text-align: center !important;
-            font-family: "Unbounded", sans-serif;
-            line-height: 1 !important;
-            /* Remove width: 100%; */
+        body.dark-mode .scroll-to-top {
+            background: #fff;
+            color: #333;
         }
 
-        /* Dark Mode Footer Styles */
-        body.dark-mode .footer-16371 {
-            background-color: #ffffff;
-            color: #fff;
-        }
-
-        body.dark-mode .footer-16371 .container p {
-            color: #000000 !important;
-            font-size: 7rem !important;
-            font-weight: 900 !important;
+        body.dark-mode .scroll-to-top:hover {
+            background: #eee;
         }
 
         /* Media queries */
@@ -191,7 +244,7 @@
     <!-- Header with navigation -->
     <header>
         <!-- Back button -->
-        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 20px;">Back</button>
+        <button class="back-to-home-button" onclick="location.href='index.html';">&lt; Back</button>
     </header>
 
     <!-- Main content -->
@@ -204,14 +257,14 @@
         <br>
         <br>
         <!-- Project images -->
-        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
-            <img src="images/Case_Studies/image 10.png" alt="Handee Project Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="image-container">
+            <img src="images/Case_Studies/image 10.png" alt="Handee Project Thumbnail" style="width: 100%; height: auto;">
         </div>
-        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
-            <img src="images/Case_Studies/image 8.png" alt="Handee Project Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="image-container">
+            <img src="images/Case_Studies/image 8.png" alt="Handee Project Thumbnail" style="width: 100%; height: auto;">
         </div>
-        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
-            <img src="images/Case_Studies/image 9.png" alt="Handee Project Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+        <div class="image-container">
+            <img src="images/Case_Studies/image 9.png" alt="Handee Project Thumbnail" style="width: 100%; height: auto;">
         </div>
         <p>The problem involved designing the flow for the user to buy multiple variants of a product
             which has staggered pricing and at the same time ensuring that she is making a good deal (i.e.
@@ -332,60 +385,54 @@
                     single item may be less than what is shown by the minimum of the range.
                     <br>                    
                     <b>Quantity, Variants, and Variant Selected</b> -   The card should inform user that multiple variants
-                    are available for the product and also provide a way to switch between variants and add them
-                    to cart. It should also be made clear from the card itself that how many items were already
-                    selected and what was the selected variant
-                    .</p>
-                    <br>
-
-                                        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
-                                            <img src="images/Case_Studies/image 19.png" alt="Solution" style="width: 100%; height: auto;">
-                                        </div>
-                                        <p>From the above solutions, we narrowed down to a solution where</p>
-                                        <ul>
-                                            <li>We showed the standard price and gave the ability to change the variant through a bottom popup sheet which would appear as soon as the user clicks on the add button or variant selection button.</li>
-                                            <li>We highlighted the offer bar to show that the given product could be purchased for a better deal and placed it closer to the variant selection button.</li>
-                                            <li>Using the bottom sheet also allowed us to use the same design for other categories. The vertical variant list helped us to add the description whenever needed to the particular variant type.</li>
-                                            <li>We also added a local Add button to each variant so as to facilitate multiple additions of a variant(if possible for other categories).</li>
-                                            <li>Where multiple variant addition was possible, We used a Multiple tag and showed their price range to inform that multiple variants have been selected by the user.</li>
                                         </ul>
                                         <div style="display: flex; justify-content: space-around;">
                                                             <img src="images/Case_Studies/image 20.png" alt="Solution 1" style="width: 45%; height: auto;">
                                                             <img src="images/Case_Studies/image 21.png" alt="Solution 2" style="width: 45%; height: auto;">
                                                         </div>
             <h2>Lessons learned</h2>
-            <ul>
-                <b><li>Design to meet both business and user needs.</li></b>
+            <ul>duct and also provide a way to switch between variants and add them
+                <b><li>Design to meet both business and user needs.</li></b>were already
                     <p>While designing, business goals should be considered as important as the user goals. A
                         business goal needs to be considered as another constraint while solving the design problem.
                         e.g. I thought of showing only the standard price on the card and then writing the different
                         variants available in the plain text. Then my VP told me that we needed to highlight the offer
-                        associated with variant informing that the user could make a better deal by spending some
-                        extra bucks on a higher variant. The highlighted offer would catch user attention and she might
+                        associated with variant informing that the user could make a better deal by spending some                        <div style="display: flex; flex-direction: column; height: 100%; text-align: left;">
+                        extra bucks on a higher variant. The highlighted offer would catch user attention and she mightage 19.png" alt="Solution" style="width: 100%; height: auto;">
                         think of buying it. Thus our business goal of up-selling would be met.</p>
                         <b><li>Break the objective into a set of small constraints and keep them in mind while designing.</li></b>
                     <p>To solve a problem easily, we can simplify/break it down further into a set of smaller problems
-                        or constraints. The best solution should take care of all the constraints. Noting down all the
-                        constraints at one place will also prevent us from overlooking any edge cases in the design.</p>
-                <li><b>Treat edge cases as edge cases only.</li></b>
-                    <p>Your design should be such that it is optimized for all edge cases. While solving for edge cases,
-                        it should be kept in mind that the users will encounter them rarely. They should not be
+                        or constraints. The best solution should take care of all the constraints. Noting down all thet through a bottom popup sheet which would appear as soon as the user clicks on the add button or variant selection button.</li>
+                        constraints at one place will also prevent us from overlooking any edge cases in the design.</p> be purchased for a better deal and placed it closer to the variant selection button.</li>
+                <li><b>Treat edge cases as edge cases only.</li></b> categories. The vertical variant list helped us to add the description whenever needed to the particular variant type.</li>
+                    <p>Your design should be such that it is optimized for all edge cases. While solving for edge cases,o as to facilitate multiple additions of a variant(if possible for other categories).</li>
+                        it should be kept in mind that the users will encounter them rarely. They should not beeir price range to inform that multiple variants have been selected by the user.</li>
                         optimized more than the cases which are encountered quite often. e.g. in the process of
                         solving for edge case of buying multiple quantities of multiple combinations of variant type, I
-                        proposed a solution wherein the flow for edge case had better UX than the case of buying 2
-                        different variants of a single type which was encountered most often.</p>
+                        proposed a solution wherein the flow for edge case had better UX than the case of buying 2 style="width: 45%; height: auto;">
+                        different variants of a single type which was encountered most often.</p>="images/Case_Studies/image 21.png" alt="Solution 2" style="width: 45%; height: auto;">
             </ul>
 
                 
             </div>
 
-
-    </main>
-    <!-- Footer -->
-    <footer class="footer-16371">
-        <div class="container">
-            <p>GRAYS-SCALE</p>
+        <!-- Add Scroll to Top Button -->
+        <div class="scroll-to-top-container">
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="scroll-to-top">
+                ↑ Back to Top
+            </button>
         </div>
-    </footer>
+    </main>
+
+    <!-- Splide JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 1200); // 1.2s minimum
+        });
+    </script>
 </body>
 </html>

@@ -46,66 +46,73 @@
             margin: 2rem 0;
             display: block;
         }
-        .footer-16371 {
-            background-color: #000;
-            color: #fff;
-            padding: 6rem 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100px;
-        }
-        .footer-16371 .container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-        .footer-16371 .container p {
-            margin: 0 !important;
-            padding: 0 !important;
-            font-size: 2.5rem !important;
-            font-weight: 900 !important;
-            color: #fff !important;
-            text-align: center !important;
-            font-family: "Unbounded", sans-serif;
-            line-height: 1 !important;
-        }
-        .back-to-home-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            z-index: 10;
-            --hov: 0;
-            display: grid;
-            grid-gap: 0.3em;
-            grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
-            align-items: center;
-            border: none;
-            padding: 0.5em 0.75em;
-            border-radius: 1.5em;
-            background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
-            color: #ffffff;
-            font: 700 1.2em/1.2 "Inter", sans-serif;
-            transition: 0.3s;
-            cursor: pointer;
-        }
-        .back-to-home-button::before {
-            aspect-ratio: 1;
-            overflow: hidden;
-            border-radius: 50%;
-            background: #333333;
-            color: hsla(0, 0%, 100%, var(--hov));
-            font-weight: 100;
-            text-indent: calc((var(--hov) - 1) * 0.75em);
-            clip-path: circle(closest-side);
-            transition: inherit;
-            content: attr(data-ico);
-            display: grid;
-            place-items: center;
-            font-size: 0.8em;
-        }
-        .back-to-home-button:is(:hover, :focus) { --hov: 1; }
+        /* Updated Back Button Styles - No Arrow */
+    .back-to-home-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+        border: none;
+        background: none;
+        color: #333;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .back-to-home-button:hover {
+        transform: scale(1.05);
+    }
+
+    .back-to-home-button:active {
+        transform: scale(0.95);
+    }
+
+    body.dark-mode .back-to-home-button {
+        color: #fff;
+    }
+        /* Scroll to Top Button Styles */
+    .scroll-to-top-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    .scroll-to-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+        transform: translateY(-3px);
+        background: #444;
+    }
+
+    body.dark-mode .scroll-to-top {
+        background: #fff;
+        color: #333;
+    }
+
+    body.dark-mode .scroll-to-top:hover {
+        background: #eee;
+    }
         @media (max-width: 900px) {
             .container { padding: 8px; }
             h1 { font-size: 1.5rem; }
@@ -123,8 +130,8 @@
 </head>
 <body>
     <header>
-        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';">Back</button>
-    </header>
+    <button class="back-to-home-button" onclick="location.href='index.html';">< Back</button>
+</header>
     <main class="container">
         <h1>Designing a Seamless Budget Management Experience – A UX Case Study</h1>
         <p>
@@ -276,11 +283,23 @@ We utilized Maze’s “Direct Success” metric to measure task success rate (s
         <p>In my view, the true key to delivering value lies in seamlessly combining creativity with practicality to meet user needs. Throughout the process of research, iteration, and incorporating feedback, I evolved as a designer and gained several key insights:
         </p>
        
-    </main>
-    <footer class="footer-16371">
-        <div class="container">
-            <p>GRAYS-SCALE</p>
-        </div>
-    </footer>
+
+        <!-- Splide JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script src="script.js"></script>
+        <script>
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    document.body.classList.add('loaded');
+                }, 1200); // 1.2s minimum
+            });
+        </script>
+    </div>
+    <!-- Add before closing main tag -->
+    <div class="scroll-to-top-container">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="scroll-to-top">
+            ↑ Back to Top
+        </button>
+    </div>
 </body>
 </html>

@@ -77,101 +77,139 @@ body.dark-mode button::before {
   color: hsla(0, 0%, 0%, var(--hov));
 }
 
-        /* Layout components */
-        .container {
-            max-width: 1149px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: left; /* Left align all text */
-        }
+/* Updated Back Button Styles - No Arrow */
+.back-to-home-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        z-index: 10;
+        border: none;
+        background: none;
+        color: #333;
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 0;
+        transition: transform 0.3s ease;
+    }
 
-        h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            word-spacing: 1px;
-        }
+    .back-to-home-button:hover {
+        transform: scale(1.05);
+    }
 
-        p {
-            font-size: 1.6rem;
-            line-height: 1.6;
-        }
+    .back-to-home-button:active {
+        transform: scale(0.95);
+    }
 
-        header {
-            background-color: white;
-            color: black;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: left;
-            position: relative;
-        }
+    body.dark-mode .back-to-home-button {
+        color: #fff;
+    }
 
-        nav a {
-            color: black;
-            text-transform: uppercase;
-            text-decoration: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-right: 15px;
-            position: relative;
-            font-weight: bold;
-            overflow: hidden;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-        }
+        /* Updated Layout Styles */
+    .container {
+        max-width: 1149px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+    }
 
-/* 9. Footer Styles */
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
 
-.footer-16371 {
-    background-color: #000;
-    color: #fff;
-    padding: 12rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 200px;
-}
+    h2, h3, h4 {
+        font-weight: 700;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+    }
 
-.footer-16371 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    /* Remove position: absolute, left/top/transform */
-}
+    p, li {
+        font-size: 1.2rem;
+        line-height: 1.7;
+    }
 
-.footer-16371 .container p {
-    margin: 0 !important;
-    padding: 0 !important;
-    font-size: 7rem !important;
-    font-weight: 900 !important;
-    color: #fff !important;
-    text-align: center !important;
-    font-family: "Unbounded", sans-serif;
-    line-height: 1 !important;
-    /* Remove width: 100%; */
-}
+    ul, ol {
+        margin-bottom: 1.5rem;
+    }
 
-/* Dark Mode Footer Styles */
-body.dark-mode .footer-16371 {
-    background-color: #ffffff;
-    color: #fff;
-}
+    img {
+        max-width: 100%;
+        height: auto;
+        margin: 2rem auto;
+        display: block;
+        object-fit: contain;
+    }
 
-body.dark-mode .footer-16371 .container p {
-    color: #000000 !important;
-    font-size: 7rem !important;
-    font-weight: 900 !important;
-}
+    /* Style for image containers */
+    .image-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 2rem 0;
+    }
 
+    /* Style for side-by-side images */
+    .dual-image-container {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin: 2rem 0;
+    }
+
+    .dual-image-container img {
+        margin: 0;
+        width: 45%;
+    }
+
+    /* Scroll to Top Button Styles */
+    .scroll-to-top-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    .scroll-to-top {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 24px;
+        background: #333;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-family: "Inter", sans-serif;
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .scroll-to-top:hover {
+        transform: translateY(-3px);
+        background: #444;
+    }
+
+    body.dark-mode .scroll-to-top {
+        background: #fff;
+        color: #333;
+    }
+
+    body.dark-mode .scroll-to-top:hover {
+        background: #eee;
+    }
     </style>
 </head>
 <body>
     <!-- Header navigation -->
     <header>
         <!-- Back button -->
-        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';" style="position: absolute; top: 20px; left: 370px;">Back</button>
+        <button class="back-to-home-button" onclick="location.href='index.html';">< Back</button>
     </header>
     <!-- Main content -->
     <main class="container" style="text-align: left;">
@@ -180,8 +218,8 @@ body.dark-mode .footer-16371 .container p {
             study</h1>
         
         <!-- Project thumbnail -->
-         <div style="text-align: left;">
-            <img src="images\Case Study Sliders  Image Containers\case 2.png" alt="Linel Project Thumbnail" style="width: 100%; max-width: 800px; height: auto;">
+        <div class="image-container">
+            <img src="images\Case Study Sliders  Image Containers\case 2.png" alt="Linel Project Thumbnail">
         </div>
          <!-- Case study content -->
          <p>The app allows users to order food from a variety of delicious cuisine directly to their office, as
@@ -366,12 +404,24 @@ body.dark-mode .footer-16371 .container p {
                 </div>
             </div>
 
-    </main>
-    <!-- Footer -->
-    <footer class="footer-16371">
-        <div class="container">
-            <p>GRAYS-SCALE</p>
-        </div>
-    </footer>
+
+        <!-- Splide JS -->
+        <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+        <script src="script.js"></script>
+        <script>
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    document.body.classList.add('loaded');
+                }, 1200); // 1.2s minimum
+            });
+        </script>
+    </div>
+    <!-- Add before closing main tag -->
+    <div class="scroll-to-top-container">
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="scroll-to-top">
+            ↑ Back to Top
+        </button>
+    </div>
+</main>
 </body>
 </html>
