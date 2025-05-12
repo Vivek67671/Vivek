@@ -8,7 +8,7 @@
         "@type": "Person",
         "name": "Vivek Kumar",
         "jobTitle": "UI/UX Designer",
-        "url": "https://yourwebsite.com",
+        "url": "https://GrayScl.com",
         "sameAs": [
             "https://www.linkedin.com/in/vivek-kumar-463a19244/",
             "https://www.behance.net/vivek-kumar",
@@ -40,6 +40,23 @@
 </head>
 
 <body>
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="logo-animation">
+                <svg viewBox="0 0 200 200" width="200" height="200">
+                    <defs>
+                        <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#005fcc;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00a2ff;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <circle class="path" cx="100" cy="100" r="70" fill="none" stroke="url(#gradient)" stroke-width="4"/>
+                    <text class="logo-text" x="100" y="120" text-anchor="middle" fill="#ffffff" 
+                          style="font-family: 'Unbounded', sans-serif; font-size: 48px; font-weight: 900;">GS</text>
+                </svg>
+            </div>
+        </div>
+    </div>
     <header>
         <button class="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
             <span class="hamburger">
@@ -94,9 +111,10 @@
                         <h3 class="accessible" id="Button-Subheading">Let’s collaborate and bring your ideas to life!</h3>
                     </div>
                     <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" target="_blank"
-    rel="noopener noreferrer" aria-labelledby="Button-Subheading">
-    <button data-ico="⬤">Connect Now</button>
-  </a>
+   rel="noopener noreferrer" aria-labelledby="Button-Subheading"
+   class="connect-now-btn" style="margin-top:2em;">
+   Connect Now
+</a>
 
                 </div>
             </div>
@@ -213,7 +231,26 @@
                         study highlights our approach to improving user experience, increasing engagement, and optimizing
                         digital products. From user research to final implementation, we ensure every design decision is
                         backed by data and usability insights.</p>
-                    <a href="case-study-1.html" class="card" role="article"
+                    <a href="case-study-4.html" class="card" role="article"
+                        aria-describedby="case-study-4-description">
+                        <div class="inner">
+                            <h3 class="title">Designing a Seamless Budget Management Experience – A UX Case Study</h3>
+                            <time class="subtitle">Cloud Budget Management</time>
+                            <p id="case-study-4-description">
+                                Ever since the shift to cloud-based infrastructure, there has been a trend in the industry to rely on multiple cloud providers to either have infrastructure backup or use particular capabilities offered by one provider while maintaining the majority of their infrastructure with another.
+                                This calls for a mechanism to set spending limits among these cloud providers as well as an overview of how one’s cloud budget is being allocated across various cloud service providers.
+                            </p>
+                        </div>
+                        <!-- Optionally add an image here if you have one -->
+                        <!-- <div class="image-container">
+                            <img src="images/Case_Studies/budget-management-thumb.png" alt="Budget Management Case Study">
+                        </div> -->
+                         <div class="image-container">
+                            <img src="images/Case Study Sliders  Image Containers/case study 4.webp" alt="Budget Management Case Study">
+                        </div>
+                    </a>
+
+                        <a href="case-study-1.html" class="card" role="article"
                         aria-describedby="case-study-1-description">
                         <div class="inner">
                             <h3 class="title">Designing for ariants a UX case study</h3>
@@ -398,6 +435,13 @@
     <!-- Splide JS -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="script.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.body.classList.add('loaded');
+            }, 1200); // 1.2s minimum
+        });
+    </script>
 </body>
 
 </html>

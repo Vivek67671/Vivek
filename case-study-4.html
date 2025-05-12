@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Designing a Seamless Budget Management Experience – A UX Case Study</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+        body {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            text-align: left;
+        }
+        .container {
+            max-width: 1149px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        h2, h3, h4 {
+            font-weight: 700;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+        ul, ol {
+            margin-bottom: 1.5rem;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            display: block;
+        }
+        .footer-16371 {
+            background-color: #000;
+            color: #fff;
+            padding: 6rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+        .footer-16371 .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .footer-16371 .container p {
+            margin: 0 !important;
+            padding: 0 !important;
+            font-size: 2.5rem !important;
+            font-weight: 900 !important;
+            color: #fff !important;
+            text-align: center !important;
+            font-family: "Unbounded", sans-serif;
+            line-height: 1 !important;
+        }
+        .back-to-home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 10;
+            --hov: 0;
+            display: grid;
+            grid-gap: 0.3em;
+            grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
+            align-items: center;
+            border: none;
+            padding: 0.5em 0.75em;
+            border-radius: 1.5em;
+            background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
+            color: #ffffff;
+            font: 700 1.2em/1.2 "Inter", sans-serif;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .back-to-home-button::before {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 50%;
+            background: #333333;
+            color: hsla(0, 0%, 100%, var(--hov));
+            font-weight: 100;
+            text-indent: calc((var(--hov) - 1) * 0.75em);
+            clip-path: circle(closest-side);
+            transition: inherit;
+            content: attr(data-ico);
+            display: grid;
+            place-items: center;
+            font-size: 0.8em;
+        }
+        .back-to-home-button:is(:hover, :focus) { --hov: 1; }
+        @media (max-width: 900px) {
+            .container { padding: 8px; }
+            h1 { font-size: 1.5rem; }
+            .footer-16371 .container p { font-size: 1.2rem !important; }
+            .footer-16371 { padding: 2rem 0; }
+            .back-to-home-button { font-size: 1rem; padding: 0.4em 0.8em; top: 10px; left: 10px; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 4px; }
+            h1 { font-size: 1.1rem; }
+            .footer-16371 .container p { font-size: 1rem !important; }
+            .back-to-home-button { font-size: 0.9rem; padding: 0.3em 0.6em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button class="back-to-home-button" data-ico="⬤" onclick="location.href='index.html';">Back</button>
+    </header>
+    <main class="container">
+        <h1>Designing a Seamless Budget Management Experience – A UX Case Study</h1>
+        <p>
+
+        </p>
+        <p>
+            Ever since the shift to cloud-based infrastructure, there has been a trend in the industry to rely on multiple cloud providers to either have infrastructure backup or use particular capabilities offered by one provider while maintaining the majority of their infrastructure with another.
+            This calls for a mechanism to set spending limits among these cloud providers as well as an overview of how one’s cloud budget is being allocated across various cloud service providers.
+        </p>
+        <img src="images\Case_Studies\Case 4\case study 4.webp" alt="Cloud Budget Management Illustration">
+        <h2>Introduction</h2>
+        <p>
+            With the growing adoption of cloud services, organizations are increasingly using multiple cloud providers for redundancy, cost optimization, and leveraging unique features. However, this multi-cloud approach brings challenges in tracking and managing budgets across providers.
+        </p>
+         <img src="images/Case_Studies/Case 4/Frame 2147226341.png" alt="Cloud Budget Management Illustration">
+        <h2>Problem Statement</h2>
+        <p>
+            DevOps Managers play a key role in managing and optimizing cloud expenses. They often rely on projected costs from various cloud providers to make informed decisions.
+
+However, these projections are typically based on past spending patterns and fail to consider critical factors like resource scaling, data transfer fees, or evolving business needs. This makes it challenging for managers and tech leaders to accurately forecast and allocate cloud budgets—particularly in multi-cloud environments.
+        </p>
+        <h2>Goal</h2>
+        <p>
+            To design user experience for various technical personas (FinOps/DevOps Managers/CTO) in order to create, track & understand budgets for multiple cloud platforms.
+        </p>
+        <h2>Understanding and Research</h2>
+        <p>
+           In order to create a product that offers value, it is essential to understand customer expectations, which makes user research an extremely crucial part of the process.
+I conducted interviews with a variety of personas from clients — Purplle, Innovaccer, and Zenoti.
+
+I wanted to understand…
+
+<ul>
+    <li>How does tech leadership handle budgeting in a multi-cloud environment?</li>
+    <li>What are the expectations to receive alerts when cost exceeds the budget?</li>
+    <li>What are the missing elements in the budgeting tool provided by the primary cloud provider?</li>
+</ul>
+        </p>
+        <h2>Initial Learning</h2>
+        <p>
+            <ul>
+                <li>There is no clarity on the status of budget health.</li>
+                <li>There is a clear need to set customizable thresholds for forecasted and spend alerts.</li>
+                <li>Having access to trends makes it easier for stakeholders to make informed decisions.</li>
+            </ul>
+            <h2>Ideation Process</h2>
+            <h3>Brainstorming</h3>
+
+        <img src="images\Case_Studies\Case 4\1_tX12pao68eVlq20zbaNisg.webp" alt="Problem Statement Illustration">
+        <p>
+            As I started developing my user flows, I merged related stories and identified three key user journeys. Mapping out a flow for each path allowed me to pinpoint the necessary screens early on, providing clarity before moving into sketching and deeper ideation.
+        </p>
+        <h3>Identifying Core Features</h3>
+        <p>
+            With the user flows as a guide, I sketched rough layouts for each critical path. Having a clear understanding of the necessary screens and key elements made the sketching process more efficient. This foundation proved invaluable in bringing clarity and focus to the development of high-fidelity wireframes and final designs.
+
+        </p>
+         <img src="images\Case_Studies\Case 4\1_vgBwTDfT03gTB551ZiZdmg.webp" alt="Problem Statement Illustration">
+         <p>
+           During this process, I recognized the need to split the feature into two main sections to more effectively address user goals and pain points.
+
+        </p>
+        <img src="images\Case_Studies\Case 4\1_2su1ovxwpnQttL80VQHmvQ.webp" alt="Problem Statement Illustration">
+        <h3>High fidelity Wireframes</h3>
+        <p>
+            I started by sketching out initial concepts and developing low-fidelity wireframes, guided by the persona’s goals and pain points. Following several collaborative discussions with the team, these evolved into high-fidelity wireframes.
+
+        </p>
+        <img src="images\Case_Studies\Case 4\1_5ESovhfl87W82iQSZqKpMg.webp" alt="Problem Statement Illustration">
+        <img src="images\Case_Studies\Case 4\1_l-er87m-1i964HXl9_HUWA.webp" alt="Problem Statement Illustration">
+        <h2>Design Iteration 1</h2>
+        <p>
+            The primary goal of our first sprint was to deliver a dashboard that displays current spending and allows users to create budgets and configure alerts.
+                    </p>
+                    <img src="images\Case_Studies\Case 4\1_uRsPgBRYt_C4wywL1g3wTg.webp">
+        <p>Shows a summary of all the budgets, sorted based on the time of creation by default. Users can quickly assess the health of their budgets as it is in an easy-to-read graph format along with information on pre-set alerts.
+        </p>
+        <img src="images\Case_Studies\Case 4\1_kQFVEHf9SaiF4CJexh09nA.webp">
+        <p>
+Finance leadership needs a comprehensive view of historical data to evaluate the performance of a budget. Alongside, it helps them get a view of the forecasted cost to enhance their business decisions.
+        </p>
+        <img src="images\Case_Studies\Case 4\1_PwGwvUGfvpaqS5naJQOa5A.webp">
+        <p>
+New budgets can be created for teams, features, applications, customers, or products. These require to be set up in finops categories, after which the user can proceed to set the budgets.
+        </p>
+        <img src="images\Case_Studies\Case 4\1_7Eah6a00J0xFgPmqUhIb3g.webp">
+        <p>
+    Alerts can be configured by setting thresholds on actual as well as forecasted costs. The recipients can be alerted by E-mail, Slack, or Microsoft Teams.
+    
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+    
+    <h2>Design Iteration 2</h2>
+        <p>
+            As I approached the final stages of designing iteration #1, OpsLyft's product infrastructure began transitioning to support multi-cloud functionality within a unified platform.
+
+As a result, the updated design incorporates both customer feedback gathered through prototype testing and enhancements to accommodate multi-cloud support.
+
+Each design update is clearly numbered and indicated with arrows for clarity.
+        </p>
+        
+
+<ul>
+            <li>Lack of a unified dashboard for multi-cloud budget tracking</li>
+            <li>Difficulty in setting and enforcing spending limits</li>
+            <li>Manual, error-prone processes for budget allocation</li>
+            <li>Need for real-time alerts on budget overruns</li>
+        </ul>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*7w9b5p7w9b5p7w9b5p7w9b5.png" alt="Research Interviews">
+        <h2>Personas</h2>
+        <ul>
+            <li><b>Finance Manager:</b> Needs to allocate and monitor budgets across teams and providers.</li>
+            <li><b>DevOps Engineer:</b> Wants to track usage and avoid surprise overruns.</li>
+            <li><b>CTO:</b> Seeks a high-level overview and actionable insights.</li>
+        </ul>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*8w9b5p8w9b5p8w9b5p8w9b5.png" alt="Personas">
+        <h2>Ideation & Wireframes</h2>
+        <p>
+            We brainstormed solutions and created wireframes for a unified dashboard, budget allocation flows, and alert mechanisms.
+        </p>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*9w9b5p9w9b5p9w9b5p9w9b5.png" alt="Wireframes">
+        <h2>Key Features</h2>
+        <ul>
+            <li>Unified dashboard for all cloud providers</li>
+            <li>Easy budget allocation and editing</li>
+            <li>Real-time usage tracking and alerts</li>
+            <li>Visual breakdowns by provider, team, and service</li>
+        </ul>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*aw9b5paw9b5paw9b5paw9b5p.png" alt="Key Features">
+        <h2>Final Designs</h2>
+        <p>
+            The final UI provides a seamless experience for budget management, with clear visualizations, intuitive controls, and proactive notifications.
+        </p>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*bw9b5pbw9b5pbw9b5pbw9b5p.png" alt="Final Designs">
+        <h2>Impact</h2>
+        <ul>
+            <li>Reduced manual effort and errors in budget management</li>
+            <li>Faster response to budget overruns</li>
+            <li>Improved collaboration between finance and engineering</li>
+        </ul>
+        <h2>Conclusion</h2>
+        <p>
+            A seamless budget management experience empowers organizations to optimize cloud spending, avoid surprises, and make data-driven decisions.
+        </p>
+       
+    </main>
+    <footer class="footer-16371">
+        <div class="container">
+            <p>GRAYS-SCALE</p>
+        </div>
+    </footer>
+</body>
+</html>
