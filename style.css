@@ -42,11 +42,13 @@ body {
 }
 
 .container {
+  width: 100%;
   max-width: 1149px;
   margin: 0 auto;
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: 15px;
+  padding-right: 15px;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* General Paragraph Styles */
@@ -362,22 +364,16 @@ body.dark-mode #logo {
 }
 
 .video-container {
-  position: relative;
-  width: 100vw; /* Ensures full width */
-  height: 70vh; /* Adjust height as needed */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0; /* Remove conflicting margins */
-  padding: 0; /* Remove padding to avoid shrinkage */
-  z-index: 1;
-  overflow: hidden; /* Prevents unwanted scrollbars */
+  width: 100%; /* Change from 100vw to 100% */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 .video-container video {
-  width: 100vw; /* Full viewport width */
-  height: 100%; /* Covers container height */
-  object-fit: cover; /* Ensures the video fills the area */
+  width: 100%; /* Change from 100vw to 100% */
+  height: 100%;
+  object-fit: cover;
 }
 
 
@@ -1272,22 +1268,26 @@ body.dark-mode button:focus-visible {
     justify-content: center;
     align-items: center;
     width: 100%;
-    /* Remove position: absolute, left/top/transform */
 }
 
 .footer-16371 .container p {
-  margin: 0 !important;
-  padding: 0 !important;
-  font-size: clamp(1.5rem, 10vw, 11rem); /* Match hero-title h1 responsiveness */
-  white-space: nowrap;
-  font-family: "Unbounded", sans-serif;
-  /* Remove: width: 100vw; */
-  /* Remove: box-sizing: border-box; */
-  /* Remove: overflow: hidden; */
-  font-weight: 900 !important;
-  color: #fff !important;
-  text-align: center !important;
-  line-height: 1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: clamp(1.5rem, 10vw, 11rem);
+    white-space: nowrap;
+    font-family: "Unbounded", sans-serif;
+    font-weight: 900 !important;
+    color: #fff !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+@media (max-width: 600px) {
+    .footer-16371 .container p {
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
 }
 
 /* Dark Mode Footer Styles */
