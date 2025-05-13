@@ -1301,8 +1301,10 @@ body.dark-mode .footer-16371 {
 
 body.dark-mode .footer-16371 .container p {
     color: #000000 !important;
-    font-size: 7rem !important;
+    font-size: clamp(2rem, 5vw, 7rem) !important;
     font-weight: 900 !important;
+
+
 }
 
 /* Responsive Navigation */
