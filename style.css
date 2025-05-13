@@ -1178,9 +1178,9 @@ body.dark-mode .contact-us-section textarea {
   .splide__slide img {
     height: 120px;
   }
-  #latest-projects .card {
-    grid-template-columns: 1fr;
-  }
+#latest-projects .card {
+  grid-template-columns: 1fr !important;
+}
   .testimonials-wrapper {
     gap: 0.9rem;
   }
