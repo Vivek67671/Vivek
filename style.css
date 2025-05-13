@@ -1,0 +1,1891 @@
+/* style.css */
+/* ==========================================================================
+   Table of Contents:
+   ==========================================================================
+
+   1.  General Styles
+   2.  Fonts and Icons
+   3.  Header Styles
+   4.  Hero Section Styles (including Video Container)
+   5.  About Us Section Styles
+   6.  Latest Projects Section Styles
+   7.  Our Edge Section Styles  (NOTE: This was previously mislabeled as "Our Edge")
+   8.  Testimonials Section Styles
+   9.  Footer Styles
+   10. Trusted Brands Section Styles
+   11. Media Queries
+   12. Keyframes Animations
+   13. Slider Styles (Splide)
+
+   ========================================================================== */
+
+/* 1. General Styles */
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: "Neue Montreal", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  color: #000000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  transition: background-color 2s ease, color 2s ease;
+}
+
+.container {
+  max-width: 1149px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+/* General Paragraph Styles */
+p {
+  margin: 1rem 0 !important;
+  line-height: 1.6 !important;
+  font-size: 1.6rem;
+  font-weight: 200 !important;
+  font-style: normal !important;
+  word-spacing: -2px !important;
+  text-align: left !important;
+}
+/* Heading Styles */
+h1, h2, h3, h4, h5, h6 {
+  text-align: inherit;
+  font-weight: bold;
+  color: #333333;
+  line-height: 1.2;
+}
+
+/* Dark Mode Heading Styles */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+  color: #ffffff;
+}
+
+#hero h1, #hero h2, #hero h3, #hero h4, #hero h5, #hero h6 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Apply top/bottom margins to specific section headings AFTER About Us */
+#trusted-brands-heading,
+#services-heading,
+#latest-projects-heading,
+#testimonials-heading,
+#contact-us-heading
+ {
+    margin-top: 70px !important;
+    margin-bottom: 70px !important;
+}
+
+
+h1 {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 900;
+  word-spacing: 1px;
+}
+
+h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+a {
+  color: #005fcc;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: #003399;
+}
+
+/* Dark Mode Styles for Links */
+body.dark-mode a {
+  color: #66aaff; /* Lighter blue for better contrast */
+}
+
+body.dark-mode a:hover, 
+body.dark-mode a:focus {
+  color: #3399ff; /* Slightly darker blue for hover/focus */
+}
+
+/* General Dark Mode Styles (should be grouped together) */
+body.dark-mode {
+  background-color: #000000;
+  color: #eee;
+}
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3 {
+  color: #fff;
+}
+
+/* Lines under headings inside containers (general style) */
+.container h1,
+.container h2,
+.container h3 {
+  position: relative;
+  padding-bottom: 0.3em;
+}
+
+.container h1::after,
+.container h2::after,
+.container h3::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+}
+
+body.dark-mode .container h1::after,
+body.dark-mode .container h2::after,
+body.dark-mode .container h3::after {
+  background-color: #fff;
+}
+
+/* 2. Fonts and Icons */
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
+@import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"); /* Used in testimonials */
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,800); /* Used in testimonials */
+
+/* 3. Header Styles */
+header {
+  background-color: white;
+  color: black;
+  padding: 1rem;
+  display: flex;
+  justify-content: center; /*  Keep this for horizontal centering */
+  align-items: center;     /*  Vertically center items in the header - changed from left */
+  position: fixed;        /*  Make the header sticky */
+  top: 0;                /*  Stick it to the top of the viewport */
+  left: 0;               /*  Stretch it across the full width */
+  width: 100%;           /*  Ensure it takes up the full width */
+  z-index: 1000;          /*  Make sure it stays on top of other content */
+  transition: background-color 2s ease, color 2s ease;
+}
+
+/* Adjust padding on the body to prevent content overlap */
+body {
+    /* ... other styles ... */
+    padding-top: 60px; /*  Adjust this! See explanation below */
+}
+
+nav a {
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-right: 15px;
+  position: relative;
+  font-weight: bold;
+  overflow: hidden;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  display: inline-block; /* Ensures width matches the text */
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0; /* Starts with no width */
+  height: 2px;
+  background-color: rgb(0, 0, 0);
+  transition: width 0.5s ease-in-out; /* Smooth left-to-right animation */
+}
+
+nav a:hover::after, 
+nav a.active::after {
+  width: 100%; /* Expands from left to right */
+}
+
+
+/* Dark Mode Styles for Header */
+body.dark-mode header {
+  background-color: #000000;
+  color: #fff;
+}
+
+body.dark-mode nav a {
+  color: #fff;
+}
+
+body.dark-mode nav a:hover,
+body.dark-mode nav a:focus {
+  color: #ccc;
+}
+
+body.dark-mode nav a::after {
+  background-color: rgb(255, 255, 255);
+}
+
+/* Dark Mode Toggle Styles */
+.dark-mode-container {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  gap: 0.5rem;
+}
+
+.dark-mode-text {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+  color: #000;
+  font-weight: bold;
+}
+
+body.dark-mode .dark-mode-text {
+  color: #eee;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #000000;
+  transition: 0.9s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #dadada;
+}
+
+/* Dark Mode Styles for Slider */
+
+body.dark-mode .slider:before {
+  background-color: #333; /* Darker handle in dark mode */
+}
+
+body.dark-mode input:checked + .slider {
+  background-color: #ffffff; /* Even darker when checked in dark mode */
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+/* filepath: c:\Users\vishu\OneDrive\Desktop\New folder\style.css */
+body.dark-mode #logo {
+  filter: invert(1); /* Inverts the colors of the logo */
+}
+
+/* 4. Hero Section Styles (including Video Container) */
+
+.video-container {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video-container video {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-title {
+  text-align: center;
+  margin-top: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title h1 {
+  font-size: clamp(0.5rem, 10vw, 11rem); /* Adjusted for better responsiveness */
+  white-space: nowrap;
+  font-family: "Unbounded", sans-serif;
+  margin-top: 10px;
+  font-weight: 900;
+  line-height: 1;
+  text-align: center;
+  /* Removed: width: 100vw; */
+  /* Removed: box-sizing: border-box; */
+  /* Removed: overflow: hidden; */
+}
+
+.hero-title a {
+  text-decoration: none;
+  color: rgb(158, 158, 158);
+  font-size: 12rem;
+  font-weight: bold;
+}
+
+.aether-labs-link {
+  text-decoration: none;
+  color: black;
+}
+
+/* 5. About Us Section Styles */
+
+#about-us {
+ 
+  margin-bottom: 0px;
+  text-align: left;
+}
+
+#about-us-heading {
+  text-align: left;
+  font-size: clamp(2rem, 7vw, 4rem);
+  margin-bottom: 70px;
+  font-weight: 900;
+}
+
+#about-us .text-container .large-text {
+  font-size: 3rem !important;
+  line-height: 1.6;
+  margin: 1rem 0 !important;
+  text-align: left;
+}
+
+#about-us .large-text {
+  font-size: 3rem !important;
+  line-height: 1.6;
+  margin: 1rem 0 !important;
+  text-align: left;
+  font-weight: 600 !important;
+  font-style: normal !important;
+}
+
+#about-us .text-container .small-text {
+  font-size: 1.6rem !important;
+  line-height: 1.6;
+  font-weight: 200 !important;
+  font-style: normal !important;
+  margin: 1rem 0 !important;
+  text-align: left;
+}
+
+#about-us .text-container {
+  margin-bottom: 0px;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* Button Styles (used in About Us, Contact) */
+button {
+  --hov: 0;
+  display: grid;
+  grid-gap: 0.0em;
+  grid-template-columns: calc(0.375em + var(--hov) * 0.75em) 1fr;
+  align-items: center;
+  place-self: start;
+  border: none;
+  padding: 0.9em 0.99em;
+  border-radius: 1.9em;
+  background: color-mix(in hsl, #333333 calc(var(--hov) * 100%), #333333);
+  color: #ffffff;
+  font: 700 1em/1 "Inter", sans-serif;
+
+ transition: 0.3s ease-out;
+  transition-delay: calc((1 - var(--hov)) * 0.5 * 0.3s), 0s;
+  transition-property: grid-template-columns, background-color;
+  cursor: pointer;
+  justify-content: center; /* Center the text horizontally */
+}
+
+button::before {
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #333333;
+  color: hsla(0, 0%, 100%, var(--hov));
+  font-weight: 100;
+  text-indent: calc((var(--hov) - 1) * 0.75em);
+  clip-path: circle(closest-side);
+  transition: inherit;
+  transition-delay: calc(var(--hov) * 0.5 * 0.3s);
+  transition-property: color, text-indent;
+  content: attr(data-ico);
+  display: grid;
+  place-items: center;
+  font-size: 0.8em;
+}
+
+button:is(:hover, :focus) {
+  --hov: 1;
+}
+
+/* Dark Mode Button Styles */
+body.dark-mode button {
+  background: color-mix(in hsl, #ffffff calc(var(--hov) * 100%), #ffffff);
+  color: #333333;
+}
+
+body.dark-mode button::before {
+  background: #ffffff;
+  color: hsla(0, 0%, 0%, var(--hov));
+}
+
+
+/* 6. Latest Projects Section Styles */
+
+#latest-projects {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+  margin-top: 40px;
+  margin-bottom: 3rem;
+}
+
+#latest-projects .container {
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+#latest-projects .container h2 {
+  margin-bottom: 12rem;
+}
+
+#latest-projects .container h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2rem;
+  width: 100%;
+  height: 3px;
+  background-color: #000;
+}
+
+/* Codepen Card Styles */
+#latest-projects .card {
+  --color: hsl(0, 0%, 0%);
+  --h-color: hsl(240, 4%, 95%);
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  overflow: hidden;
+  color: var(--color);
+  text-decoration: none;
+  margin-bottom: 2rem;
+  background-color: #f8f9fa;
+}
+
+#latest-projects .card:hover,
+#latest-projects .card:focus-visible {
+  --color: hsl(0, 0%, 0%);
+  --h-color: hsl(0, 0%, 8%);
+}
+
+#latest-projects .card .inner {
+  display: grid;
+  gap: 1.5em;
+  padding: 1.5em;
+  background-color: #fff;
+  z-index: 1;
+  align-content: start;
+}
+
+#latest-projects .card .image-container {
+  order: 2;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#latest-projects .card:hover .image-container img,
+#latest-projects .card:focus-visible .image-container img {
+  transform: scale(1.1);
+}
+
+#latest-projects .card .image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+  aspect-ratio: 1 / 1;
+}
+
+#latest-projects .card .image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1;
+}
+
+#latest-projects .card:hover .image-container::before {
+  opacity: 1;
+}
+
+#latest-projects .card .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #000000;
+}
+
+#latest-projects .card .subtitle {
+  font-size: 1.1rem;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+#latest-projects .card p {
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0 !important;
+}
+
+/* Dark Mode for Codepen Cards */
+body.dark-mode #latest-projects .card {
+  --color: hsl(240, 4%, 30%);
+  --h-color: hsl(240, 4%, 60%);
+  background-color: #333;
+}
+
+body.dark-mode #latest-projects .card .inner {
+  background-color: #000;
+  transition: background-color 2s ease, color 2s ease;
+}
+
+body.dark-mode #latest-projects .card .title {
+  color: #fff;
+  text-shadow: 0px 2px 2px #000000;
+}
+
+body.dark-mode #latest-projects .card .subtitle {
+  color: #ffffff;
+}
+
+body.dark-mode #latest-projects .card p {
+  color: #eee;
+}
+
+/* 7. Services Section Styles (Our Process) */
+
+#services {
+  padding: 2rem 0;
+}
+
+
+
+#services .container h2::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -1rem;  /* Positioned below the h2 */
+  width: 100%;
+  height: 3px;
+
+}
+body.dark-mode #services .container h2::after {
+    background-color: #ffffff;
+}
+
+/*  Splide-specific adjustments */
+.splide__slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  box-sizing: border-box;
+}
+
+.service-item {
+  border: 3px solid #eeeeee;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;
+  width: 100%;
+  max-width: 350px;
+  box-sizing: border-box;
+  text-align: left;
+  height: 500px;
+  overflow: auto;
+}
+
+.service-item h3 {
+  font-size: 1.5rem;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.service-item p {
+  font-size: 1rem !important;
+  color: #000000;
+  margin-top: 0px !important;
+  margin-bottom: 0 !important;
+  line-height: 1.4;
+}
+
+.splide__slide img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+/* Dark Mode Styles for the Slider */
+body.dark-mode .splide {
+ 
+    color: #eee;
+}
+body.dark-mode .service-item{
+    background-color: #000000;
+    border-color: #535353;
+    color: #ffffff;
+}
+
+body.dark-mode .service-item p{
+    color: #ffffff;
+}
+
+body.dark-mode .service-item h3{
+    color: #fff;
+}
+
+.splide__arrow{
+    background: black;
+}
+body.dark-mode .splide__arrow{
+    background-color: white;
+}
+
+/* Adjust Splide arrow position so it doesn't overlap text */
+.splide__arrow {
+  /* Move arrows outside the slider content area */
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  /* Adjust horizontal position as needed */
+  left: -40px; /* For previous arrow */
+  right: -40px; /* For next arrow */
+}
+
+/* Target left and right arrows separately for better control */
+.splide__arrow--prev {
+  left: -40px;
+  right: auto;
+}
+.splide__arrow--next {
+  right: -40px;
+  left: auto;
+}
+
+/* On small screens, bring arrows closer if needed */
+@media (max-width: 600px) {
+  .splide__arrow--prev {
+    left: -10px;
+  }
+  .splide__arrow--next {
+    right: -10px;
+  }
+}
+
+/* 8. Testimonials Section Styles */
+
+.testimonials-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1900px;
+  margin: 0 auto;
+}
+
+figure.snip1157 {
+  font-family: 'Raleway', Arial, sans-serif; /* Font already imported above */
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 20px;
+  max-width: 310px;
+  width: 100%;
+  color: #000000;
+  text-align: left;
+  box-shadow: none !important;
+ 
+}
+
+figure.snip1157 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+  transition: all 0.35s cubic-bezier(0.25, 0.5, 0.5, 0.9);
+}
+
+figure.snip1157 img {
+  max-width: 100%;
+  vertical-align: middle;
+  height: 90px;
+  width: 90px;
+  border-radius: 50%;
+  margin: 40px 0 0 10px;
+}
+
+figure.snip1157 blockquote {
+  display: block;
+  border-radius: 8px;
+  position: relative;
+  background-color: #fafafa;
+  padding: 25px 50px 30px 50px;
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.6em;
+  font-style: italic;
+}
+
+figure.snip1157 blockquote:before,
+figure.snip1157 blockquote:after {
+  font-family: 'FontAwesome'; /* Font already imported above */
+
+  position: absolute;
+  font-size: 50px;
+  opacity: 0.3;
+  font-style: normal;
+}
+
+figure.snip1157 blockquote:before {
+  top: 10px;
+  left: px;
+}
+
+figure.snip1157 blockquote:after {
+ 
+  right: 20px;
+  bottom: 0;
+}
+
+figure.snip1157 .arrow {
+  top: 100%;
+  width: 0;
+  height: 0;
+  border-left: 0 solid transparent;
+  border-right: 25px solid transparent;
+  border-top: 25px solid #fafafa;
+  margin: 0;
+  position: absolute;
+}
+
+figure.snip1157 .author {
+  position: absolute;
+  bottom: 45px;
+  padding: 0 10px 0 120px;
+  margin: 0;
+  text-transform: uppercase;
+  color: #ffffff;
+  -webkit-transform: translateY(50%);
+  transform: translateY(50%);
+}
+
+figure.snip1157 .author h5 {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin: 0;
+  font-weight: 600;
+}
+
+figure.snip1157 .author h5 span {
+  font-weight: 400;
+  text-transform: none;
+  padding-left: 5px;
+  font-size: 0.80em;
+}
+#Button-Subheading::after {
+  content: none; /* Removes the pseudo-element */
+}
+
+/* Dark Mode Styles for Testimonials */
+body.dark-mode figure.snip1157 {
+  color: #000000;
+
+  transition: background-color 2s ease, color 2s ease;
+}
+
+body.dark-mode figure.snip1157 blockquote {
+  background-color: #ffffff;
+  transition: background-color 2s ease, color 2s ease;
+}
+
+body.dark-mode figure.snip1157 .arrow {
+  border-top-color: #ffffff;
+  transition: background-color 2s ease, color 2s ease;
+}
+
+body.dark-mode figure.snip1157 .author h5 span {
+  color: #ffffff;
+  transition: background-color 2s ease, color 2s ease;
+}
+
+body.dark-mode .testimonial-card { /* This class doesn't seem to be used in your HTML */
+  background: #ffffff8f;
+  color: #e0e0e0;
+  transition: background-color 2s ease, color 2s ease;
+}
+
+/* 10. Case Studies  */
+
+#trusted-brands {
+  margin-top: 200px;
+  margin-bottom: 250px;
+  text-align: left;
+  font-weight: bold;
+}
+
+#trusted-brands-heading {
+  font-size: 4rem;
+  margin-top: 100px;
+  margin-bottom: 150px;
+  text-transform: uppercase;
+}
+
+#trusted-brands .text-container p {
+  text-transform: none;
+}
+
+/* Marquee Styles (Images) */
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  background-color: rgba(168, 158, 158, 0);
+  padding: 10px 0;
+  white-space: nowrap;
+}
+
+.marquee {
+  display: flex;
+  align-items: center;
+  min-width: 200%; /* Ensure two sets fit side by side */
+  animation: marquee-images 70s linear infinite;
+}
+
+.marquee img {
+  height: 75px;
+  margin-right: 20px;
+  object-fit: contain;
+  display: inline-block;
+  max-width: 150px;
+  filter: grayscale(100%);
+  transition: filter 0.1s ease;
+  /* Prevent images from shrinking */
+  flex-shrink: 0;
+}
+
+/* Dark Mode Logo Styles */
+body.dark-mode .marquee img {
+  filter: invert(100%) grayscale(100%);
+}
+
+body.dark-mode .marquee-container {
+
+  color: #000000;
+}
+
+/* 11. Contact Section Styles */
+#contact-us {
+    text-align: left;
+    padding: 50px 20px;
+}
+
+#contact-us h1{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#contact-us p{
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+/* Dark Mode Styles for Contact Section */
+body.dark-mode #contact-us { /* Existing rule - good! */
+  color: #fff;
+}
+
+/* Override the .card background */
+
+body.dark-mode .contact-us-section h2 {
+    color: #fff; /* White text for heading */
+}
+
+body.dark-mode .contact-us-section p {
+    color: #fff; /* Light gray text for paragraphs */
+}
+
+body.dark-mode .contact-us-section label {
+    color: #fff;  /* Light gray for labels */
+}
+
+body.dark-mode .contact-us-section input,
+body.dark-mode .contact-us-section textarea {
+    color: #fff; /* White text in inputs */
+}
+
+
+
+/* 12. Media Queries */
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+  }
+
+  nav {
+    flex-direction: column;
+    margin-top: 0.5rem;
+  }
+
+  nav a {
+    padding: 0.5rem;
+  }
+
+
+  #trusted-brands-heading {
+    font-size: 2rem;
+  }
+
+  .marquee img {
+    height: 50px;
+    margin-right: 10px;
+  }
+    .splide__slide {
+        padding: 1rem 0;
+    }
+    .service-item h3{
+        font-size: 1.2rem;
+    }
+    figure.snip1157 {
+        width: 100%; /* Full width on smaller screens */
+        max-width: none; /* Remove max-width */
+    }
+    figure.snip1157 .author {
+        padding: 0 10px 0 20px;
+    }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 480px) { /* Targeting iPhone 14 and similar */
+  body {
+    font-size: 12px; /* Base font size for body */
+  }
+
+  .container {
+    padding: 40px 40px;
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Heading 2 */
+  }
+
+  h3 {
+    font-size: 1rem; /* Heading 3 */
+  }
+
+  nav a {
+    font-size: 0.6rem;
+    padding: 0.3rem 0.5rem;
+    margin-right: 5px;
+  }
+
+  #about-us .text-container .large-text {
+    font-size: 2rem !important;
+  }
+
+  #about-us .text-container .small-text {
+    font-size: 1.2rem !important;
+  }
+
+  .service-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-item p {
+    font-size: 0.9rem !important;
+  }
+
+  #latest-projects .card .title {
+    font-size: 1.2rem;
+  }
+
+  #latest-projects .card p {
+    font-size: 0.9rem !important;
+  }
+
+  figure.snip1157 .author h5 {
+    font-size: 1rem;
+  }
+
+  figure.snip1157 .author h5 span {
+    font-size: 0.7rem;
+  }
+
+  #contact-us  {
+    font-size: 2rem;
+    font-weight: 900;
+  }
+
+  #contact-us p {
+    font-size: 2rem;
+  }
+
+  #contact-us input,
+  #contact-us textarea {
+    font-size: 2rem;
+  }
+  .copyright {
+    font-size: 1rem;
+  }
+
+  .social-links a {
+    font-size: 1.2rem;
+  }
+}
+
+/* Example: Add/adjust for adaptive mobile layout */
+@media (max-width: 600px) {
+  .container {
+    padding-left: 10px;
+    padding-right: 10px;
+    max-width: 100%;
+  }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0.5rem;
+  }
+  nav#main-nav {
+    width: 100vw;
+    left: 0;
+    top: 60px;
+    font-size: 1rem;
+  }
+
+  .video-container {
+    height: 30vh;
+  }
+  #about-us .text-container .large-text,
+  #about-us .large-text {
+    font-size: 1.2rem !important;
+  }
+  #about-us .text-container .small-text {
+    font-size: 1rem !important;
+  }
+  .service-item {
+    padding: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+  .splide__slide img {
+    height: 120px;
+  }
+  #latest-projects .card {
+    grid-template-columns: 1fr;
+  }
+  .testimonials-wrapper {
+    gap: 0.9rem;
+  }
+  figure.snip1157 {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+  #contact-us {
+    padding: 20px 5px;
+    font-size: 1rem;
+  }
+
+}
+
+/*
+The website is made responsive for the following screen sizes (devices):
+
+1. max-width: 900px
+   - Typical for tablets in portrait mode, large phones in landscape, and small laptops.
+   - Example devices: iPad (portrait), Samsung Galaxy Tab, Surface Go, large phones landscape.
+
+2. max-width: 768px
+   - Typical for tablets and large phones.
+   - Example devices: iPad Mini, iPad (portrait), Samsung Galaxy Tab A, Kindle Fire, large phones.
+
+3. max-width: 600px
+   - Typical for most modern smartphones.
+   - Example devices: iPhone 12/13/14/15 (portrait), Google Pixel, Samsung Galaxy S series, OnePlus, Xiaomi, etc.
+
+4. max-width: 480px
+   - Typical for small smartphones and older devices.
+   - Example devices: iPhone SE, iPhone 5/6/7/8, older Android phones, small-screen devices.
+
+Summary:
+- The CSS covers a wide range of devices from large desktops down to small smartphones.
+- Most modern phones, tablets, and small laptops are covered by these breakpoints.
+*/
+
+/* 13. Keyframes Animations */
+
+@keyframes rainbowFadeIn {
+  0% {
+    color: rgba(0, 0, 0, 1);
+  }
+  14% {
+    color: rgb(0, 0, 0);
+  }
+}
+
+@keyframes handwriting {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes marquee-images {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Global Scrollbar Styling (Optional, but recommended for consistency) */
+::-webkit-scrollbar {
+    width: 8px;  /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Thumb color */
+    border-radius: 4px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker on hover */
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid blue; /* Or any color with good contrast */
+  outline-offset: 2px; /* Optional: Adds a small space between the element and the outline */
+}
+
+body.dark-mode a:focus-visible,
+body.dark-mode button:focus-visible {
+  outline: 2px solid white; /* Or any color with good contrast */
+  outline-offset: 2px; /* Optional: Adds a small space between the element and the outline */
+}
+
+/* Footer Styles */
+.footer-16371 {
+    background-color: #000;
+    color: #fff;
+    padding: 12rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+}
+
+.footer-16371 .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-16371 .container p {
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: clamp(1.5rem, 10vw, 11rem);
+    white-space: nowrap;
+    font-family: "Unbounded", sans-serif;
+    font-weight: 900 !important;
+    color: #fff !important;
+    text-align: center !important;
+    line-height: 1 !important;
+}
+
+@media (max-width: 600px) {
+    .footer-16371 .container p {
+        white-space: normal;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+}
+
+/* Dark Mode Footer Styles */
+body.dark-mode .footer-16371 {
+    background-color: #ffffff;
+    color: #fff;
+}
+
+body.dark-mode .footer-16371 .container p {
+    color: #000000 !important;
+    font-size: clamp(2rem, 5vw, 7rem) !important;
+    font-weight: 900 !important;
+
+
+}
+
+/* Responsive Navigation */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  position: fixed; /* Use fixed so it stays at the top */
+  left: 1rem;
+  top: 1.2rem; /* Move it a bit higher */
+  z-index: 2001; /* Above header and nav */
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  padding: 0;
+  /* Remove any background or border, no circle */
+}
+
+.hamburger {
+  position: relative;
+  width: 30px;
+  height: 10px;
+  display: block;
+  background: none; /* Ensure no background */
+  border: none;
+  margin: 0px auto; /* Center it horizontally */
+  padding: 0;
+}
+
+/* The three lines */
+.hamburger-bar {
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 4px;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+
+.hamburger-bar:nth-child(1) { top: 0; }
+.hamburger-bar:nth-child(2) { top: 9px; }
+.hamburger-bar:nth-child(3) { top: 18px; }
+
+/* Hide any unwanted ::before pseudo-element on the hamburger button */
+.nav-toggle::before {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: none !important;
+  visibility: hidden !important;
+}
+
+/* Hamburger menu: fix white circle in dark mode */
+body.dark-mode .nav-toggle,
+body.dark-mode .nav-toggle::before,
+body.dark-mode .hamburger {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+body.dark-mode .hamburger-bar {
+  background: #fff !important;
+}
+
+/* Ensure nav menu text is visible in dark mode on mobile screens */
+@media (max-width: 900px) {
+  body.dark-mode nav#main-nav {
+    background: #000000 !important;
+  }
+}
+
+body.dark-mode nav#main-nav a {
+  color: #fff !important;
+}
+
+body.dark-mode nav#main-nav a:hover,
+body.dark-mode nav#main-nav a:focus {
+  color: #ffd700 !important;
+}
+
+body.dark-mode nav#main-nav .dark-mode-container,
+body.dark-mode .dark-mode-container {
+  color: #fff !important;
+}
+
+body.dark-mode .dark-mode-text {
+  color: #fff !important;
+}
+
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav#main-nav {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  nav#main-nav.open {
+    display: flex;
+  }
+  nav#main-nav a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  header {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  .dark-mode-container {
+    margin: 1rem 0 0 0;
+    justify-content: flex-start;
+  }
+  nav#main-nav .dark-mode-container {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+@media (min-width: 901px) {
+  nav#main-nav {
+    display: flex !important;
+    flex-direction: row;
+    align-items: center;
+    position: static;
+    background: none;
+    box-shadow: none;
+    width: auto;
+  }
+  .dark-mode-container {
+    margin-left: 2rem;
+  }
+}
+
+/* Fix: Make mobile nav menu always appear above content when open */
+@media (max-width: 900px) {
+  nav#main-nav {
+    position: fixed; /* Change from absolute to fixed */
+    top: 0;          /* Stick to top of viewport */
+    left: 0;
+    width: 100vw;
+    height: 100vh;   /* Cover full viewport height */
+    background: #fff;
+    z-index: 2002;   /* Ensure above all content */
+    overflow-y: auto; /* Allow scrolling if menu is long */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  body.dark-mode nav#main-nav {
+    background: #000 !important;
+  }
+  .nav-toggle {
+    position: fixed;
+    top: 1.2rem;
+    left: 1rem;
+    z-index: 2003; /* Above nav menu */
+  }
+}
+
+/* --- Responsive Improvements --- */
+
+/* Container padding and width for mobile/tablet */
+.container {
+  max-width: 1149px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+  box-sizing: border-box;
+}
+
+/* Responsive font sizes for headings and paragraphs */
+h1 { font-size: 5rem; }
+h2 { font-size: 4rem; }
+h3 { font-size: 2rem; }
+p { font-size: 1.6rem; }
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 100%;
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  h1 { font-size: 3.5rem; }
+  h2 { font-size: 2.5rem; }
+  h3 { font-size: 1.5rem; }
+  p { font-size: 1.3rem; }
+}
+
+@media (max-width: 900px) {
+  .container {
+    max-width: 100%;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  h1 { font-size: 2.2rem; }
+  h2 { font-size: 1.7rem; }
+  h3 { font-size: 1.2rem; }
+  p { font-size: 1.1rem; }
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 0.5rem;
+    position: relative;
+  }
+  nav#main-nav {
+    width: 100vw;
+    left: 0;
+    top: 60px;
+    font-size: 1rem;
+  }
+  .video-container {
+    height: 30vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.1rem; }
+  h3 { font-size: 1rem; }
+  p { font-size: 1rem; }
+
+  .video-container {
+    height: 20vh;
+  }
+}
+
+/* Responsive navigation improvements */
+@media (max-width: 900px) {
+  .nav-toggle {
+    display: block;
+  }
+  nav#main-nav {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 60px);
+    z-index: 1001;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    overflow-y: auto;
+  }
+  nav#main-nav.open {
+    display: flex;
+  }
+  nav#main-nav a {
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+  .dark-mode-container {
+    margin: 1rem 0 0 0;
+    justify-content: flex-start;
+  }
+  nav#main-nav .dark-mode-container {
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #eee;
+  }
+}
+
+/* Fix for hamburger menu position on mobile */
+@media (max-width: 900px) {
+  .nav-toggle {
+    position: fixed;
+    top: 1.2rem;
+    left: 1rem;
+    z-index: 2003;
+  }
+}
+
+/* Responsive Splide slider */
+.splide__slide {
+  min-width: 0;
+  box-sizing: border-box;
+}
+@media (max-width: 900px) {
+  .splide__slide {
+    padding: 0.5rem 0;
+  }
+  .service-item {
+    max-width: 100%;
+    height: auto;
+    padding: 10px;
+  }
+  .splide__slide img {
+    height: 120px;
+  }
+}
+
+/* Responsive testimonials */
+@media (max-width: 900px) {
+  .testimonials-wrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  figure.snip1157 {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Responsive About Us section */
+@media (max-width: 900px) {
+  #about-us .text-container .large-text,
+  #about-us .large-text {
+    font-size: 1.2rem !important;
+  }
+  #about-us .text-container .small-text {
+    font-size: 1rem !important;
+  }
+}
+
+/* Responsive Trusted Brands section */
+@media (max-width: 900px) {
+  #trusted-brands-heading {
+    font-size: 1.2rem;
+    margin-top: 40px;
+    margin-bottom: 40px;
+  }
+  .marquee img {
+    height: 40px;
+    margin-right: 8px;
+  }
+}
+
+/* Responsive Contact section */
+@media (max-width: 900px) {
+  #contact-us {
+    padding: 20px 5px;
+    font-size: 1rem;
+  }
+  #contact-us p {
+    font-size: 1rem;
+  }
+}
+
+/* Responsive Connect Now / error-404-btn button */
+.error-404-btn,
+.connect-now-btn {
+  display: inline-block;
+  padding: clamp(0.5em, 2vw, 0.8em) clamp(1.5em, 5vw, 2.2em);
+  border-radius: 2em;
+  background: #000;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  border: none;
+  cursor: pointer;
+  animation: pulse404 2s infinite;
+}
+
+.connect-now-btn:hover, 
+.connect-now-btn:focus {
+    background: #222;
+    color: #ffd700;
+    transform: scale(1.05);
+}
+
+@keyframes pulse404 {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0,0,0, 0.2);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(0,0,0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0,0,0, 0);
+    }
+}
+
+/* Dark mode styles for Connect Now button */
+body.dark-mode .connect-now-btn {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 24px 0 rgba(255, 255, 255, 0.2);
+    animation: pulse404Dark 2s infinite;
+}
+
+body.dark-mode .connect-now-btn:hover,
+body.dark-mode .connect-now-btn:focus {
+    background: #ffffff;
+    color: #005eff;
+    transform: scale(1.05);
+}
+
+@keyframes pulse404Dark {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+#Button-Subheading {
+    margin-bottom: 0.1em; /* Reduce bottom margin of the heading */
+}
+
+.connect-now-btn {
+    margin-top: 0.5em; /* Reduce top margin of the button */
+    display: inline-block;
+    padding: 0.8em 2.2em;
+    border-radius: 2em;
+    background: #000;
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+    border: none;
+    cursor: pointer;
+    animation: pulse404 2s infinite;
+}
+
+.connect-now-btn:hover, 
+.connect-now-btn:focus {
+    background: #222;
+    color: #ffd700;
+    transform: scale(1.05);
+}
+
+@keyframes pulse404 {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0,0,0, 0.2);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(0,0,0, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(0,0,0, 0);
+    }
+}
+
+/* Dark mode styles for Connect Now button */
+body.dark-mode .connect-now-btn {
+    background: #fff;
+    color: #000;
+    box-shadow: 0 4px 24px 0 rgba(255, 255, 255, 0.2);
+    animation: pulse404Dark 2s infinite;
+}
+
+body.dark-mode .connect-now-btn:hover,
+body.dark-mode .connect-now-btn:focus {
+    background: #ffffff;
+    color: #005eff;
+    transform: scale(1.05);
+}
+
+@keyframes pulse404Dark {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* Preloader Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.preloader-content {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.logo-animation {
+    width: 100%;
+    height: 100%;
+}
+
+.logo-animation .path {
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+    animation: draw 2s ease forwards;
+}
+
+.logo-animation .logo-text {
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards 1s;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+body.loaded .preloader {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Dark mode variations */
+body.dark-mode .preloader {
+    background: #000000;
+}
+
+body.dark-mode .logo-animation .path,
+body.dark-mode .logo-animation .logo-text {
+    color: #ffffff;
+}
+
+/* Update Testimonial Responsive Styles */
+@media (max-width: 768px) {
+    figure.snip1157 {
+        width: 100%;
+        max-width: none;
+        margin: 20px 0;
+    }
+
+    figure.snip1157 img {
+        margin: 40px auto 0;
+        display: block;
+    }
+
+    figure.snip1157 .author {
+        position: relative;
+        bottom: auto;
+        padding: 20px 0;
+        text-align: center;
+        transform: none;
+        margin-top: 20px;
+    }
+
+    figure.snip1157 blockquote {
+        margin-top: 30px;
+        padding: 25px 25px;
+    }
+
+    figure.snip1157 .arrow {
+        display: none; /* Hide arrow on mobile */
+    }
+}
+
