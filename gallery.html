@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- ...existing head code... -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="GRAYS-SCALE Gallery: Browse designs, images, and videos. Share comments and like the items.">
+    <title>Gallery | GRAYS-SCALE</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include external CSS and fonts as needed -->
+</head>
+<body>
+    <header>
+        <!-- ...existing header markup (same as index.html)... -->
+        <button class="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
+            <span class="hamburger">
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+                <span class="hamburger-bar"></span>
+            </span>
+        </button>
+        <nav id="main-nav" aria-label="Main Navigation">
+            <a href="index.html#hero" title="Homepage" aria-label="Navigate to Homepage">Home</a>
+            <a href="index.html#about-us" title="About" aria-label="Learn more about us">About</a>
+            <a href="index.html#services" title="Services" aria-label="View our services">Services</a>
+            <a href="index.html#latest-projects" title="Case Studies" aria-label="See our case studies">Case Studies</a>
+            <a href="gallery.html" title="Gallery" aria-label="View our gallery">Gallery</a>
+            <a href="index.html#contact-us" title="Contact" aria-label="Get in touch">Contact</a>
+            <div class="dark-mode-container">
+                <label class="switch" for="darkModeToggle" aria-labelledby="darkModeText">
+                    <input type="checkbox" id="darkModeToggle" aria-labelledby="darkModeText" role="switch">
+                    <span class="slider"></span>
+                </label>
+                <span class="dark-mode-text" id="darkModeText">Toggle for Dark Mode</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="gallery-page">
+            <div class="container">
+                <h2 class="page-heading">Gallery</h2>
+                <p class="page-subheading">
+                    Explore our premium collection of designs, images, and videos. Share your thoughts by liking or commenting below.
+                </p>
+                <div class="gallery-grid">
+                    <!-- Gallery Item: Image Card -->
+                    <div class="gallery-item premium-card">
+                        <img src="images/gallery/image1.jpg" alt="Gallery Image 1">
+                        <div class="item-actions">
+                            <button class="like-btn"><i class="fas fa-heart"></i> <span class="like-count">0</span></button>
+                            <div class="comment-section">
+                                <textarea placeholder="Add your comment..."></textarea>
+                                <button class="submit-comment">Post Comment</button>
+                                <div class="comments-list">
+                                    <!-- Comments will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item: Video Card -->
+                    <div class="gallery-item premium-card">
+                        <video controls>
+                            <source src="videos/sample-video.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="item-actions">
+                            <button class="like-btn"><i class="fas fa-heart"></i> <span class="like-count">0</span></button>
+                            <div class="comment-section">
+                                <textarea placeholder="Add your comment..."></textarea>
+                                <button class="submit-comment">Post Comment</button>
+                                <div class="comments-list">
+                                    <!-- Comments will be dynamically added here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ... additional items ... -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-16371">
+        <div class="container">
+            <p>GRAYS-SCALE</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+      // Like button functionality
+      document.querySelectorAll('.like-btn').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+              var countSpan = this.querySelector('.like-count');
+              countSpan.textContent = parseInt(countSpan.textContent) + 1;
+                  this.classList.toggle('liked'); // Toggle 'liked' class
+          });
+      });
+
+      // Comment submission functionality
+      document.querySelectorAll('.submit-comment').forEach(function(btn) {
+          btn.addEventListener('click', function() {
+              var commentSection = this.parentElement;
+              var textarea = commentSection.querySelector('textarea');
+              if (textarea.value.trim() !== "") {
+                  var commentDiv = document.createElement('div');
+                  commentDiv.className = 'comment';
+                  commentDiv.innerHTML = "<p>" + textarea.value + "</p>"; // Wrap comment in paragraph
+                  commentSection.querySelector('.comments-list').appendChild(commentDiv);
+                  textarea.value = ""; // Clear the textarea after submitting
+              }
+          });
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+/* ===== Gallery Section Styles ===== */
+.gallery-section {
+  margin: 100px 0 120px 0;
+  padding: 0;
+}
+
+.gallery-section .container {
+  max-width: 1200px;
+}
+
+/*#gallery-heading {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
+}
+
+.gallery-description {
+  font-size: 1.2rem;
+  color: #888;
+  margin-bottom: 2.5rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  width: 100%;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.07);
+  background: #f7f7f7;
+  cursor: pointer;
+  transition: box-shadow 0.25s cubic-bezier(.4,2,.6,1), transform 0.18s cubic-bezier(.4,2,.6,1);
+  will-change: transform, box-shadow;
+  outline: none;
+}
+
+.gallery-item:focus-visible {
+  box-shadow: 0 0 0 3px #005fcc;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s cubic-bezier(.4,2,.6,1), filter 0.2s;
+  border-radius: 18px;
+  filter: grayscale(10%) brightness(0.98);
+}
+
+.gallery-item:hover img,
+.gallery-item:focus img {
+  transform: scale(1.045) rotate(-1deg);
+  filter: grayscale(0%) brightness(1.04);
+}
+
+.gallery-item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg,rgba(0,0,0,0.03) 0%,rgba(0,0,0,0.08) 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+  pointer-events: none;
+}
+.gallery-item:hover::after,
+.gallery-item:focus::after {
+  opacity: 1;
+}
+
+/* Gallery Modal Styles */
+.gallery-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 3000;
+  left: 0; top: 0; width: 100vw; height: 100vh;
+  background: rgba(0,0,0,0.85);
+  transition: opacity 0.3s;
+  opacity: 1;
+  animation: fadeIn 0.3s;
+}
+.gallery-modal[aria-hidden="true"] {
+  opacity: 0;
+  pointer-events: none;
+}
+.gallery-modal-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.25);
+  background: #fff;
+  animation: modalPop 0.4s cubic-bezier(.4,2,.6,1);
+}
+.gallery-modal-close {
+  position: absolute;
+  top: 2.5rem;
+  right: 3.5rem;
+  font-size: 2.5rem;
+  color: #fff;
+  background: rgba(0,0,0,0.2);
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  text-align: center;
+  line-height: 48px;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s;
+}
+.gallery-modal-close:hover,
+.gallery-modal-close:focus {
+  background: rgba(0,0,0,0.5);
+  color: #ffd700;
+  outline: none;
+}
+
+/* Animations */
+@keyframes modalPop {
+  0% { transform: scale(0.92) translateY(40px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Fade-in for gallery items */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(.4,2,.6,1), transform 0.7s cubic-bezier(.4,2,.6,1);
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Dark Mode for Gallery */
+body.dark-mode .gallery-section {
+  background: #000;
+}
+body.dark-mode .gallery-item {
+  background: #181818;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.25);
+}
+body.dark-mode .gallery-item img {
+  filter: grayscale(20%) brightness(0.93);
+}
+body.dark-mode .gallery-item:hover img,
+body.dark-mode .gallery-item:focus img {
+  filter: grayscale(0%) brightness(1.08);
+}
+body.dark-mode .gallery-modal {
+  background: rgba(0,0,0,0.97);
+}
+body.dark-mode .gallery-modal-img {
+  background: #181818;
+}
+body.dark-mode .gallery-modal-close {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+body.dark-mode .gallery-modal-close:hover,
+body.dark-mode .gallery-modal-close:focus {
+  color: #005fcc;
+  background: rgba(255,255,255,0.18);
+}
+
+/* Responsive Gallery */
+@media (max-width: 900px) {
+  .gallery-grid {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1.2rem;
+  }
+  .gallery-item img {
+    height: 160px;
+  }
+}
+@media (max-width: 600px) {
+  .gallery-section {
+    margin: 40px 0 60px 0;
+  }
+  .gallery-grid {
+    gap: 0.7rem;
+  }
+  .gallery-item img {
+    height: 110px;
+  }
+  .gallery-modal-close {
+    top: 1.2rem;
+    right: 1.2rem;
+    font-size: 2rem;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+  }
+}
+
+/* Gallery Section Styles */
+#gallery.gallery-section {
+    margin: 70px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+#gallery .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#gallery #gallery-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+#gallery p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+#gallery .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+#gallery .gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+#gallery .gallery-item:hover {
+    transform: scale(1.05);
+}
+
+#gallery .gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+#gallery .gallery-item:hover .gallery-image {
+    opacity: 0.8;
+}
+
+/* Dark Mode Styles */
+body.dark-mode #gallery.gallery-section {
+    background-color: #121212;
+    color: #fff;
+}
+
+body.dark-mode #gallery p {
+    color: #bbb;
+}
+
+body.dark-mode #gallery .gallery-item {
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    #gallery #gallery-heading {
+        font-size: 2rem;
+    }
+
+    #gallery p {
+        font-size: 1rem;
+    }
+
+    #gallery .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+    }
+
+    #gallery .gallery-image {
+        height: 150px;
+    }
+}
