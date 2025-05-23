@@ -1309,9 +1309,9 @@ body.dark-mode button:focus-visible {
 
 @media (max-width: 600px) {
     .footer-16371 .container p {
-        white-space: normal;
-        word-break: break-word;
-        overflow-wrap: anywhere;
+        white-space: nowrap !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
     }
 }
 
@@ -1323,7 +1323,7 @@ body.dark-mode .footer-16371 {
 
 body.dark-mode .footer-16371 .container p {
     color: #000000 !important;
-    font-size: clamp(2rem, 5vw, 7rem) !important;
+
     font-weight: 900 !important;
 
 
@@ -1685,84 +1685,16 @@ p { font-size: 1.6rem; }
 /* Responsive Connect Now / error-404-btn button */
 .error-404-btn,
 .connect-now-btn {
-  display: inline-block;
-  padding: clamp(0.5em, 2vw, 0.8em) clamp(1.5em, 5vw, 2.2em);
-  border-radius: 2em;
-  background: #000;
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
-  transition: background 0.2s, color 0.2s, transform 0.2s;
-  border: none;
-  cursor: pointer;
-  animation: pulse404 2s infinite;
-}
-
-.connect-now-btn:hover, 
-.connect-now-btn:focus {
-    background: #222;
-    color: #ffd700;
-    transform: scale(1.05);
-}
-
-@keyframes pulse404 {
-    0% {
-        box-shadow: 0 0 0 0 rgba(0,0,0, 0.2);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(0,0,0, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(0,0,0, 0);
-    }
-}
-
-/* Dark mode styles for Connect Now button */
-body.dark-mode .connect-now-btn {
-    background: #fff;
-    color: #000;
-    box-shadow: 0 4px 24px 0 rgba(255, 255, 255, 0.2);
-    animation: pulse404Dark 2s infinite;
-}
-
-body.dark-mode .connect-now-btn:hover,
-body.dark-mode .connect-now-btn:focus {
-    background: #ffffff;
-    color: #005eff;
-    transform: scale(1.05);
-}
-
-@keyframes pulse404Dark {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-    }
-}
-
-#Button-Subheading {
-    margin-bottom: 0.1em; /* Reduce bottom margin of the heading */
-}
-
-.connect-now-btn {
-    margin-top: 0.5em; /* Reduce top margin of the button */
     display: inline-block;
-    padding: 0.8em 2.2em;
+    padding: clamp(0.5em, 2vw, 0.8em) clamp(1.5em, 5vw, 2.2em);
     border-radius: 2em;
     background: #000;
     color: #fff;
     font-family: "Inter", sans-serif;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.08);
     transition: background 0.2s, color 0.2s, transform 0.2s;
     border: none;
     cursor: pointer;
@@ -2014,9 +1946,12 @@ body.dark-mode .logo-animation .logo-text {
     cursor: pointer;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.gallery-item:hover {
-    transform: scale(1.045);
+
+
+.gallery-item:hover img {
+    filter: grayscale(0%) brightness(1.04); /* Transition to color on hover */
 }
+
 .gallery-item img {
   width: 100%;
   height: 260px; /* Fixed height */
@@ -2030,8 +1965,27 @@ body.dark-mode .logo-animation .logo-text {
   transition: transform 0.3s ease, filter 0.3s ease; /* Reduced durations for smoother effect */
 }
 
-.gallery-item:hover img {
-    filter: grayscale(0%) brightness(1.04); /* Transition to color on hover */
+/* NEW: Style for grid items to display images in a row */
+.gallery-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start; /* Align images to the start */
+    align-items: center;
+    gap: 10px; /* Add some space between images */
+    padding: 5px;
+}
+
+.gallery-item img {
+    width: 50%; /* Each image takes up half the width */
+    height: auto;
+    box-sizing: border-box; /* Include padding/border in width */
+    margin: 0; /* Reset default margins */
+    display: block; /* Remove extra bottom spacing */
+}
+
+/* Hide the second image by default */
+.gallery-item .second-image {
+    display: none;
 }
 
 /* ===== Preview Modal Styles ===== */
@@ -2265,7 +2219,7 @@ body.dark-mode .logo-animation .logo-text {
 }
 
 .cert-date {
-    color: #888;
+    color: #595959;
     font-weight: 500;
     font-size: 0.97em;
     margin-bottom: 0.1em;
@@ -2273,7 +2227,8 @@ body.dark-mode .logo-animation .logo-text {
 }
 
 .cert-id {
-    color: #aaa;
+    /* Updated for improved contrast in light mode */
+    color: #232323;
     font-size: 0.93em;
     font-weight: 400;
     margin-bottom: 0.1em;
@@ -2344,7 +2299,7 @@ body.dark-mode .cert-date {
 }
 
 body.dark-mode .cert-id {
-    color: #7a8599;
+    color: #b2b2b2;
 }
 
 body.dark-mode .cert-link {
@@ -2370,8 +2325,6 @@ body.dark-mode .cert-link:focus {
   display: block;
   filter: grayscale(100%);
   transition: transform 0.3s ease, filter 0.3s ease; /* Reduced durations for smoother effect */
-  border-radius: 18px;
-  will-change: transform, filter; /* Hint browser for hardware acceleration */
 }
 
 /* Update Preview Modal Styles for full screen image preview */
@@ -2396,5 +2349,95 @@ body.dark-mode .cert-link:focus {
 .preview-modal {
     /* ...existing styles... */
     overflow-y: auto; /* enable vertical scroll if content exceeds viewport */
+}
+
+@media (max-width: 600px) {
+    /* Adjust Browse Gallery button responsiveness */
+    .connect-now-btn {
+         font-size: 1rem !important;
+         padding: 0.5em 1em !important;
+         margin-top: 1em; /* Increase spacing if needed */
+    }
+}
+
+@media (max-width: 600px) {
+    /* Adjust Certifications Section text responsiveness */
+    #certifications h2 {
+        font-size: 1.2rem !important;
+        margin-bottom: 30px !important;
+    }
+    #certifications .certifications-description {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+    }
+    /* Adjust Gallery Section text responsiveness */
+    #gallery-heading {
+        font-size: 1.8rem !important;
+        margin-bottom: 20px !important;
+    }
+    .gallery-description {
+        font-size: 1rem !important;
+        margin-bottom: 20px !important;
+    }
+}
+
+/* Custom Message Styles */
+.custom-message {
+    text-align: center;
+    padding: rem 0;
+    font-size: 1.2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #555;
+    animation: fadeInUp 2s ease;
+    margin-top: 2rem;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Preview Caption Styles */
+.preview-caption {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    background: rgba(0,0,0,0.72);
+    color: #fff;
+    padding: 2rem 2.5vw 2.5rem 2.5vw;
+    box-sizing: border-box;
+    z-index: 3200;
+    pointer-events: none;
+    text-align: left;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.3s;
+}
+.preview-caption .preview-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem 0;
+    pointer-events: auto;
+    color: #e6f0ff; /* Lighter color for light mode */
+}
+.preview-caption .preview-desc {
+    font-size: 1rem;
+    margin: 0;
+    pointer-events: auto;
+}
+@media (max-width: 600px) {
+    .preview-caption {
+        font-size: 0.95rem;
+        padding: 1.2rem 1vw 1.5rem 1vw;
+    }
+    .preview-caption .preview-title {
+        font-size: 1.1rem;
+    }
 }
 

@@ -2,15 +2,9 @@
 <html lang="en">
 
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVG3WZK5H9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZVG3WZK5H9');
-</script>
+    <!-- Load Google Tag via secure loader -->
+    <script src="gtm-loader.js"></script>
+    <!-- Schema.org metadata -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -30,33 +24,33 @@
     <meta name="description"
         content="GRAYS-SCALE: Crafting intuitive and visually compelling digital experiences.  UI/UX design with a focus on accessibility and user-centered design.">
     <title>GRAYS-SCALE</title>
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
-    <!-- Splide CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
-    <!-- Include jQuery Library (Optional, for other JS if needed) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/v4-shims.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
-
+    <!-- Third-party libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollToPlugin.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script>
 </head>
 
 <body>
+    <!-- Preloader -->
     <div class="preloader">
         <div class="preloader-content">
             <div class="logo-animation">
-                <svg viewBox="0 0 200 200" width="200" height="200">
+                <!-- Preloader SVG -->
+                <svg viewBox="0 0 200 200" width="200" height="200" aria-label="Grays-Scale Logo Preloader">
                     <defs>
                         <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" style="stop-color:#005fcc;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#00a2ff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#00a2ff;stop-opacity=1" />
                         </linearGradient>
                     </defs>
                     <circle class="path" cx="100" cy="100" r="70" fill="none" stroke="url(#gradient)" stroke-width="4"/>
@@ -66,6 +60,7 @@
             </div>
         </div>
     </div>
+    <!-- Header -->
     <header>
         <button class="nav-toggle" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false">
             <span class="hamburger">
@@ -79,6 +74,7 @@
             <a href="#about-us" title="About" aria-label="Learn more about us">About</a>
             <a href="#services" title="Services" aria-label="View our services">Services</a>
             <a href="#latest-projects" title="Case Studies" aria-label="See our case studies">Case Studies</a>
+            <a href="#gallery" title="Gallery" aria-label="View our gallery">Gallery</a>
             <a href="#contact-us" title="Contact" aria-label="Get in touch">Contact</a>
             <div class="dark-mode-container">
                 <label class="switch" for="darkModeToggle" aria-labelledby="darkModeText">
@@ -89,9 +85,9 @@
             </div>
         </nav>
     </header>
-    
-
+    <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section id="hero" class="hero-section" aria-labelledby="hero-description">
             <div class="hero-title">
                 <a href="#home" title="GRAYS-SCALE" class="aether-labs-link">
@@ -109,6 +105,7 @@
         </section>
         
 
+        <!-- About Us Section -->
         <section id="about-us" class="about-us-section" aria-labelledby="about-us-heading">
             <div class="container">
                 <h2 id="about-us-heading" class="fade-in-up">ABOUT US</h2>
@@ -119,16 +116,16 @@
                     <div class="collaboration-container">
                         <h3 class="accessible" id="Button-Subheading">Let’s collaborate and bring your ideas to life!</h3>
                     </div>
-                    <a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" target="_blank"
-   rel="noopener noreferrer" aria-labelledby="Button-Subheading"
-   class="connect-now-btn" style="margin-top:2em;">
-   Connect Now
+                    <!-- Updated Connect Now button -->
+<a href="https://www.linkedin.com/in/vivek-kumar-463a19244/" target="_blank" rel="noopener noreferrer" role="button" aria-label="Connect with Vivek" class="connect-now-btn" style="margin-top:2em;">
+    Connect Now
 </a>
 
                 </div>
             </div>
         </section>
-         <!-- Moved Certifications Section Start -->
+
+        <!-- Certifications Section -->
         <section id="certifications" class="certifications-section" aria-labelledby="certifications-heading">
             <div class="container">
                 <h2 id="certifications-heading" class="fade-in-up">CERTIFICATIONS</h2>
@@ -138,7 +135,7 @@ Reflects a dedication to expanding knowledge and advancing professional capabili
                 </p>
                 <div class="certifications-grid">
                     <div class="certification-card">
-                        <img src="images\Certifications\Google_2015_logo.svg.webp" alt="Google UX Design Professional Certificate">
+                        <img src="images\Certifications\Google_2015_logo.svg.webp" alt="Google UX Design Professional Certificate" aria-label="Google UX Design Professional Certificate logo">
                         <div class="cert-details">
                             <h4> Google UX Design Professional Certificate</h4>
                             <div class="cert-meta">
@@ -150,7 +147,7 @@ Reflects a dedication to expanding knowledge and advancing professional capabili
                         </div>
                     </div>
                     <div class="certification-card">
-                        <img src="  images\Certifications\5094051dac77593d0f0978bdcbabaf79e5bb855c-1080x1080.webp" alt="IBM Enterprise Design Thinking Practitioner">
+                        <img src="  images\Certifications\5094051dac77593d0f0978bdcbabaf79e5bb855c-1080x1080.webp" alt="IBM Enterprise Design Thinking Practitioner" aria-label="IBM Enterprise Design Thinking Practitioner logo">
                         <div class="cert-details">
                             <h4>
 Start the UX Design Process: Empathize, Define, and Ideate</h4>
@@ -159,11 +156,11 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                                 <span class="cert-date">Issued May 2024</span>
                                 <span class="cert-id">Credential ID: SFL7JUQT8E76</span>
                             </div>
-                            <a href="https://www.coursera.org/account/accomplishments/verify/SFL7JUQT8E76" class="cert-link" target="_blank" rel="noopener">Show Credential</a>
+                            <a href="https://www.your-ibm-badge-link.com" class="cert-link" target="_blank" rel="noopener">Show Credential</a>
                         </div>
                     </div>
                     <div class="certification-card">
-                        <img src="images\Certifications\images.webp" alt="HubSpot Growth-Driven Design">
+                        <img src="images\Certifications\images.webp" alt="HubSpot Growth-Driven Design" aria-label="HubSpot Growth-Driven Design logo">
                         <div class="cert-details">
                             <h4>Visual Elements of User Interface Design</h4>
                             <div class="cert-meta">
@@ -175,7 +172,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                         </div>
                     </div>
                     <div class="certification-card">
-                        <img src="images\Certifications\images (1).webp" alt="ADVANCED C++ ">
+                        <img src="images\Certifications\images (1).webp" alt="ADVANCED C++ " aria-label="ADVANCED C++ certificate logo">
                         <div class="cert-details">
                             <h4>ADVANCED C++ </h4>
                             <div class="cert-meta">
@@ -183,11 +180,11 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                                 <span class="cert-date">Issued Oct 2022</span>
                                  <span class="cert-id">Credential ID: 16APZZZZZ3322</span>
                             </div>
-                            <a href="https://www.niit.com/india/" class="cert-link" target="_blank" rel="noopener">Show Credential</a>
+                            <a href="https://www.udemy.com/certificate/EXAMPLE" class="cert-link" target="_blank" rel="noopener">Show Credential</a>
                         </div>
                     </div>
                     <div class="certification-card">
-                        <img src="images\Certifications\coursera-rebrand-logo-square.webp" alt="Human-Computer Interaction">
+                        <img src="images\Certifications\coursera-rebrand-logo-square.webp" alt="Human-Computer Interaction" aria-label="Coursera Project Network logo">
                         <div class="cert-details">
                             <h4>Work with Components in Figma</h4>
                             <div class="cert-meta">
@@ -201,7 +198,6 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                 </div>
             </div>
         </section>
-        <!-- Moved Certifications Section End -->
 
         <section id="trusted-brands" class="trusted-brands-section" aria-labelledby="trusted-brands-heading">
             <div class="container">
@@ -211,28 +207,29 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                 </div>
                 <div class="marquee-container">
                     <div class="marquee">
-                        <img src="images/client1.jpg" alt="Client 1">
-                        <img src="images/client2.jpg" alt="Client 2">
-                        <img src="images/client3.jpg" alt="Client 3">
-                        <img src="images/client4.jpg" alt="Client 4">
-                        <img src="images/client5.jpg" alt="Client 5">
-                        <img src="images/client6.jpg" alt="Client 6">
-                        <img src="images/client7.jpg" alt="Client 7">
-                        <img src="images/client8.jpg" alt="Client 8">
+                        <img src="images/client1.jpg" alt="Client 1" aria-label="Logo of Client 1">
+                        <img src="images/client2.jpg" alt="Client 2" aria-label="Logo of Client 2">
+                        <img src="images/client3.jpg" alt="Client 3" aria-label="Logo of Client 3">
+                        <img src="images/client4.jpg" alt="Client 4" aria-label="Logo of Client 4">
+                        <img src="images/client5.jpg" alt="Client 5" aria-label="Logo of Client 5">
+                        <img src="images/client6.jpg" alt="Client 6" aria-label="Logo of Client 6">
+                        <img src="images/client7.jpg" alt="Client 7" aria-label="Logo of Client 7">
+                        <img src="images/client8.jpg" alt="Client 8" aria-label="Logo of Client 8">
                         <!-- Duplicate the images for seamless looping -->
-                        <img src="images/client1.jpg" alt="Client 1">
-                        <img src="images/client2.jpg" alt="Client 2">
-                        <img src="images/client3.jpg" alt="Client 3">
-                        <img src="images/client4.jpg" alt="Client 4">
-                        <img src="images/client5.jpg" alt="Client 5">
-                        <img src="images/client6.jpg" alt="Client 6">
-                        <img src="images/client7.jpg" alt="Client 7">
-                        <img src="images/client8.jpg" alt="Client 8">
+                        <img src="images/client1.jpg" alt="Client 1" aria-label="Logo of Client 1">
+                        <img src="images/client2.jpg" alt="Client 2" aria-label="Logo of Client 2">
+                        <img src="images/client3.jpg" alt="Client 3" aria-label="Logo of Client 3">
+                        <img src="images/client4.jpg" alt="Client 4" aria-label="Logo of Client 4">
+                        <img src="images/client5.jpg" alt="Client 5" aria-label="Logo of Client 5">
+                        <img src="images/client6.jpg" alt="Client 6" aria-label="Logo of Client 6">
+                        <img src="images/client7.jpg" alt="Client 7" aria-label="Logo of Client 7">
+                        <img src="images/client8.jpg" alt="Client 8" aria-label="Logo of Client 8">
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- Services Section -->
         <section id="services" class="services-section" aria-labelledby="services-heading">
             <div class="container">
                 <h2 id="services-heading">OUR SERVICES & PROCESS</h2>
@@ -247,7 +244,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                         <ul class="splide__list">
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/1.jpg" alt="Research and Discovery Service">
+                                    <img src="images/what-we-do/1.jpg" alt="Research and Discovery Service" aria-label="Research and Discovery Service illustration">
                                     <h3>Research & Discovery</h3>
                                     <p>Understanding your business, users, and goals is the foundation of great design. We
                                         conduct: User Research, Competitive Analysis, Stakeholder Workshops.</p>
@@ -255,7 +252,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </li>
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/2.jpg" alt="Strategy and Information Architecture Service">
+                                    <img src="images/what-we-do/2.jpg" alt="Strategy and Information Architecture Service" aria-label="Strategy and Information Architecture Service illustration">
                                     <h3>Strategy & Information Architecture</h3>
                                     <p>We define a clear roadmap for an intuitive and scalable digital product by: Creating User
                                         Personas, Developing User Journeys, Structuring Sitemaps.</p>
@@ -263,7 +260,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </li>
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/3.jpg" alt="Wireframing and Prototyping Service">
+                                    <img src="images/what-we-do/3.jpg" alt="Wireframing and Prototyping Service" aria-label="Wireframing and Prototyping Service illustration">
                                     <h3>Wireframing & Prototyping</h3>
                                     <p>Before designing high-fidelity screens, we create: Low-Fidelity Wireframes, Interactive
                                         Prototypes, Usability Testing.</p>
@@ -271,7 +268,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </li>
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/4.jpg" alt="Visual Design and Branding Service">
+                                    <img src="images/what-we-do/4.jpg" alt="Visual Design and Branding Service" aria-label="Visual Design and Branding Service illustration">
                                     <h3>Visual Design & Branding</h3>
                                     <p>Once the foundation is set, we craft visually compelling and interactive designs: UI
                                         Design, Design Systems, Motion & Micro-Interactions.</p>
@@ -279,7 +276,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </li>
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/5.jpg" alt="Development Handoff and Collaboration Service">
+                                    <img src="images/what-we-do/5.jpg" alt="Development Handoff and Collaboration Service" aria-label="Development Handoff and Collaboration Service illustration">
                                     <h3>Development Handoff & Collaboration</h3>
                                     <p>We work closely with developers to ensure seamless implementation: Design Handoff,
                                         Front-End Development Support, Collaboration with Engineers.</p>
@@ -287,7 +284,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </li>
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/6.jpg" alt="Testing, Feedback, and Iteration Service">
+                                    <img src="images/what-we-do/6.jpg" alt="Testing, Feedback, and Iteration Service" aria-label="Testing, Feedback, and Iteration Service illustration">
                                     <h3>Testing, Feedback & Iteration</h3>
                                     <p>Design is an ongoing process, and we refine products based on real-world usage: A/B
                                         Testing & Heatmaps, User Testing Sessions, Post-Launch Optimization.</p>
@@ -295,7 +292,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </li>
                             <li class="splide__slide">
                                 <div class="service-item">
-                                    <img src="images/what-we-do/7.jpg" alt="Future-Ready Innovations Service">
+                                    <img src="images/what-we-do/7.jpg" alt="Future-Ready Innovations Service" aria-label="Future-Ready Innovations Service illustration">
                                     <h3>Future-Ready Innovations</h3>
                                     <p>We explore next-gen solutions such as: Holographic UI/UX, AI-Powered UX, Web3 & Future
                                         Tech.</p>
@@ -307,6 +304,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                 <!-- End Splide Slider -->
             </div> <!-- Closing .container div -->
 
+            <!-- Latest Projects Section -->
             <section id="latest-projects" class="latest-projects-section" aria-labelledby="latest-projects-heading">
                 <div class="container">
                     <h2 id="latest-projects-heading">CASE STUDIES</h2>
@@ -329,7 +327,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             <img src="images/Case_Studies/budget-management-thumb.png" alt="Budget Management Case Study">
                         </div> -->
                          <div class="image-container">
-                            <img src="images/Case Study Sliders  Image Containers/case study 4.webp" alt="Budget Management Case Study">
+                            <img src="images/Case Study Sliders  Image Containers/case study 4.webp" alt="Budget Management Case Study" aria-label="Case study image for Budget Management">
                         </div>
                     </a>
 
@@ -345,7 +343,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             </p>
                         </div>
                         <div class="image-container">
-                            <img src="images\Case Study Sliders  Image Containers\Download File.png" alt="iMAGE OF CASE STUDY 1">
+                            <img src="images\Case Study Sliders  Image Containers\Download File.png" alt="iMAGE OF CASE STUDY 1" aria-label="Case study image for Online Services App">
                         </div>
                     </a>
 
@@ -364,8 +362,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                                 user preferences.</p>
                         </div>
                         <div class="image-container">
-                            <img src="images\Case Study Sliders  Image Containers\case 2.png"
-                                alt="Linel Project Thumbnail">
+                            <img src="images\Case Study Sliders  Image Containers\case 2.png" alt="Linel Project Thumbnail" aria-label="Case study image for Checkout Experience">
                         </div>
                     </a>
 
@@ -381,15 +378,53 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                                 changing B2B SaaS market and the limitations found in our current website.</p>
                         </div>
                         <div class="image-container">
-                            <img src="images\Case Study Sliders  Image Containers\case 3.png"
-                                alt="Centim Project Thumbnail">
+                            <img src="images\Case Study Sliders  Image Containers\case 3.png" alt="Centim Project Thumbnail" aria-label="Case study image for SaaS Website Redesign">
                         </div>
                     </a>
 
-            </section>
+            </section>  <!-- Closing Latest Projects Section -->
 
-            <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading"
-                role="region">
+            <!-- Gallery Section Start -->
+            <section id="gallery" class="gallery-section" aria-labelledby="gallery-heading">
+                <div class="container">
+                    <h2 id="gallery-heading" class="fade-in-up">GALLERY</h2>
+                    <p class="gallery-description fade-in-up">A curated showcase of my UI/UX design work — from concept to polished product. Explore visually engaging, user-centered solutions crafted with precision and purpose.</p>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="images\Gallery\original-a6c1f37ec14a924c2ee90f658f09d6a7.webp" alt="Real Estate Website Landing Page - Modern SaaS landing page with clean UI and bold call-to-action." data-title="Landing Page Design For Real Estate Client" data-desc="Landing Page Description (UI/UX Perspective)
+This real estate landing page is designed with a clean and intuitive user interface (UI) to provide a seamless experience. The layout prioritizes showcasing high-quality property visuals and clear calls to action (CTAs) to maximize engagement and lead generation." aria-label="Landing Page Design, Modern SaaS landing page with clean UI and bold call-to-action." class="first-image">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images\Gallery\Desktop - 1.webp" alt="Crypto Wallet App Design - A sleek and modern design for a cryptocurrency wallet application." data-title="Crypto Wallet App Design" data-desc="A sleek and modern design for a cryptocurrency wallet application." aria-label="Crypto Wallet App Design, A sleek and modern design for a cryptocurrency wallet application." class="first-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images\Gallery\Dashboard Analytic.webp" alt="Finance Dashboard - Financial overview dashboard for enterprise clients." data-title="Finance Dashboard" data-desc="Financial overview dashboard for enterprise clients." aria-label="Finance Dashboard, Financial overview dashboard for enterprise clients.">
+                             <img src="images\Gallery\Account-Login.png" alt="Landing Page Design - Modern SaaS landing page with clean UI and bold call-to-action." data-title="Landing Page Design" data-desc="Modern SaaS landing page with clean UI and bold call-to-action." aria-label="Landing Page Design, Modern SaaS landing page with clean UI and bold call-to-action." class="second-image">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images\Gallery\Desktop (1).webp" alt="E-commerce Product Page - Minimal product page with focus on imagery and conversion." data-title="E-commerce Product Page" data-desc="Minimal product page with focus on imagery and conversion." aria-label="E-commerce Product Page, Minimal product page with focus on imagery and conversion.">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images\Gallery\01_Home Page Light-min.webp" alt="Mobile App UI - Onboarding screen for a mobile wellness app." data-title="Saas Website Landing Page" data-desc="
+A modern, conversion-focused landing page crafted for a SaaS product. The design emphasizes clarity, value communication, and seamless user experience. It features a bold hero section with a clear CTA, intuitive layout, scroll-triggered animations, and responsive design for optimal performance across devices. The visual hierarchy guides users through key product features, testimonials, and pricing, driving engagement and sign-ups. Designed using Figma with a consistent design system, accessibility standards, and scalable UI components in mind." aria-label="Mobile App UI, Onboarding screen for a mobile wellness app.">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="images/gallery/image6.jpg" alt="Portfolio Website - Personal portfolio homepage with animated hero section." data-title="Portfolio Website" data-desc="Personal portfolio homepage with animated hero section." aria-label="Portfolio Website, Personal portfolio homepage with animated hero section.">
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: center; margin-top: 2em;">
+                        <!-- Changed functionality: now navigates to gallery.html -->
+                        <a href="gallery.html" class="connect-now-btn">
+                            Browse Gallery
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- Gallery Section End -->
+
+            <!-- Testimonials Section -->
+            <section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-heading" role="region">
                 <div class="container">
                     <h2 id="testimonials-heading" class="underlined-heading">VOICES OF EXPERIENCE</h2>
                     <p>Hear from clients and collaborators who have experienced the impact of our designs firsthand. Their
@@ -401,8 +436,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             <blockquote>Working with Vivek was an absolute game-changer for our project...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\images.jpg" alt="Yamini Sharma"
-                                style="object-fit: cover;" />
+                            <img src="images\Testimonials\images.jpg" alt="Yamini Sharma, Product Manager at PixelCraft" aria-label="Photo of Yamini Sharma, Product Manager at PixelCraft" style="object-fit: cover;" />
                             <!-- Image FIRST -->
 
                             <div class="author">
@@ -414,8 +448,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             <blockquote>GRAYS-SCALE isn’t just another design studio—it’s a place where...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download (3).jpg" alt="Rahul Goyal"
-                                style="object-fit: cover;" />
+                            <img src="images\Testimonials\download (3).jpg" alt="Rahul Goyal, Founder of BrandSphere" aria-label="Photo of Rahul Goyal, Founder of BrandSphere" style="object-fit: cover;" />
                             <!-- Image FIRST -->
                             <div class="author">
                                 <h5>Rahul Goyal <span>- Founder of BrandSphere</span></h5>
@@ -426,8 +459,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             <blockquote>The collaboration with Vivek was a breath of fresh air...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download (2).jpg" alt="Nizam Majumder"
-                                style="object-fit: cover;" />
+                            <img src="images\Testimonials\download (2).jpg" alt="Nizam Majumder, CEO of TechWave" aria-label="Photo of Nizam Majumder, CEO of TechWave" style="object-fit: cover;" />
                             <!-- Image FIRST -->
 
                             <div class="author">
@@ -439,7 +471,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             <blockquote>Vivek brought our vision to life with his exceptional design skills...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download (1).jpg" alt="Rohan Verma" style="object-fit: cover;" />
+                            <img src="images\Testimonials\download (1).jpg" alt="Ratan Dhamani, Marketing Director at InnovateX" aria-label="Photo of Ratan Dhamani, Marketing Director at InnovateX" style="object-fit: cover;" />
 
                             <div class="author">
                                 <h5>Ratan Dhamani <span>- Marketing Director at InnovateX</span></h5>
@@ -450,7 +482,7 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                             <blockquote>Hiring Vivek for our project was one of the best decisions we made...
                                 <div class="arrow"></div>
                             </blockquote>
-                            <img src="images\Testimonials\download.jpg" alt="Neha Gupta" style="object-fit: cover;" />
+                            <img src="images\Testimonials\download.jpg" alt="Saito Yerscer, CEO of Digital Horizons UK" aria-label="Photo of Saito Yerscer, CEO of Digital Horizons UK" style="object-fit: cover;" />
 
                             <div class="author">
                                 <h5>Saito Yerscer <span>- CEO of Digital Horizons UK</span></h5>
@@ -458,8 +490,11 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
                         </figure>
 
                     </div> <!-- .testimonials-wrapper -->
+                </div>
+            </section>
 
-                    <section id="contact-us" class="contact-us-section" aria-labelledby="contact-us-heading" style="margin-top: 100px; margin-bottom: 200px;">
+            <!-- Contact Section -->
+            <section id="contact-us" class="contact-us-section" aria-labelledby="contact-us-heading" style="margin-top: 100px; margin-bottom: 200px;">
                         <div class="container">
                             <h2 id="contact-us-heading">CONTACT</h2>
                             <p>Have a project in mind or just want to connect? Feel free to reach out! Whether it's collaboration, inquiries, or just a creative discussion, I'm always open to new opportunities. Click on the icons below to contact me via email, LinkedIn, or Behance. Let's create something amazing together!</p>
@@ -508,14 +543,15 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
 
 
 
-    </main>
+      
 
+    <!-- Footer -->
     <footer class="footer-16371">
         <div class="container">
             <p>GRAYS-SCALE</p>
         </div>
     </footer>
-    <!-- Splide JS -->
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
     <script src="script.js"></script>
     <script>
@@ -525,6 +561,20 @@ Start the UX Design Process: Empathize, Define, and Ideate</h4>
             }, 1200); // 1.2s minimum
         });
     </script>
+    <!-- New Modal Slider for multi-image gallery preview -->
+    <div id="preview-modal" class="preview-modal" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="preview-slider splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <!-- Slides generated dynamically -->
+                </ul>
+            </div>
+            <span class="preview-close">&times;</span>
+        </div>
+        <div class="preview-caption" style="display:none;">
+    <h3 class="preview-title"></h3>
+    <p class="preview-desc"></p>
+</div>
+    </div>
 </body>
-
 </html>
