@@ -2510,4 +2510,22 @@ body.dark-mode .custom-note .highlight {
     0%, 100% { text-shadow: 0 0 5px rgba(0, 95, 204, 0.2); }
     50% { text-shadow: 0 0 15px rgba(0, 95, 204, 0.6); }
 }
+/* Fix inside the gallery grid (normal view) */
+.gallery-item.mobile-ui-gallery img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 9 / 19; /* Adjust depending on actual device UI aspect ratio */
+  max-height: 500px;
+}
+
+/* Fix inside the Splide modal preview */
+#preview-modal .splide__slide img {
+  max-width: 100%;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
 
